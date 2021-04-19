@@ -53,10 +53,10 @@
             </div>
             <div class="form-group">
                 <label for="patient_id">Patient ID</label>
-                <c:if test="${!empty procedure.patient_id}">
-                    <input type="text" class="form-control" name="patient" id="patient_id" value="${procedure.patient_id}">
+                <c:if test="${!empty patientsList.id}">
+                    <input type="text" class="form-control" name="patient" id="patient_id" value="${patientsList.id}">
                 </c:if>
-                <c:if test="${empty procedure.patient_id}">
+                <c:if test="${empty patientsList.id}">
                     <input type="text" class="form-control" name="patient" id="patient_id">
                 </c:if>
             </div>

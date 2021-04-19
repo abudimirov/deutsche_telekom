@@ -18,8 +18,12 @@ public class Procedure {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "patient_id")
-    private int patient_id;
+    /*@Column(name = "patient_id")
+    private int patient_id;*/
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "patient_id", nullable = false)
+    private Patient patient;
 
     @Column(name = "title")
     private String title;
@@ -33,6 +37,18 @@ public class Procedure {
     @Column(name = "status")
     private String status;
 
+    public Procedure() {
+    }
+
+    public Procedure(int id, Patient patient, String title, String date, String time, String status) {
+        this.id = id;
+        this.patient = patient;
+        this.title = title;
+        this.date = date;
+        this.time = time;
+        this.status = status;
+    }
+
     public int getId() {
         return id;
     }
@@ -41,12 +57,12 @@ public class Procedure {
         this.id = id;
     }
 
-    public int getPatient_id() {
-        return patient_id;
+    public Patient getPatient() {
+        return patient;
     }
 
-    public void setPatient_id(int patient_id) {
-        this.patient_id = patient_id;
+    public void setPatient(Patient patient) {
+        this.patient = patient;
     }
 
     public String getTitle() {
@@ -85,7 +101,7 @@ public class Procedure {
     public String toString() {
         return "Procedure{" +
                 "id=" + id +
-                ", patient_id=" + patient_id +
+                ", patient=" + patient +
                 ", title='" + title + '\'' +
                 ", date='" + date + '\'' +
                 ", time='" + time + '\'' +

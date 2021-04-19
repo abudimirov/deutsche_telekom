@@ -1,6 +1,7 @@
 package cabinet.model;
 
 import javax.persistence.*;
+import java.util.Set;
 
 /**
  * Класс - модель объекта "Пациент". Содержит поля уникального идентификатора,
@@ -33,6 +34,22 @@ public class Patient {
     @Column(name = "cured")
     private boolean cured;
 
+    @OneToMany(mappedBy = "patient", fetch = FetchType.LAZY,
+    cascade = CascadeType.ALL)
+    private Set<Procedure> procedures;
+
+    public Patient() {
+    }
+
+    public Patient(int id, String name, String surname, int yearOfBirth, String sex, boolean cured, Set<Procedure> procedures) {
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.yearOfBirth = yearOfBirth;
+        this.sex = sex;
+        this.cured = cured;
+        this.procedures = procedures;
+    }
 
     public int getId() {
         return id;
@@ -82,6 +99,14 @@ public class Patient {
         this.cured = cured;
     }
 
+    public Set<Procedure> getProcedures() {
+        return procedures;
+    }
+
+    public void setProcedures(Set<Procedure> procedures) {
+        this.procedures = procedures;
+    }
+
     @Override
     public String toString() {
         return "Patient{" +
@@ -91,6 +116,7 @@ public class Patient {
                 ", yearOfBirth=" + yearOfBirth +
                 ", sex='" + sex + '\'' +
                 ", cured=" + cured +
+                ", procedures=" + procedures +
                 '}';
     }
 }

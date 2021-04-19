@@ -24,12 +24,14 @@ public class ProcedureController {
     @RequestMapping(value = "/procedures", method = RequestMethod.GET)
     public ModelAndView allProcedures(@RequestParam(defaultValue = "1") int page) {
         List<Procedure> procedures = procedureService.allProcedures(page);
+        List<Patient> patients = patientService.allPatients(page);
         int proceduresCount = procedureService.proceduresCount();
         int pagesCount = (proceduresCount + 9)/10;
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("procedures");
         modelAndView.addObject("page", page);
         modelAndView.addObject("proceduresList", procedures);
+        modelAndView.addObject("patientsList", patients);
         modelAndView.addObject("proceduresCount", proceduresCount);
         modelAndView.addObject("pagesCount", pagesCount);
         return modelAndView;
