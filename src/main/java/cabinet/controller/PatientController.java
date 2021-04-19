@@ -15,7 +15,7 @@ public class PatientController {
     private PatientService patientService;
 
     @Autowired
-    public void setFilmService(PatientService patientService) {
+    public void setPatientService(PatientService patientService) {
         this.patientService = patientService;
     }
 

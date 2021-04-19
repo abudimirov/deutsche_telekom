@@ -2,6 +2,14 @@ package cabinet.model;
 
 import javax.persistence.*;
 
+/**
+ * Класс - модель объекта "Пациент". Содержит поля уникального идентификатора,
+ * имя пациента, фамилию, год рождения, пол и статус лечения.
+ *
+ * @author Aleksandr Budimirov
+ * @version 0.1
+ * */
+
 @Entity
 @Table(name = "patients")
 public class Patient {
@@ -24,6 +32,7 @@ public class Patient {
 
     @Column(name = "cured")
     private boolean cured;
+
 
     public int getId() {
         return id;

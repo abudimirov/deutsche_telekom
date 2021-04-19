@@ -8,11 +8,22 @@
     <c:if test="${!empty patient.name}">
         <title>Edit patient</title>
     </c:if>
-    <link href="<c:url value="/res/font-awesome.min.css"/>" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+    <script src="https://use.fontawesome.com/e324a589d0.js"></script>
 </head>
 <body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand">Medical Cabinet</a>
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/procedures">Procedures</a>
+        </li>
+    </ul>
+</nav>
 <c:if test="${empty patient.name}">
     <c:url value="/add" var="var"/>
 </c:if>
@@ -33,15 +44,30 @@
             </c:if>
             <div class="form-group">
                 <label for="name">Name</label>
-                <input type="text" class="form-control" name="name" id="name">
+                <c:if test="${!empty patient.name}">
+                    <input type="text" class="form-control" name="name" id="name" value="${patient.name}">
+                </c:if>
+                <c:if test="${empty patient.name}">
+                    <input type="text" class="form-control" name="name" id="name">
+                </c:if>
             </div>
             <div class="form-group">
                 <label for="surname">Surname</label>
-                <input type="text" class="form-control" name="surname" id="surname">
+                <c:if test="${!empty patient.surname}">
+                    <input type="text" class="form-control" name="surname" id="surname" value="${patient.surname}">
+                </c:if>
+                <c:if test="${empty patient.surname}">
+                    <input type="text" class="form-control" name="surname" id="surname">
+                </c:if>
             </div>
             <div class="form-group">
                 <label for="yearOfBirth">Year of birth</label>
-                <input type="text" class="form-control" name="yearOfBirth" id="yearOfBirth">
+                <c:if test="${!empty patient.yearOfBirth}">
+                    <input type="number" min="1850" max="2100" class="form-control" name="yearOfBirth" id="yearOfBirth" value="${patient.yearOfBirth}">
+                </c:if>
+                <c:if test="${empty patient.yearOfBirth}">
+                    <input type="number" min="1850" max="2100" class="form-control" name="yearOfBirth" id="yearOfBirth">
+                </c:if>
             </div>
             <div class="form-group">
                 <label for="sex">Sex</label>
