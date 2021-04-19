@@ -1,7 +1,7 @@
 package cabinet.controller;
 
+import cabinet.dao.PatientDAO;
 import cabinet.model.Patient;
-import cabinet.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -12,17 +12,17 @@ import java.util.List;
 
 @Controller
 public class PatientController {
-    private PatientService patientService;
+    private PatientDAO patientDAO;
 
     @Autowired
-    public void setPatientService(PatientService patientService) {
-        this.patientService = patientService;
+    public void setPatientDAO(PatientDAO patientDAO) {
+        this.patientDAO = patientDAO;
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView allPatients(@RequestParam(defaultValue = "1") int page) {
-        List<Patient> patients = patientService.allPatients(page);
-        int patientsCount = patientService.patientsCount();
+        List<Patient> patients = patientDAO.allPatients(page);
+        int patientsCount = patientDAO.patientsCount();
         int pagesCount = (patientsCount + 9)/10;
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("patients");
@@ -37,16 +37,16 @@ public class PatientController {
     public ModelAndView editPatient(@ModelAttribute("patient") Patient patient) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("redirect:/");
-        patientService.edit(patient);
+        patientDAO.edit(patient);
         return modelAndView;
     }
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
     public ModelAndView editPage(@PathVariable("id") int id) {
-        Patient patient = patientService.getById(id);
+        Patient patient = patientDAO.getById(id);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("editPage");
-        modelAndView.addObject("patient", patientService.getById(id));
+        modelAndView.addObject("patient", patientDAO.getById(id));
         return modelAndView;
     }
 
@@ -61,7 +61,7 @@ public class PatientController {
     public ModelAndView addPatient(@ModelAttribute("patient") Patient patient) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("redirect:/");
-        patientService.add(patient);
+        patientDAO.add(patient);
         return modelAndView;
     }
 
@@ -69,8 +69,8 @@ public class PatientController {
     public ModelAndView deletePatient(@PathVariable("id") int id) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("redirect:/");
-        Patient patient = patientService.getById(id);
-        patientService.delete(patient);
+        Patient patient = patientDAO.getById(id);
+        patientDAO.delete(patient);
         return modelAndView;
     }
 }
