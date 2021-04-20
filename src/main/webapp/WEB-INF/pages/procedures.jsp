@@ -55,7 +55,7 @@
                             <td class="name">${procedure.title}</td>
                             <td class="surname">${procedure.date}</td>
                             <td>${procedure.time}</td>
-                            <td>${patientsList.id}</td>
+                            <td>${procedure.patient.name} ${procedure.patient.surname}</td>
                             <td>${procedure.status}</td>
                             <td>
                                 <a href="/procedures/edit/${procedure.id}">

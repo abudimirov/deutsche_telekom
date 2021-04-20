@@ -25,29 +25,33 @@ public class Patient {
     @Column(name = "surname")
     private String surname;
 
-    @Column(name = "yearOfBirth")
-    private int yearOfBirth;
-
-    @Column(name = "sex")
-    private String sex;
-
     @Column(name = "cured")
     private boolean cured;
 
-    @OneToMany(mappedBy = "patient", fetch = FetchType.LAZY,
-    cascade = CascadeType.ALL)
+    @Column(name = "diagnosis")
+    private String diagnosis;
+
+    @Column(name = "insuranceNum")
+    private int insuranceNum;
+
+    @Column(name = "doctor")
+    private String doctor;
+
+
+    @OneToMany(mappedBy = "patient", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<Procedure> procedures;
 
     public Patient() {
     }
 
-    public Patient(int id, String name, String surname, int yearOfBirth, String sex, boolean cured, Set<Procedure> procedures) {
+    public Patient(int id, String name, String surname, boolean cured, String diagnosis, int insuranceNum, String doctor, Set<Procedure> procedures) {
         this.id = id;
         this.name = name;
         this.surname = surname;
-        this.yearOfBirth = yearOfBirth;
-        this.sex = sex;
         this.cured = cured;
+        this.diagnosis = diagnosis;
+        this.insuranceNum = insuranceNum;
+        this.doctor = doctor;
         this.procedures = procedures;
     }
 
@@ -75,28 +79,36 @@ public class Patient {
         this.surname = surname;
     }
 
-    public int getYearOfBirth() {
-        return yearOfBirth;
-    }
-
-    public void setYearOfBirth(int yearOfBirth) {
-        this.yearOfBirth = yearOfBirth;
-    }
-
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
-
     public boolean isCured() {
         return cured;
     }
 
     public void setCured(boolean cured) {
         this.cured = cured;
+    }
+
+    public String getDiagnosis() {
+        return diagnosis;
+    }
+
+    public void setDiagnosis(String diagnosis) {
+        this.diagnosis = diagnosis;
+    }
+
+    public int getInsuranceNum() {
+        return insuranceNum;
+    }
+
+    public void setInsuranceNum(int insuranceNum) {
+        this.insuranceNum = insuranceNum;
+    }
+
+    public String getDoctor() {
+        return doctor;
+    }
+
+    public void setDoctor(String doctor) {
+        this.doctor = doctor;
     }
 
     public Set<Procedure> getProcedures() {
@@ -113,9 +125,10 @@ public class Patient {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
-                ", yearOfBirth=" + yearOfBirth +
-                ", sex='" + sex + '\'' +
                 ", cured=" + cured +
+                ", diagnosis='" + diagnosis + '\'' +
+                ", insuranceNum=" + insuranceNum +
+                ", doctor='" + doctor + '\'' +
                 ", procedures=" + procedures +
                 '}';
     }

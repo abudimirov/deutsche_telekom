@@ -52,12 +52,12 @@
                 </c:if>
             </div>
             <div class="form-group">
-                <label for="patient_id">Patient ID</label>
-                <c:if test="${!empty patientsList.id}">
-                    <input type="text" class="form-control" name="patient" id="patient_id" value="${patientsList.id}">
+                <label for="patient.id">Patient ID</label>
+                <c:if test="${!empty procedure.patient.id}">
+                    <input type="text" class="form-control" name="patient.id" id="patient.id" value="${procedure.patient.id}">
                 </c:if>
-                <c:if test="${empty patientsList.id}">
-                    <input type="text" class="form-control" name="patient" id="patient_id">
+                <c:if test="${empty procedure.patient.id}">
+                    <input type="text" class="form-control" name="patient.id" id="patient.id">
                 </c:if>
             </div>
             <div class="form-group">

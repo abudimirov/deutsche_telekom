@@ -21,7 +21,7 @@ public class Procedure {
     /*@Column(name = "patient_id")
     private int patient_id;*/
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "patient_id", nullable = false)
     private Patient patient;
 
@@ -97,15 +97,15 @@ public class Procedure {
         this.status = status;
     }
 
-    @Override
-    public String toString() {
-        return "Procedure{" +
-                "id=" + id +
-                ", patient=" + patient +
-                ", title='" + title + '\'' +
-                ", date='" + date + '\'' +
-                ", time='" + time + '\'' +
-                ", status='" + status + '\'' +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "Procedure{" +
+//                "id=" + id +
+//                ", patient=" + patient +
+//                ", title='" + title + '\'' +
+//                ", date='" + date + '\'' +
+//                ", time='" + time + '\'' +
+//                ", status='" + status + '\'' +
+//                '}';
+//    }
 }

@@ -6,11 +6,15 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 import java.util.List;
 
 @Repository
 public class PatientDAOImpl implements PatientDAO {
+    @PersistenceContext
+    private EntityManager entityManager;
     private SessionFactory sessionFactory;
 
     @Autowired
@@ -23,7 +27,7 @@ public class PatientDAOImpl implements PatientDAO {
     @Transactional
     public List<Patient> allPatients(int page) {
         Session session = sessionFactory.getCurrentSession();
-        return session.createQuery("from Patient").setFirstResult(10 * (page - 1)).setMaxResults(10).list();
+        return session.createQuery("from Patient p").setFirstResult(10 * (page - 1)).setMaxResults(10).list();
     }
 
     @Override

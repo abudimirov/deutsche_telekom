@@ -42,8 +42,9 @@
                             <th class="text-left">#</th>
                             <th>Name</th>
                             <th>Surname</th>
-                            <th>Year of birth</th>
-                            <th>Sex</th>
+                            <th>Diagnosis</th>
+                            <th>Insurance №</th>
+                            <th>Doctor</th>
                             <th>Cured</th>
                             <th colspan="2" class="right-side"></th>
                         </tr>
@@ -54,8 +55,9 @@
                             <td class="left-side">${i.index + 1 + (page - 1) * 10}</td>
                             <td class="name">${patient.name}</td>
                             <td class="surname">${patient.surname}</td>
-                            <td>${patient.yearOfBirth}</td>
-                            <td>${patient.sex}</td>
+                            <td class="diagnosis">${patient.diagnosis}</td>
+                            <td>${patient.insuranceNum}</td>
+                            <td>${patient.doctor}</td>
                             <td>
                                 <c:if test="${patient.cured == true}">
                                     <span>yes</span>

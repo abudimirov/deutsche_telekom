@@ -61,20 +61,31 @@
                 </c:if>
             </div>
             <div class="form-group">
-                <label for="yearOfBirth">Year of birth</label>
-                <c:if test="${!empty patient.yearOfBirth}">
-                    <input type="number" min="1850" max="2100" class="form-control" name="yearOfBirth" id="yearOfBirth" value="${patient.yearOfBirth}">
+                <label for="insuranceNum">Insurance Number</label>
+                <c:if test="${!empty patient.insuranceNum}">
+                    <input type="number" min="1000" max="9999" class="form-control" name="insuranceNum" id="insuranceNum" value="${patient.insuranceNum}">
                 </c:if>
-                <c:if test="${empty patient.yearOfBirth}">
-                    <input type="number" min="1850" max="2100" class="form-control" name="yearOfBirth" id="yearOfBirth">
+                <c:if test="${empty patient.insuranceNum}">
+                    <input type="number" min="1000" max="9999" class="form-control" name="insuranceNum" id="insuranceNum">
                 </c:if>
             </div>
             <div class="form-group">
-                <label for="sex">Sex</label>
-                <select id="sex" name="sex" class="form-control">
-                    <option selected>Male</option>
-                    <option>Female</option>
-                </select>
+                <label for="doctor">Doctor</label>
+                <c:if test="${!empty patient.doctor}">
+                    <input type="text" class="form-control" name="doctor" id="doctor" value="${patient.doctor}">
+                </c:if>
+                <c:if test="${empty patient.doctor}">
+                    <input type="text" class="form-control" name="doctor" id="doctor">
+                </c:if>
+            </div>
+            <div class="form-group">
+                <label for="diagnosis">Diagnosis</label>
+                <c:if test="${!empty patient.diagnosis}">
+                    <input type="text" class="form-control" name="diagnosis" id="diagnosis" value="${patient.diagnosis}">
+                </c:if>
+                <c:if test="${empty patient.diagnosis}">
+                    <input type="text" class="form-control" name="diagnosis" id="diagnosis">
+                </c:if>
             </div>
             <div class="form-group">
                 <label for="cured">Cured</label>
@@ -83,6 +94,7 @@
                     <option>true</option>
                 </select>
             </div>
+
             <c:if test="${empty patient.name}">
                 <button type="submit" class="btn btn-success">Save</button>
             </c:if>
