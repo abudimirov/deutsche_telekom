@@ -10,5 +10,6 @@ public interface ProcedureDAO {
     void delete(Procedure procedure);
     void edit(Procedure procedure);
     Procedure getById(int id);
+    List<Procedure> proceduresByPatient(int id);
     int proceduresCount();
 }

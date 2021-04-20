@@ -17,7 +17,7 @@
 
 <body style="background: #F2F2F2;">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="/"><img src="<c:url value="/res/logo.jpg"/>" alt="Medical Cabinet" /></a>
+    <a class="navbar-brand" href="/"><img src="<c:url value="/res/logo.png" />" alt="Medical Cabinet" style="height: 40px;" /></a>
     <ul class="navbar-nav">
         <li class="nav-item active">
             <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
@@ -42,7 +42,6 @@
                             <th class="text-left">#</th>
                             <th>Name</th>
                             <th>Surname</th>
-                            <th>Diagnosis</th>
                             <th>Insurance №</th>
                             <th>Doctor</th>
                             <th>Cured</th>
@@ -55,7 +54,6 @@
                             <td class="left-side">${i.index + 1 + (page - 1) * 10}</td>
                             <td class="name">${patient.name}</td>
                             <td class="surname">${patient.surname}</td>
-                            <td class="diagnosis">${patient.diagnosis}</td>
                             <td>${patient.insuranceNum}</td>
                             <td>${patient.doctor}</td>
                             <td>

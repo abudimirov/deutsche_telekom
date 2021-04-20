@@ -72,4 +72,13 @@ public class ProcedureController {
         procedureDAO.delete(procedure);
         return modelAndView;
     }
+
+    @RequestMapping(value = "/procedures/patient/{id}", method = RequestMethod.GET)
+    public ModelAndView patientProcedures(@PathVariable("id") int id) {
+        List<Procedure> procedures = procedureDAO.proceduresByPatient(id);
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("patientProcedures");
+        modelAndView.addObject("proceduresList", procedures);
+        return modelAndView;
+    }
 }

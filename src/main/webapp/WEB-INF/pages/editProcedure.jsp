@@ -14,7 +14,7 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="/"><img src="<c:url value="/res/logo.png"/>" alt="Medical Cabinet" /></a>
+    <a class="navbar-brand" href="/"><img src="<c:url value="/res/logo.png" />" alt="Medical Cabinet" style="height: 40px;" /></a>
     <ul class="navbar-nav">
         <li class="nav-item active">
             <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>

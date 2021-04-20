@@ -17,7 +17,7 @@
 
 <body style="background: #F2F2F2;">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="/"><img src="<c:url value="/res/logo.png"/>" alt="Medical Cabinet" /></a>
+    <a class="navbar-brand" href="/"><img src="<c:url value="/res/logo.png" />" alt="Medical Cabinet" style="height: 40px;" /></a>
     <ul class="navbar-nav">
         <li class="nav-item">
             <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
@@ -55,7 +55,7 @@
                             <td class="name">${procedure.title}</td>
                             <td class="surname">${procedure.date}</td>
                             <td>${procedure.time}</td>
-                            <td>${procedure.patient.name} ${procedure.patient.surname}</td>
+                            <td><a href="<c:url value="/procedures/patient/${procedure.patient.id}"/>">${procedure.patient.name} ${procedure.patient.surname}</a></td>
                             <td>${procedure.status}</td>
                             <td>
                                 <a href="/procedures/edit/${procedure.id}">
@@ -159,16 +159,11 @@
         </div>
         <aside class="col-lg-3 p-3" style="background: #FFF;">
             <h2>Filters</h2>
-            <label for="filter-patient">By patient</label>
-            <select name="filter-patient" id="filter-patient" class="form-control">
-                <option selected>Пациент 1</option>
-                <option>Пациент 2</option>
-            </select>
             <div class="row">
-                <div class="col-xs-6">
+                <div class="col-xs-12">
                     <a href="#" class="btn btn-link btn-block">Procedures for today</a>
                 </div>
-                <div class="col-xs-6">
+                <div class="col-xs-12">
                     <a href="#" class="btn btn-link btn-block">Procedures for next hour</a>
                 </div>
             </div>

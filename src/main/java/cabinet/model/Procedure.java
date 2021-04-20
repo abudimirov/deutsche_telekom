@@ -18,9 +18,6 @@ public class Procedure {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    /*@Column(name = "patient_id")
-    private int patient_id;*/
-
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "patient_id", nullable = false)
     private Patient patient;

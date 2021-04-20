@@ -3,6 +3,7 @@ package cabinet.dao;
 import cabinet.model.Procedure;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -52,6 +53,15 @@ public class ProcedureDAOImpl implements ProcedureDAO {
     public Procedure getById(int id) {
         Session session = sessionFactory.getCurrentSession();
         return session.get(Procedure.class, id);
+    }
+
+    @Override
+    @Transactional
+    public List<Procedure> proceduresByPatient(int id) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("from Procedure p where p.patient.id = :id");
+        query.setParameter("id", id);
+        return query.list();
     }
 
     @Override
