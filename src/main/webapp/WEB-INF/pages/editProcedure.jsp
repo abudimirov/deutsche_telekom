@@ -14,7 +14,7 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand">Medical Cabinet</a>
+    <a class="navbar-brand" href="/"><img src="<c:url value="/res/logo.png"/>" alt="Medical Cabinet" /></a>
     <ul class="navbar-nav">
         <li class="nav-item active">
             <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
@@ -71,7 +71,12 @@
             </div>
             <div class="form-group">
                 <label for="time">Time</label>
-                <input type="text" id="time" name="time" class="form-control">
+                <c:if test="${!empty procedure.time}">
+                    <input type="time" id="time" name="time" class="form-control" value="${procedure.time}">
+                </c:if>
+                <c:if test="${empty procedure.time}">
+                    <input type="time" id="time" name="time" class="form-control">
+                </c:if>
             </div>
             <div class="form-group">
                 <label for="status">Status</label>

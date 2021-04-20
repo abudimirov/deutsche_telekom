@@ -17,7 +17,7 @@
 
 <body style="background: #F2F2F2;">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand">Medical Cabinet</a>
+    <a class="navbar-brand" href="/"><img src="<c:url value="/res/logo.png"/>" alt="Medical Cabinet" /></a>
     <ul class="navbar-nav">
         <li class="nav-item">
             <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
@@ -159,6 +159,19 @@
         </div>
         <aside class="col-lg-3 p-3" style="background: #FFF;">
             <h2>Filters</h2>
+            <label for="filter-patient">By patient</label>
+            <select name="filter-patient" id="filter-patient" class="form-control">
+                <option selected>Пациент 1</option>
+                <option>Пациент 2</option>
+            </select>
+            <div class="row">
+                <div class="col-xs-6">
+                    <a href="#" class="btn btn-link btn-block">Procedures for today</a>
+                </div>
+                <div class="col-xs-6">
+                    <a href="#" class="btn btn-link btn-block">Procedures for next hour</a>
+                </div>
+            </div>
         </aside>
     </div>
 </div>

@@ -17,7 +17,7 @@
 
 <body style="background: #F2F2F2;">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand">Medical Cabinet</a>
+    <a class="navbar-brand" href="/"><img src="<c:url value="/res/logo.jpg"/>" alt="Medical Cabinet" /></a>
     <ul class="navbar-nav">
         <li class="nav-item active">
             <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
