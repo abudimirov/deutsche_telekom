@@ -166,27 +166,11 @@
                     <a href="/procedures/date/<fmt:formatDate value="${now}" pattern="yyyy-MM-dd" />" class="btn btn-link btn-block">Procedures for today</a>
                 </div>
                 <div class="col-xs-12">
-                    <a href="#" class="btn btn-link disabled btn-block">Procedures for next hour</a>
+                    <a href="/procedures/nexthour" class="btn btn-link btn-block">Procedures for next hour</a>
                 </div>
             </div>
         </aside>
     </div>
 </div>
 </body>
-<script>
-    function updateYourTime() {
-        var now = new Date(),
-            months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Sep', 'Oct', 'Nov', 'Dec'];
-        time = now.getHours() + ':' + now.getMinutes(),
-
-            date = [now.getDate(),
-                months[now.getMonth()],
-                now.getFullYear()].join(' ');
-
-        document.getElementById('currentTime').innerHTML = [date, time].join(' / ');
-
-        setTimeout(updateYourTime, 1000);//This method will call for every second
-    }
-    updateYourTime();
-</script>
 </html>

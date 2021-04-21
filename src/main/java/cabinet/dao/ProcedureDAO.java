@@ -11,6 +11,7 @@ public interface ProcedureDAO {
     void edit(Procedure procedure);
     Procedure getById(int id);
     List<Procedure> proceduresByPatient(int id);
-    List<Procedure>proceduresByDate(String date);
+    List<Procedure> proceduresByDate(String date);
+    List<Procedure> proceduresForNextHour();
     int proceduresCount();
 }

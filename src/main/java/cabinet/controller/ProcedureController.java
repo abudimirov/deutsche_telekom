@@ -90,4 +90,13 @@ public class ProcedureController {
         modelAndView.addObject("proceduresList", procedures);
         return modelAndView;
     }
+
+    @RequestMapping(value = "/procedures/nexthour", method = RequestMethod.GET)
+    public ModelAndView proceduresForNextHour() {
+        List<Procedure> procedures = procedureDAO.proceduresForNextHour();
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("filteredProcedures");
+        modelAndView.addObject("proceduresList", procedures);
+        return modelAndView;
+    }
 }

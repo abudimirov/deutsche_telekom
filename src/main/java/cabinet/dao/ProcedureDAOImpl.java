@@ -8,6 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -70,6 +74,24 @@ public class ProcedureDAOImpl implements ProcedureDAO {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("from Procedure p where p.date = :date");
         query.setParameter("date", date);
+        return query.list();
+    }
+
+    @Override
+    @Transactional
+    public List<Procedure> proceduresForNextHour() {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("from Procedure p where p.date = :date and p.time between :now and :hourFromNow");
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        query.setParameter("date", dateFormat.format(Calendar.getInstance().getTime()));
+        DateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
+        query.setParameter("now", timeFormat.format(Calendar.getInstance().getTime()));
+        Date nowTime = Calendar.getInstance().getTime();
+        Calendar cal =Calendar.getInstance();
+        cal.setTime(nowTime);
+        cal.add(cal.HOUR_OF_DAY, 1);
+        Date hourFromNow = cal.getTime();
+        query.setParameter("hourFromNow", timeFormat.format(hourFromNow));
         return query.list();
     }
 
