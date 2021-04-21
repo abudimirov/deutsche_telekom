@@ -7,6 +7,8 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <html>
 <head>
     <title>All patients</title>
@@ -32,7 +34,11 @@
         <div class="col-lg-10 p-3 mx-auto" style="background: #FFF;">
             <div class="d-flex justify-content-between align-items-center py-3">
                 <h1>Patients</h1>
-                <div id="currentTime"></div>
+                <div>
+                    <jsp:useBean id="now" class="java.util.Date"/>
+                    <fmt:formatDate value="${now}" dateStyle="long"/>
+                    <fmt:formatDate value="${now}" pattern="HH:mm" />
+                </div>
                 <a href="<c:url value="/add"/>" class="btn btn-success" role="button" aria-pressed="true"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add new patient</a>
             </div>
             <table class="table">
@@ -167,20 +173,4 @@
     </div>
 </div>
 </body>
-<script>
-    function updateYourTime() {
-        var now = new Date(),
-            months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Sep', 'Oct', 'Nov', 'Dec'];
-        time = now.getHours() + ':' + now.getMinutes(),
-
-            date = [now.getDate(),
-                months[now.getMonth()],
-                now.getFullYear()].join(' ');
-
-        document.getElementById('currentTime').innerHTML = [date, time].join(' / ');
-
-        setTimeout(updateYourTime, 1000);//This method will call for every second
-    }
-    updateYourTime();
-</script>
 </html>

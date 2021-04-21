@@ -7,6 +7,8 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <html>
 <head>
     <title>All procedures</title>
@@ -33,7 +35,6 @@
             <div class="d-flex justify-content-between align-items-center py-3">
                 <h1>Procedures</h1>
                 <div id="currentTime"></div>
-                <a href="<c:url value="/procedures/add"/>" class="btn btn-success" role="button" aria-pressed="true"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add new procedure</a>
             </div>
             <table class="table">
                 <c:if test="${proceduresCount > 0}">
@@ -161,10 +162,11 @@
             <h2>Filters</h2>
             <div class="row">
                 <div class="col-xs-12">
-                    <a href="#" class="btn btn-link btn-block">Procedures for today</a>
+                    <jsp:useBean id="now" class="java.util.Date"/>
+                    <a href="/procedures/date/<fmt:formatDate value="${now}" pattern="yyyy-MM-dd" />" class="btn btn-link btn-block">Procedures for today</a>
                 </div>
                 <div class="col-xs-12">
-                    <a href="#" class="btn btn-link btn-block">Procedures for next hour</a>
+                    <a href="#" class="btn btn-link disabled btn-block">Procedures for next hour</a>
                 </div>
             </div>
         </aside>

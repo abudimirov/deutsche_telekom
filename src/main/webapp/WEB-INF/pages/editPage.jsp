@@ -117,7 +117,11 @@
                 </div>
             </c:if>
 
-
+            <c:if test="${!empty patient.name}">
+                <div class="mb-5">
+                    <a href="<c:url value="/procedures/add"/>" class="btn btn-success btn-block" role="button" aria-pressed="true"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add new procedure</a>
+                </div>
+            </c:if>
 
             <c:if test="${empty patient.name}">
                 <button type="submit" class="btn btn-success">Save</button>

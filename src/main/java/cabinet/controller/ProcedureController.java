@@ -77,7 +77,16 @@ public class ProcedureController {
     public ModelAndView patientProcedures(@PathVariable("id") int id) {
         List<Procedure> procedures = procedureDAO.proceduresByPatient(id);
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("patientProcedures");
+        modelAndView.setViewName("filteredProcedures");
+        modelAndView.addObject("proceduresList", procedures);
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/procedures/date/{date}", method = RequestMethod.GET)
+    public ModelAndView proceduresByDate(@PathVariable("date") String date) {
+        List<Procedure> procedures = procedureDAO.proceduresByDate(date);
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("filteredProcedures");
         modelAndView.addObject("proceduresList", procedures);
         return modelAndView;
     }

@@ -66,6 +66,15 @@ public class ProcedureDAOImpl implements ProcedureDAO {
 
     @Override
     @Transactional
+    public List<Procedure> proceduresByDate(String date) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("from Procedure p where p.date = :date");
+        query.setParameter("date", date);
+        return query.list();
+    }
+
+    @Override
+    @Transactional
     public int proceduresCount() {
         Session session = sessionFactory.getCurrentSession();
         return session.createQuery("select count(*) from Procedure", Number.class).getSingleResult().intValue();
