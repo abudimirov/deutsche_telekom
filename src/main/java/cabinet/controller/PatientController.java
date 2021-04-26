@@ -1,6 +1,7 @@
 package cabinet.controller;
 
 import cabinet.dao.PatientDAO;
+import cabinet.dto.PatientDTO;
 import cabinet.model.Patient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,7 +22,7 @@ public class PatientController {
         this.patientDAO = patientDAO;
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @GetMapping(path = "/")
     public ModelAndView allPatients(@RequestParam(defaultValue = "1") int page) {
         List<Patient> patients = patientDAO.allPatients(page);
         int patientsCount = patientDAO.patientsCount();
@@ -35,15 +36,24 @@ public class PatientController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/edit", method = RequestMethod.POST)
-    public ModelAndView editPatient(@ModelAttribute("patient") Patient patient) {
+    @PostMapping(path = "/edit")
+    public ModelAndView editPatient(@ModelAttribute("patient") PatientDTO patient) {
+        Patient persistentPatient = new Patient(patient.getId(),
+                patient.getName(),
+                patient.getSurname(),
+                patient.isCured(),
+                patient.getDiagnosis(),
+                patient.getInsuranceNum(),
+                patient.getDoctor()
+        );
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName(HOMEPAGE_REDIRECT);
-        patientDAO.edit(patient);
+        patientDAO.edit(persistentPatient);
         return modelAndView;
     }
 
-    @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
+
+    @GetMapping(path = "/edit/{id}")
     public ModelAndView editPage(@PathVariable("id") int id) {
         Patient patient = patientDAO.getById(id);
         ModelAndView modelAndView = new ModelAndView();
@@ -52,22 +62,30 @@ public class PatientController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/add", method = RequestMethod.GET)
+    @GetMapping(path = "/add")
     public ModelAndView addPage() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("editPage");
         return modelAndView;
     }
 
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public ModelAndView addPatient(@ModelAttribute("patient") Patient patient) {
+    @PostMapping(path = "/add")
+    public ModelAndView addPatient(@ModelAttribute("patient") PatientDTO patient) {
+        Patient persistentPatient = new Patient(patient.getId(),
+                patient.getName(),
+                patient.getSurname(),
+                patient.isCured(),
+                patient.getDiagnosis(),
+                patient.getInsuranceNum(),
+                patient.getDoctor()
+        );
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName(HOMEPAGE_REDIRECT);
-        patientDAO.add(patient);
+        patientDAO.add(persistentPatient);
         return modelAndView;
     }
 
-    @RequestMapping(value="/delete/{id}", method = RequestMethod.GET)
+    @GetMapping(path = "/delete/{id}")
     public ModelAndView deletePatient(@PathVariable("id") int id) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName(HOMEPAGE_REDIRECT);
@@ -76,7 +94,7 @@ public class PatientController {
         return modelAndView;
     }
 
-    @RequestMapping(value="/discharge/{id}", method = RequestMethod.GET)
+    @GetMapping(path = "/discharge/{id}")
     public ModelAndView dischargePatient(@PathVariable("id") int id) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName(HOMEPAGE_REDIRECT);
