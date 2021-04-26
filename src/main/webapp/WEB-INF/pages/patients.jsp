@@ -51,7 +51,7 @@
                             <th>Insurance №</th>
                             <th>Doctor</th>
                             <th>Cured</th>
-                            <th colspan="2" class="right-side"></th>
+                            <th colspan="3" class="right-side"></th>
                         </tr>
                     </thead>
 
@@ -78,6 +78,11 @@
                             <td class="right-side">
                                 <a href="/delete/${patient.id}">
                                     <i class="fa fa-trash" aria-hidden="true"></i> delete
+                                </a>
+                            </td>
+                            <td class="right-side">
+                                <a href="/discharge/${patient.id}">
+                                    <i class="fa fa-flag-checkered" aria-hidden="true"></i> discharge
                                 </a>
                             </td>
                         </tr>

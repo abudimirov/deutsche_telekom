@@ -1,6 +1,7 @@
 package cabinet.dao;
 
 import cabinet.model.Patient;
+import cabinet.model.Procedure;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Set;
 
 @Repository
 public class PatientDAOImpl implements PatientDAO {
@@ -42,6 +44,20 @@ public class PatientDAOImpl implements PatientDAO {
     public void delete(Patient patient) {
         Session session = sessionFactory.getCurrentSession();
         session.delete(patient);
+    }
+
+    @Override
+    @Transactional
+    public void discharge(Patient patient) {
+        Session session = sessionFactory.getCurrentSession();
+        patient.setCured(true);
+        Set<Procedure> procedures = patient.getProcedures();
+        for (Procedure procedure : procedures) {
+            if(procedure.getStatus().equals("scheduled")) {
+                procedure.setStatus("cancelled");
+            }
+        }
+        session.update(patient);
     }
 
     @Override

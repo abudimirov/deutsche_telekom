@@ -34,7 +34,12 @@
         <div class="col-lg-8 p-3 mx-5" style="background: #FFF;">
             <div class="d-flex justify-content-between align-items-center py-3">
                 <h1>Procedures</h1>
-                <div id="currentTime"></div>
+                <div>
+                    <jsp:useBean id="now" class="java.util.Date"/>
+                    <fmt:formatDate value="${now}" dateStyle="long"/>
+                    <fmt:formatDate value="${now}" pattern="HH:mm" />
+                    <jsp:useBean id="today" class="java.util.Date"/>
+                </div>
             </div>
             <table class="table">
                 <c:if test="${proceduresCount > 0}">
@@ -162,8 +167,7 @@
             <h2>Filters</h2>
             <div class="row">
                 <div class="col-xs-12">
-                    <jsp:useBean id="now" class="java.util.Date"/>
-                    <a href="/procedures/date/<fmt:formatDate value="${now}" pattern="yyyy-MM-dd" />" class="btn btn-link btn-block">Procedures for today</a>
+                    <a href="/procedures/date/<fmt:formatDate value="${today}" pattern="yyyy-MM-dd" />" class="btn btn-link btn-block">Procedures for today</a>
                 </div>
                 <div class="col-xs-12">
                     <a href="/procedures/nexthour" class="btn btn-link btn-block">Procedures for next hour</a>

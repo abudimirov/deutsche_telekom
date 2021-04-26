@@ -100,14 +100,17 @@
                     <h2 class="my-3">Patient procedures</h2>
                     <c:forEach var="procedure" items="${patient.procedures}" varStatus="i">
                         <div class="row g-3 my-3">
-                            <div class="col-sm-7">
-                                <input type="text" class="form-control" placeholder="Title" aria-label="Title" value="${procedure.title}">
+                            <div class="col-sm-6">
+                                <span>${procedure.title}</span>
                             </div>
                             <div class="col-sm">
-                                <input type="date" class="form-control" placeholder="Date" aria-label="Date" value="${procedure.date}">
+                                <span>${procedure.date}</span>
                             </div>
                             <div class="col-sm">
-                                <input type="time" class="form-control" placeholder="Time" aria-label="Time" value="${procedure.time}">
+                                <span>${procedure.time}</span>
+                            </div>
+                            <div class="col-sm">
+                                <span>${procedure.status}</span>
                             </div>
                             <div class="col-sm">
                                 <a href="/procedures/edit/${procedure.id}" class="btn btn-link"><i class="fa fa-pencil" aria-hidden="true"></i> edit</a>

@@ -44,7 +44,7 @@ public class Patient {
     public Patient() {
     }
 
-    public Patient(int id, String name, String surname, boolean cured, String diagnosis, int insuranceNum, String doctor, Set<Procedure> procedures) {
+    public Patient(int id, String name, String surname, boolean cured, String diagnosis, int insuranceNum, String doctor) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -52,7 +52,6 @@ public class Patient {
         this.diagnosis = diagnosis;
         this.insuranceNum = insuranceNum;
         this.doctor = doctor;
-        this.procedures = procedures;
     }
 
     public int getId() {
@@ -119,17 +118,4 @@ public class Patient {
         this.procedures = procedures;
     }
 
-    @Override
-    public String toString() {
-        return "Patient{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", cured=" + cured +
-                ", diagnosis='" + diagnosis + '\'' +
-                ", insuranceNum=" + insuranceNum +
-                ", doctor='" + doctor + '\'' +
-                ", procedures=" + procedures +
-                '}';
-    }
 }

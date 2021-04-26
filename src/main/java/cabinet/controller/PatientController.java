@@ -14,6 +14,8 @@ import java.util.List;
 public class PatientController {
     private PatientDAO patientDAO;
 
+    private static final String HOMEPAGE_REDIRECT = "redirect:/";
+
     @Autowired
     public void setPatientDAO(PatientDAO patientDAO) {
         this.patientDAO = patientDAO;
@@ -36,7 +38,7 @@ public class PatientController {
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     public ModelAndView editPatient(@ModelAttribute("patient") Patient patient) {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("redirect:/");
+        modelAndView.setViewName(HOMEPAGE_REDIRECT);
         patientDAO.edit(patient);
         return modelAndView;
     }
@@ -46,7 +48,7 @@ public class PatientController {
         Patient patient = patientDAO.getById(id);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("editPage");
-        modelAndView.addObject("patient", patientDAO.getById(id));
+        modelAndView.addObject("patient", patient);
         return modelAndView;
     }
 
@@ -60,7 +62,7 @@ public class PatientController {
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public ModelAndView addPatient(@ModelAttribute("patient") Patient patient) {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("redirect:/");
+        modelAndView.setViewName(HOMEPAGE_REDIRECT);
         patientDAO.add(patient);
         return modelAndView;
     }
@@ -68,9 +70,18 @@ public class PatientController {
     @RequestMapping(value="/delete/{id}", method = RequestMethod.GET)
     public ModelAndView deletePatient(@PathVariable("id") int id) {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("redirect:/");
+        modelAndView.setViewName(HOMEPAGE_REDIRECT);
         Patient patient = patientDAO.getById(id);
         patientDAO.delete(patient);
+        return modelAndView;
+    }
+
+    @RequestMapping(value="/discharge/{id}", method = RequestMethod.GET)
+    public ModelAndView dischargePatient(@PathVariable("id") int id) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName(HOMEPAGE_REDIRECT);
+        Patient patient = patientDAO.getById(id);
+        patientDAO.discharge(patient);
         return modelAndView;
     }
 }
