@@ -1,6 +1,10 @@
-package cabinet.dto;
+package cabinet.model.dto;
 
-public class PatientDTO {
+import cabinet.model.Procedure;
+
+import java.util.Set;
+
+public class PatientDTO implements DTOEntity {
     private int id;
     private String name;
     private String surname;
@@ -8,6 +12,7 @@ public class PatientDTO {
     private String diagnosis;
     private int insuranceNum;
     private String doctor;
+    private Set<Procedure> procedures;
 
     public int getId() {
         return id;
@@ -63,5 +68,13 @@ public class PatientDTO {
 
     public void setDoctor(String doctor) {
         this.doctor = doctor;
+    }
+
+    public Set<Procedure> getProcedures() {
+        return procedures;
+    }
+
+    public void setProcedures(Set<Procedure> procedures) {
+        this.procedures = procedures;
     }
 }

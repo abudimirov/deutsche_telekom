@@ -1,8 +1,7 @@
 package cabinet.controller;
 
-import cabinet.dao.PatientDAO;
-import cabinet.dto.PatientDTO;
-import cabinet.model.Patient;
+import cabinet.model.dto.PatientDTO;
+import cabinet.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -13,19 +12,20 @@ import java.util.List;
 
 @Controller
 public class PatientController {
-    private PatientDAO patientDAO;
+    private PatientService patientService;
 
     private static final String HOMEPAGE_REDIRECT = "redirect:/";
 
+
     @Autowired
-    public void setPatientDAO(PatientDAO patientDAO) {
-        this.patientDAO = patientDAO;
+    public void setPatientService(PatientService patientService) {
+        this.patientService = patientService;
     }
 
     @GetMapping(path = "/")
     public ModelAndView allPatients(@RequestParam(defaultValue = "1") int page) {
-        List<Patient> patients = patientDAO.allPatients(page);
-        int patientsCount = patientDAO.patientsCount();
+        List<PatientDTO> patients = patientService.allPatients(page);
+        int patientsCount = patientService.patientsCount();
         int pagesCount = (patientsCount + 9)/10;
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("patients");
@@ -38,24 +38,16 @@ public class PatientController {
 
     @PostMapping(path = "/edit")
     public ModelAndView editPatient(@ModelAttribute("patient") PatientDTO patient) {
-        Patient persistentPatient = new Patient(patient.getId(),
-                patient.getName(),
-                patient.getSurname(),
-                patient.isCured(),
-                patient.getDiagnosis(),
-                patient.getInsuranceNum(),
-                patient.getDoctor()
-        );
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName(HOMEPAGE_REDIRECT);
-        patientDAO.edit(persistentPatient);
+        patientService.edit(patient);
         return modelAndView;
     }
 
 
     @GetMapping(path = "/edit/{id}")
     public ModelAndView editPage(@PathVariable("id") int id) {
-        Patient patient = patientDAO.getById(id);
+        PatientDTO patient = patientService.getById(id);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("editPage");
         modelAndView.addObject("patient", patient);
@@ -71,26 +63,9 @@ public class PatientController {
 
     @PostMapping(path = "/add")
     public ModelAndView addPatient(@ModelAttribute("patient") PatientDTO patient) {
-        Patient persistentPatient = new Patient(patient.getId(),
-                patient.getName(),
-                patient.getSurname(),
-                patient.isCured(),
-                patient.getDiagnosis(),
-                patient.getInsuranceNum(),
-                patient.getDoctor()
-        );
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName(HOMEPAGE_REDIRECT);
-        patientDAO.add(persistentPatient);
-        return modelAndView;
-    }
-
-    @GetMapping(path = "/delete/{id}")
-    public ModelAndView deletePatient(@PathVariable("id") int id) {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName(HOMEPAGE_REDIRECT);
-        Patient patient = patientDAO.getById(id);
-        patientDAO.delete(patient);
+        patientService.add(patient);
         return modelAndView;
     }
 
@@ -98,8 +73,8 @@ public class PatientController {
     public ModelAndView dischargePatient(@PathVariable("id") int id) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName(HOMEPAGE_REDIRECT);
-        Patient patient = patientDAO.getById(id);
-        patientDAO.discharge(patient);
+        PatientDTO patient = patientService.getById(id);
+        patientService.discharge(patient);
         return modelAndView;
     }
 }

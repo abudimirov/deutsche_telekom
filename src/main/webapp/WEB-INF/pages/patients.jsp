@@ -51,7 +51,7 @@
                             <th>Insurance №</th>
                             <th>Doctor</th>
                             <th>Cured</th>
-                            <th colspan="3" class="right-side"></th>
+                            <th colspan="2" class="right-side"></th>
                         </tr>
                     </thead>
 
@@ -73,11 +73,6 @@
                             <td>
                                 <a href="/edit/${patient.id}">
                                     <i class="fa fa-pencil" aria-hidden="true"></i> edit
-                                </a>
-                            </td>
-                            <td class="right-side">
-                                <a href="/delete/${patient.id}">
-                                    <i class="fa fa-trash" aria-hidden="true"></i> delete
                                 </a>
                             </td>
                             <td class="right-side">

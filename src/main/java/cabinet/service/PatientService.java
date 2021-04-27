@@ -1,0 +1,53 @@
+package cabinet.service;
+
+import cabinet.dao.PatientDAO;
+import cabinet.model.Patient;
+import cabinet.model.dto.PatientDTO;
+import cabinet.utils.DtoUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@Service
+public class PatientService {
+    private PatientDAO patientDAO;
+
+    @Autowired
+    public void setPatientDAO(PatientDAO patientDAO) {
+        this.patientDAO = patientDAO;
+    }
+
+    public List<PatientDTO> allPatients(int page) {
+        List<PatientDTO> patients = new ArrayList<>();
+        for (Patient patient : patientDAO.allPatients(page)) {
+            patients.add((PatientDTO) new DtoUtils().convertToDto(patient, new PatientDTO()));
+        }
+        return patients;
+    }
+
+    public void add(PatientDTO patientDTO) {
+        Patient patient = (Patient) new DtoUtils().convertToEntity(new Patient(), patientDTO);
+        patientDAO.add(patient);
+    }
+
+    public void edit(PatientDTO patientDTO) {
+        Patient patient = (Patient) new DtoUtils().convertToEntity(new Patient(), patientDTO);
+        patientDAO.edit(patient);
+    }
+
+    public PatientDTO getById(int id) {
+        Patient patient = patientDAO.getById(id);
+        return (PatientDTO) new DtoUtils().convertToDto(patient, new PatientDTO());
+    }
+
+    public void discharge(PatientDTO patientDTO) {
+        Patient patient = (Patient) new DtoUtils().convertToEntity(new Patient(), patientDTO);
+        patientDAO.discharge(patient);
+    }
+
+    public int patientsCount() {
+        return patientDAO.patientsCount();
+    }
+}

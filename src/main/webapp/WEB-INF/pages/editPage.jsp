@@ -95,7 +95,7 @@
                 </select>
             </div>
 
-            <c:if test="${!empty patient.procedures}">
+            <%--<c:if test="${!empty patient.procedures}">
                 <div class="my-5">
                     <h2 class="my-3">Patient procedures</h2>
                     <c:forEach var="procedure" items="${patient.procedures}" varStatus="i">
@@ -118,7 +118,7 @@
                         </div>
                     </c:forEach>
                 </div>
-            </c:if>
+            </c:if>--%>
 
             <c:if test="${!empty patient.name}">
                 <div class="mb-5">
