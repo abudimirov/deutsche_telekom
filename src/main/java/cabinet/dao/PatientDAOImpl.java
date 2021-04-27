@@ -26,21 +26,21 @@ public class PatientDAOImpl implements PatientDAO {
     }
 
     @SuppressWarnings("unchecked")
-    @Transactional
+    //@Transactional
     public List<Patient> allPatients(int page) {
         Session session = sessionFactory.getCurrentSession();
         return session.createQuery("from Patient p").setFirstResult(10 * (page - 1)).setMaxResults(10).list();
     }
 
     @Override
-    @Transactional
+    //@Transactional
     public void add(Patient patient) {
         Session session = sessionFactory.getCurrentSession();
         session.persist(patient);
     }
 
     @Override
-    @Transactional
+    //@Transactional
     public void discharge(Patient patient) {
         Session session = sessionFactory.getCurrentSession();
         patient.setCured(true);
@@ -54,21 +54,21 @@ public class PatientDAOImpl implements PatientDAO {
     }
 
     @Override
-    @Transactional
+    //@Transactional
     public void edit(Patient patient) {
         Session session = sessionFactory.getCurrentSession();
         session.update(patient);
     }
 
     @Override
-    @Transactional
+    //@Transactional
     public Patient getById(int id) {
         Session session = sessionFactory.getCurrentSession();
         return session.get(Patient.class, id);
     }
 
     @Override
-    @Transactional
+    //@Transactional
     public int patientsCount() {
         Session session = sessionFactory.getCurrentSession();
         return session.createQuery("select count(*) from Patient ", Number.class).getSingleResult().intValue();

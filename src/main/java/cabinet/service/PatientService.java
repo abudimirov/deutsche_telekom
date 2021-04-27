@@ -7,6 +7,7 @@ import cabinet.utils.DtoUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +20,7 @@ public class PatientService {
         this.patientDAO = patientDAO;
     }
 
+    @Transactional
     public List<PatientDTO> allPatients(int page) {
         List<PatientDTO> patients = new ArrayList<>();
         for (Patient patient : patientDAO.allPatients(page)) {
@@ -27,26 +29,31 @@ public class PatientService {
         return patients;
     }
 
+    @Transactional
     public void add(PatientDTO patientDTO) {
         Patient patient = (Patient) new DtoUtils().convertToEntity(new Patient(), patientDTO);
         patientDAO.add(patient);
     }
 
+    @Transactional
     public void edit(PatientDTO patientDTO) {
         Patient patient = (Patient) new DtoUtils().convertToEntity(new Patient(), patientDTO);
         patientDAO.edit(patient);
     }
 
+    @Transactional
     public PatientDTO getById(int id) {
         Patient patient = patientDAO.getById(id);
         return (PatientDTO) new DtoUtils().convertToDto(patient, new PatientDTO());
     }
 
+    @Transactional
     public void discharge(PatientDTO patientDTO) {
         Patient patient = (Patient) new DtoUtils().convertToEntity(new Patient(), patientDTO);
         patientDAO.discharge(patient);
     }
 
+    @Transactional
     public int patientsCount() {
         return patientDAO.patientsCount();
     }

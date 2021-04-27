@@ -1,6 +1,8 @@
 package cabinet.controller;
 
+import cabinet.dao.PatientDAO;
 import cabinet.dao.ProcedureDAO;
+import cabinet.model.Patient;
 import cabinet.model.Procedure;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,14 +10,21 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
+import java.util.Set;
 
 @Controller
 public class ProcedureController {
     private ProcedureDAO procedureDAO;
+    private PatientDAO patientDAO;
 
     @Autowired
     public void setProcedureDAO(ProcedureDAO procedureDAO) {
         this.procedureDAO = procedureDAO;
+    }
+
+    @Autowired
+    public void setPatientDAO(PatientDAO patientDAO) {
+        this.patientDAO = patientDAO;
     }
 
     @RequestMapping(value = "/procedures", method = RequestMethod.GET)
@@ -74,9 +83,19 @@ public class ProcedureController {
     }
 
 
+//    @RequestMapping(value = "/procedures/patient/{id}", method = RequestMethod.GET)
+//    public ModelAndView patientProcedures(@PathVariable("id") int id) {
+//        List<Procedure> procedures = procedureDAO.proceduresByPatient(id);
+//        ModelAndView modelAndView = new ModelAndView();
+//        modelAndView.setViewName("filteredProcedures");
+//        modelAndView.addObject("proceduresList", procedures);
+//        return modelAndView;
+//    }
+
     @RequestMapping(value = "/procedures/patient/{id}", method = RequestMethod.GET)
     public ModelAndView patientProcedures(@PathVariable("id") int id) {
-        List<Procedure> procedures = procedureDAO.proceduresByPatient(id);
+        Patient patient = patientDAO.getById(id);
+        Set<Procedure> procedures = patient.getProcedures();
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("filteredProcedures");
         modelAndView.addObject("proceduresList", procedures);
