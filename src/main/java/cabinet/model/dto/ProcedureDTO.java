@@ -6,12 +6,47 @@ public class ProcedureDTO implements DTOEntity {
     private int id;
     private int patient_id;
     private Patient patient;
-
     private String title;
-
     private String date;
     private String time;
+    private String startDate;
+    private String endDate;
+    private String[] dailyPattern;
+    private String[] weeklyPattern;
     private String status;
+
+    public String getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
+    }
+
+    public String getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
+    }
+
+    public String[] getDailyPattern() {
+        return dailyPattern;
+    }
+
+    public void setDailyPattern(String[] dailyPattern) {
+        this.dailyPattern = dailyPattern;
+    }
+
+    public String[] getWeeklyPattern() {
+        return weeklyPattern;
+    }
+
+    public void setWeeklyPattern(String[] weeklyPattern) {
+        this.weeklyPattern = weeklyPattern;
+    }
+
     public int getId() {
         return id;
     }

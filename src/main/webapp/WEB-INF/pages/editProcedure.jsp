@@ -60,6 +60,24 @@
                 </c:if>
             </div>
             <div class="form-group">
+                <label for="date">Start date</label>
+                <c:if test="${!empty procedure.startDate}">
+                    <input type="date" class="form-control" name="startDate" id="startDate" value="${procedure.startDate}">
+                </c:if>
+                <c:if test="${empty procedure.startDate}">
+                    <input type="date" class="form-control" name="startDate" id="startDate">
+                </c:if>
+            </div>
+            <div class="form-group">
+                <label for="date">End date</label>
+                <c:if test="${!empty procedure.endDate}">
+                    <input type="date" class="form-control" name="endDate" id="endDate" value="${procedure.endDate}">
+                </c:if>
+                <c:if test="${empty procedure.endDate}">
+                    <input type="date" class="form-control" name="endDate" id="endDate">
+                </c:if>
+            </div>
+            <div class="form-group">
                 <label for="time">Time</label>
                 <c:if test="${!empty procedure.time}">
                     <input type="time" id="time" name="time" class="form-control" value="${procedure.time}">
@@ -75,6 +93,23 @@
                     <option>canceled</option>
                     <option>done</option>
                 </select>
+            </div>
+            <div class="form-group">
+                <label for="status">Daily pattern</label>
+                <select id="dailyPattern" name="dailyPattern" class="form-control">
+                    <option value="1" selected>once a day</option>
+                    <option value="2">twice a day</option>
+                    <option value="3">three times a day</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="checkbox" name="weeklyPattern" value="Monday" /> Monday
+                <input type="checkbox" name="weeklyPattern" value="Tuesday" /> Tuesday
+                <input type="checkbox" name="weeklyPattern" value="Wednesday" /> Wednesday
+                <input type="checkbox" name="weeklyPattern" value="Thursday" /> Thursday
+                <input type="checkbox" name="weeklyPattern" value="Friday" /> Friday
+                <input type="checkbox" name="weeklyPattern" value="Saturday" /> Saturday
+                <input type="checkbox" name="weeklyPattern" value="Sunday" /> Sunday
             </div>
             <c:if test="${empty procedure.title}">
                 <button type="submit" class="btn btn-success">Save</button>
