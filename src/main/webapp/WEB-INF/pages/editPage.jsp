@@ -13,17 +13,7 @@
     <script src="https://use.fontawesome.com/e324a589d0.js"></script>
 </head>
 <body style="background: #F2F2F2;">
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="/"><img src="<c:url value="/res/logo.png" />" alt="Medical Cabinet" style="height: 40px;" /></a>
-    <ul class="navbar-nav">
-        <li class="nav-item">
-            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/procedures">Procedures</a>
-        </li>
-    </ul>
-</nav>
+<%@ include file="components/nav.jsp" %>
 <c:if test="${empty patient.name}">
     <c:url value="/add" var="var"/>
 </c:if>
@@ -90,8 +80,14 @@
             <div class="form-group">
                 <label for="cured">Cured</label>
                 <select id="cured" name="cured" class="form-control">
-                    <option selected>false</option>
-                    <option>true</option>
+                    <c:if test="${patient.cured == false}">
+                        <option selected>false</option>
+                        <option>true</option>
+                    </c:if>
+                    <c:if test="${patient.cured == true}">
+                        <option>false</option>
+                        <option selected>true</option>
+                    </c:if>
                 </select>
             </div>
 
@@ -131,6 +127,9 @@
             </c:if>
             <c:if test="${!empty patient.name}">
                 <button type="submit" class="btn btn-success">Save changes</button>
+            </c:if>
+            <c:if test="${!empty patient.name}">
+                <a href="/discharge/${patient.id}" class="btn btn-danger">Discharge patient</a>
             </c:if>
         </form>
     </div>

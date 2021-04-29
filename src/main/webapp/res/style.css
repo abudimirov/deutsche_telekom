@@ -1,0 +1,27 @@
+.main {
+    margin-left: 0px;
+    font-size: 50px;
+    font-weight: 700;
+    color: #000;
+    text-shadow: 0 15px 25px rgba(0, 0, 0, .1);
+    line-height: 50px;
+    -webkit-transition: .15s all linear;
+    -o-transition: .15s all linear;
+    transition: .15s all linear;
+}
+
+thead {
+    background: #f2f5f7;
+}
+
+.table thead th {
+    border: 0;
+}
+
+.table td {
+    border-bottom: 1px solid #f1f4f8;
+}
+
+.date {
+    font-size: 1.5em;
+}

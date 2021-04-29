@@ -13,28 +13,19 @@
 <head>
     <title>All patients</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="<c:url value="/res/style.css" />">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
     <script src="https://use.fontawesome.com/e324a589d0.js"></script>
 </head>
 
 <body style="background: #F2F2F2;">
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="/"><img src="<c:url value="/res/logo.png" />" alt="Medical Cabinet" style="height: 40px;" /></a>
-    <ul class="navbar-nav">
-        <li class="nav-item active">
-            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/procedures">Procedures</a>
-        </li>
-    </ul>
-</nav>
+<%@ include file="components/nav.jsp" %>
 <div class="container-wide">
     <div class="row my-5 mx-auto">
         <div class="col-lg-10 p-3 mx-auto" style="background: #FFF;">
             <div class="d-flex justify-content-between align-items-center py-3">
-                <h1>Patients</h1>
-                <div>
+                <h1 class="main">Patients</h1>
+                <div class="date">
                     <jsp:useBean id="now" class="java.util.Date"/>
                     <fmt:formatDate value="${now}" dateStyle="long"/>
                     <fmt:formatDate value="${now}" pattern="HH:mm" />
@@ -51,7 +42,7 @@
                             <th>Insurance №</th>
                             <th>Doctor</th>
                             <th>Cured</th>
-                            <th colspan="2" class="right-side"></th>
+                            <th class="right-side"></th>
                         </tr>
                     </thead>
 
@@ -73,11 +64,6 @@
                             <td>
                                 <a href="/edit/${patient.id}">
                                     <i class="fa fa-pencil" aria-hidden="true"></i> edit
-                                </a>
-                            </td>
-                            <td class="right-side">
-                                <a href="/discharge/${patient.id}">
-                                    <i class="fa fa-flag-checkered" aria-hidden="true"></i> discharge
                                 </a>
                             </td>
                         </tr>

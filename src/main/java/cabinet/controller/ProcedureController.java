@@ -4,6 +4,10 @@ import cabinet.dao.PatientDAO;
 import cabinet.dao.ProcedureDAO;
 import cabinet.model.Patient;
 import cabinet.model.Procedure;
+import cabinet.model.dto.PatientDTO;
+import cabinet.model.dto.ProcedureDTO;
+import cabinet.service.PatientService;
+import cabinet.service.ProcedureService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -14,23 +18,25 @@ import java.util.Set;
 
 @Controller
 public class ProcedureController {
-    private ProcedureDAO procedureDAO;
-    private PatientDAO patientDAO;
+    private ProcedureService procedureService;
+    private PatientService patientService;
+
 
     @Autowired
-    public void setProcedureDAO(ProcedureDAO procedureDAO) {
-        this.procedureDAO = procedureDAO;
+    public void setProcedureService(ProcedureService procedureService) {
+        this.procedureService = procedureService;
     }
 
     @Autowired
-    public void setPatientDAO(PatientDAO patientDAO) {
-        this.patientDAO = patientDAO;
+    public void setPatientService(PatientService patientService) {
+        this.patientService = patientService;
     }
+
 
     @RequestMapping(value = "/procedures", method = RequestMethod.GET)
     public ModelAndView allProcedures(@RequestParam(defaultValue = "1") int page) {
-        List<Procedure> procedures = procedureDAO.allProcedures(page);
-        int proceduresCount = procedureDAO.proceduresCount();
+        List<ProcedureDTO> procedures = procedureService.allProcedures(page);
+        int proceduresCount = procedureService.proceduresCount();
         int pagesCount = (proceduresCount + 9)/10;
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("procedures");
@@ -42,16 +48,16 @@ public class ProcedureController {
     }
 
    @RequestMapping(value = "/procedures/edit", method = RequestMethod.POST)
-    public ModelAndView editProcedure(@ModelAttribute("procedure") Procedure procedure) {
+    public ModelAndView editProcedure(@ModelAttribute("procedure") ProcedureDTO procedure) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("redirect:/procedures");
-        procedureDAO.edit(procedure);
+        procedureService.edit(procedure);
         return modelAndView;
     }
 
     @RequestMapping(value = "/procedures/edit/{id}", method = RequestMethod.GET)
     public ModelAndView editPage(@PathVariable("id") int id) {
-        Procedure procedure = procedureDAO.getById(id);
+        ProcedureDTO procedure = procedureService.getById(id);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("editProcedure");
         modelAndView.addObject("procedure", procedure);
@@ -66,10 +72,10 @@ public class ProcedureController {
     }
 
     @RequestMapping(value = "/procedures/add", method = RequestMethod.POST)
-    public ModelAndView addProcedure(@ModelAttribute("procedure") Procedure procedure) {
+    public ModelAndView addProcedure(@ModelAttribute("procedure") ProcedureDTO procedure) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("redirect:/procedures");
-        procedureDAO.add(procedure);
+        procedureService.add(procedure);
         return modelAndView;
     }
 
@@ -77,8 +83,8 @@ public class ProcedureController {
     public ModelAndView deleteProcedure(@PathVariable("id") int id) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("redirect:/procedures");
-        Procedure procedure = procedureDAO.getById(id);
-        procedureDAO.delete(procedure);
+        ProcedureDTO procedure = procedureService.getById(id);
+        procedureService.delete(procedure);
         return modelAndView;
     }
 
@@ -94,7 +100,7 @@ public class ProcedureController {
 
     @RequestMapping(value = "/procedures/patient/{id}", method = RequestMethod.GET)
     public ModelAndView patientProcedures(@PathVariable("id") int id) {
-        Patient patient = patientDAO.getById(id);
+        PatientDTO patient = patientService.getById(id);
         Set<Procedure> procedures = patient.getProcedures();
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("filteredProcedures");
@@ -104,7 +110,7 @@ public class ProcedureController {
 
     @RequestMapping(value = "/procedures/date/{date}", method = RequestMethod.GET)
     public ModelAndView proceduresByDate(@PathVariable("date") String date) {
-        List<Procedure> procedures = procedureDAO.proceduresByDate(date);
+        List<ProcedureDTO> procedures = procedureService.proceduresByDate(date);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("filteredProcedures");
         modelAndView.addObject("proceduresList", procedures);
@@ -113,7 +119,7 @@ public class ProcedureController {
 
     @RequestMapping(value = "/procedures/nexthour", method = RequestMethod.GET)
     public ModelAndView proceduresForNextHour() {
-        List<Procedure> procedures = procedureDAO.proceduresForNextHour();
+        List<ProcedureDTO> procedures = procedureService.proceduresForNextHour();
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("filteredProcedures");
         modelAndView.addObject("proceduresList", procedures);

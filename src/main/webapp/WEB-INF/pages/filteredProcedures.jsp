@@ -17,17 +17,7 @@
 </head>
 
 <body style="background: #F2F2F2;">
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="/"><img src="<c:url value="/res/logo.png" />" alt="Medical Cabinet" style="height: 40px;" /></a>
-    <ul class="navbar-nav">
-        <li class="nav-item">
-            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item active">
-            <a class="nav-link" href="/procedures">Procedures</a>
-        </li>
-    </ul>
-</nav>
+<%@ include file="components/nav.jsp" %>
 <div class="container-wide">
     <div class="row my-5 mx-auto">
         <div class="col-lg-10 p-3 mx-auto" style="background: #FFF;">

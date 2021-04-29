@@ -35,6 +35,7 @@ public class PatientService {
         patientDAO.add(patient);
     }
 
+
     @Transactional
     public void edit(PatientDTO patientDTO) {
         Patient patient = (Patient) new DtoUtils().convertToEntity(new Patient(), patientDTO);

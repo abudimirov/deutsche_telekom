@@ -94,15 +94,4 @@ public class Procedure {
         this.status = status;
     }
 
-//    @Override
-//    public String toString() {
-//        return "Procedure{" +
-//                "id=" + id +
-//                ", patient=" + patient +
-//                ", title='" + title + '\'' +
-//                ", date='" + date + '\'' +
-//                ", time='" + time + '\'' +
-//                ", status='" + status + '\'' +
-//                '}';
-//    }
 }
