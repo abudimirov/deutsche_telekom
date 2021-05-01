@@ -1,18 +1,20 @@
 package cabinet.service;
 
-import cabinet.dao.PatientDAO;
 import cabinet.dao.ProcedureDAO;
-import cabinet.model.Patient;
 import cabinet.model.Procedure;
-import cabinet.model.dto.PatientDTO;
 import cabinet.model.dto.ProcedureDTO;
 import cabinet.utils.DtoUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
-import java.util.List;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 @Service
 public class ProcedureService {
@@ -34,10 +36,49 @@ public class ProcedureService {
 
     @Transactional
     public void add(ProcedureDTO procedureDTO) {
-        Procedure procedure = (Procedure) new DtoUtils().convertToEntity(new Procedure(), procedureDTO);
-        procedureDAO.add(procedure);
+        final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate startDate = LocalDate.parse(procedureDTO.getStartDate(), dtf);
+        LocalDate endDate = LocalDate.parse(procedureDTO.getEndDate(), dtf);
+        List<LocalDate> dateRange = getDatesBetween(startDate, endDate);
+
+        for(LocalDate date : dateRange) {
+            Calendar c = Calendar.getInstance();
+            c.setTime(Date.from(date.atStartOfDay(ZoneId.systemDefault()).toInstant()));
+            String dayOfWeek = String.valueOf(c.get(Calendar.DAY_OF_WEEK));
+            List<String> weeklyPattern = Arrays.asList(procedureDTO.getWeeklyPattern());
+
+            if(weeklyPattern.contains(dayOfWeek)) {
+                Procedure procedure = (Procedure) new DtoUtils().convertToEntity(new Procedure(), procedureDTO);
+                procedure.setDate(date.toString());
+
+                switch (procedureDTO.getDailyPattern()) {
+                    case "1":
+                        procedure.setTime("10:00");
+                        procedureDAO.add(procedure);
+                        break;
+                    case "2":
+                        procedure.setTime("10:00");
+                        procedureDAO.add(procedure);
+                        procedure.setTime("22:00");
+                        procedureDAO.add(procedure);
+                        break;
+                    case "3":
+                        procedure.setTime("10:00");
+                        procedureDAO.add(procedure);
+                        procedure.setTime("15:00");
+                        procedureDAO.add(procedure);
+                        procedure.setTime("22:00");
+                        procedureDAO.add(procedure);
+                        break;
+                    default:
+                        System.err.println("no case for that time pattern");
+                        break;
+                }
+            }
+        }
     }
 
+    // НЕ УДАЛЯТЬ
     @Transactional
     public void delete(ProcedureDTO procedureDTO) {
         Procedure procedure = (Procedure) new DtoUtils().convertToEntity(new Procedure(), procedureDTO);
@@ -86,5 +127,15 @@ public class ProcedureService {
     @Transactional
     public int proceduresCount() {
         return procedureDAO.proceduresCount();
+    }
+
+    public List<LocalDate> getDatesBetween(
+            LocalDate startDate, LocalDate endDate) {
+
+        long numOfDaysBetween = ChronoUnit.DAYS.between(startDate, endDate) + 1;
+        return IntStream.iterate(0, i -> i + 1)
+                .limit(numOfDaysBetween)
+                .mapToObj(i -> startDate.plusDays(i))
+                .collect(Collectors.toList());
     }
 }

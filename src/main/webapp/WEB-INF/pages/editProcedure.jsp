@@ -50,7 +50,7 @@
                     <input type="text" class="form-control" name="patient.id" id="patient.id">
                 </c:if>
             </div>
-            <div class="form-group">
+            <%--<div class="form-group">
                 <label for="date">Date</label>
                 <c:if test="${!empty procedure.date}">
                     <input type="date" class="form-control" name="date" id="date" value="${procedure.date}">
@@ -58,9 +58,9 @@
                 <c:if test="${empty procedure.date}">
                     <input type="date" class="form-control" name="date" id="date">
                 </c:if>
-            </div>
+            </div>--%>
             <div class="form-group">
-                <label for="date">Start date</label>
+                <label for="startDate">Start date</label>
                 <c:if test="${!empty procedure.startDate}">
                     <input type="date" class="form-control" name="startDate" id="startDate" value="${procedure.startDate}">
                 </c:if>
@@ -69,7 +69,7 @@
                 </c:if>
             </div>
             <div class="form-group">
-                <label for="date">End date</label>
+                <label for="endDate">End date</label>
                 <c:if test="${!empty procedure.endDate}">
                     <input type="date" class="form-control" name="endDate" id="endDate" value="${procedure.endDate}">
                 </c:if>
@@ -77,7 +77,7 @@
                     <input type="date" class="form-control" name="endDate" id="endDate">
                 </c:if>
             </div>
-            <div class="form-group">
+            <%--<div class="form-group">
                 <label for="time">Time</label>
                 <c:if test="${!empty procedure.time}">
                     <input type="time" id="time" name="time" class="form-control" value="${procedure.time}">
@@ -85,7 +85,7 @@
                 <c:if test="${empty procedure.time}">
                     <input type="time" id="time" name="time" class="form-control">
                 </c:if>
-            </div>
+            </div>--%>
             <div class="form-group">
                 <label for="status">Status</label>
                 <select id="status" name="status" class="form-control">
@@ -103,13 +103,13 @@
                 </select>
             </div>
             <div class="form-group">
-                <input type="checkbox" name="weeklyPattern" value="Monday" /> Monday
-                <input type="checkbox" name="weeklyPattern" value="Tuesday" /> Tuesday
-                <input type="checkbox" name="weeklyPattern" value="Wednesday" /> Wednesday
-                <input type="checkbox" name="weeklyPattern" value="Thursday" /> Thursday
-                <input type="checkbox" name="weeklyPattern" value="Friday" /> Friday
-                <input type="checkbox" name="weeklyPattern" value="Saturday" /> Saturday
-                <input type="checkbox" name="weeklyPattern" value="Sunday" /> Sunday
+                <input type="checkbox" name="weeklyPattern" value="2" /> Monday
+                <input type="checkbox" name="weeklyPattern" value="3" /> Tuesday
+                <input type="checkbox" name="weeklyPattern" value="4" /> Wednesday
+                <input type="checkbox" name="weeklyPattern" value="5" /> Thursday
+                <input type="checkbox" name="weeklyPattern" value="6" /> Friday
+                <input type="checkbox" name="weeklyPattern" value="7" /> Saturday
+                <input type="checkbox" name="weeklyPattern" value="1" /> Sunday
             </div>
             <c:if test="${empty procedure.title}">
                 <button type="submit" class="btn btn-success">Save</button>

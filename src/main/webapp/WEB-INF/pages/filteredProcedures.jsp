@@ -23,12 +23,16 @@
         <div class="col-lg-10 p-3 mx-auto" style="background: #FFF;">
             <div class="d-flex justify-content-between align-items-center py-3">
                 <h1>Filtered procedures</h1>
-                <div>
+                <div class="date">
                     <jsp:useBean id="now" class="java.util.Date"/>
                     <fmt:formatDate value="${now}" dateStyle="long"/>
                     <fmt:formatDate value="${now}" pattern="HH:mm" />
+                    <jsp:useBean id="today" class="java.util.Date"/>
                 </div>
-                <a href="<c:url value="/procedures/add"/>" class="btn btn-success" role="button" aria-pressed="true"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add new procedure</a>
+                <div class="filters">
+                    <a href="/procedures/date/<fmt:formatDate value="${today}" pattern="yyyy-MM-dd" />" class="btn btn-link">for today</a>
+                    <a href="/procedures/nexthour" class="btn btn-link">for next hour</a>
+                </div>
             </div>
             <table class="table">
                     <thead>
@@ -39,7 +43,7 @@
                         <th>Time</th>
                         <th>Patient</th>
                         <th>Status</th>
-                        <th colspan="2" class="right-side"></th>
+                        <th class="right-side"></th>
                     </tr>
                     </thead>
 
@@ -54,11 +58,6 @@
                             <td>
                                 <a href="/procedures/edit/${procedure.id}">
                                     <i class="fa fa-pencil" aria-hidden="true"></i> edit
-                                </a>
-                            </td>
-                            <td class="right-side">
-                                <a href="/procedures/delete/${procedure.id}">
-                                    <i class="fa fa-trash" aria-hidden="true"></i> delete
                                 </a>
                             </td>
                         </tr>

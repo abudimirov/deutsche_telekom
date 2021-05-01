@@ -26,7 +26,7 @@ public class ProcedureDAOImpl implements ProcedureDAO {
     @SuppressWarnings("unchecked")
     public List<Procedure> allProcedures(int page) {
         Session session = sessionFactory.getCurrentSession();
-        return session.createQuery("from Procedure").setFirstResult(10 * (page - 1)).setMaxResults(10).list();
+        return session.createQuery("from Procedure p ORDER BY p.date, p.time").setFirstResult(10 * (page - 1)).setMaxResults(10).list();
     }
 
     @Override
@@ -64,7 +64,7 @@ public class ProcedureDAOImpl implements ProcedureDAO {
     @Override
     public List<Procedure> proceduresByDate(String date) {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("from Procedure p where p.date = :date");
+        Query query = session.createQuery("from Procedure p where p.date = :date ORDER BY p.time");
         query.setParameter("date", date);
         return query.list();
     }
@@ -72,7 +72,7 @@ public class ProcedureDAOImpl implements ProcedureDAO {
     @Override
     public List<Procedure> proceduresForNextHour() {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("from Procedure p where p.date = :date and p.time between :now and :hourFromNow");
+        Query query = session.createQuery("from Procedure p where p.date = :date and p.time between :now and :hourFromNow ORDER BY p.time");
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         query.setParameter("date", dateFormat.format(Calendar.getInstance().getTime()));
         DateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");

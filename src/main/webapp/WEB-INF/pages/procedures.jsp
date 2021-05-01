@@ -83,7 +83,7 @@
                             <c:set value="" var="active"/>
                             <li class="${page == 1 ? disabled : active} page-item">
 
-                                <c:url value="/" var="url">
+                                <c:url value="/procedures" var="url">
                                     <c:param name="page" value="1"/>
                                 </c:url>
                                 <a class=" page-link" href="${url}">
@@ -91,7 +91,7 @@
                                 </a>
                             </li>
                             <li class="${page == 1 ? disabled : active} page-item">
-                                <c:url value="/" var="url">
+                                <c:url value="/procedures" var="url">
                                     <c:param name="page" value="${page - 1}"/>
                                 </c:url>
                                 <a class=" page-link" href="${url}">
@@ -121,7 +121,7 @@
 
                             <c:forEach begin="${begin}" end="${end}" step="1" varStatus="i">
                                 <li class="page-item">
-                                    <c:url value="/" var="url">
+                                    <c:url value="/procedures" var="url">
                                         <c:param name="page" value="${i.index}"/>
                                     </c:url>
                                     <c:set value="current-page" var="current"/>
@@ -131,7 +131,7 @@
                             </c:forEach>
 
                             <li class="${page == pagesCount ? disabled : active} page-item">
-                                <c:url value="/" var="url">
+                                <c:url value="/procedures" var="url">
                                     <c:param name="page" value="${page + 1}"/>
                                 </c:url>
                                 <a class="page-link" href="${url}">
@@ -139,7 +139,7 @@
                                 </a>
                             </li>
                             <li class="${page == pagesCount ? disabled : active} page-item">
-                                <c:url value="/" var="url">
+                                <c:url value="/procedures" var="url">
                                     <c:param name="page" value="${pagesCount}"/>
                                 </c:url>
                                 <a class="page-link" href="${url}">

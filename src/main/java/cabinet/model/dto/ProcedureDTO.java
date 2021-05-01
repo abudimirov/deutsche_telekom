@@ -11,7 +11,7 @@ public class ProcedureDTO implements DTOEntity {
     private String time;
     private String startDate;
     private String endDate;
-    private String[] dailyPattern;
+    private String dailyPattern;
     private String[] weeklyPattern;
     private String status;
 
@@ -31,11 +31,11 @@ public class ProcedureDTO implements DTOEntity {
         this.endDate = endDate;
     }
 
-    public String[] getDailyPattern() {
+    public String getDailyPattern() {
         return dailyPattern;
     }
 
-    public void setDailyPattern(String[] dailyPattern) {
+    public void setDailyPattern(String dailyPattern) {
         this.dailyPattern = dailyPattern;
     }
 

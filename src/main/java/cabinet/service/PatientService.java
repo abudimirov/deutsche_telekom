@@ -6,8 +6,8 @@ import cabinet.model.dto.PatientDTO;
 import cabinet.utils.DtoUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +20,7 @@ public class PatientService {
         this.patientDAO = patientDAO;
     }
 
-    @Transactional
+    @Transactional(readOnly = true)
     public List<PatientDTO> allPatients(int page) {
         List<PatientDTO> patients = new ArrayList<>();
         for (Patient patient : patientDAO.allPatients(page)) {
