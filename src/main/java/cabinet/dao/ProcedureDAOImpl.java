@@ -24,6 +24,12 @@ public class ProcedureDAOImpl implements ProcedureDAO {
     }
 
     @SuppressWarnings("unchecked")
+    public List<Procedure> allProcedures() {
+        Session session = sessionFactory.getCurrentSession();
+        return session.createQuery("from Procedure p ORDER BY p.date, p.time").list();
+    }
+
+    @SuppressWarnings("unchecked")
     public List<Procedure> allProcedures(int page) {
         Session session = sessionFactory.getCurrentSession();
         return session.createQuery("from Procedure p ORDER BY p.date, p.time").setFirstResult(10 * (page - 1)).setMaxResults(10).list();

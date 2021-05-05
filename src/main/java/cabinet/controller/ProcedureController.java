@@ -1,8 +1,5 @@
 package cabinet.controller;
 
-import cabinet.dao.PatientDAO;
-import cabinet.dao.ProcedureDAO;
-import cabinet.model.Patient;
 import cabinet.model.Procedure;
 import cabinet.model.dto.PatientDTO;
 import cabinet.model.dto.ProcedureDTO;
@@ -67,7 +64,7 @@ public class ProcedureController {
     @RequestMapping(value = "/procedures/add", method = RequestMethod.GET)
     public ModelAndView addPage() {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("editProcedure");
+        modelAndView.setViewName("addProcedure");
         return modelAndView;
     }
 
@@ -88,15 +85,6 @@ public class ProcedureController {
         return modelAndView;
     }
 
-
-//    @RequestMapping(value = "/procedures/patient/{id}", method = RequestMethod.GET)
-//    public ModelAndView patientProcedures(@PathVariable("id") int id) {
-//        List<Procedure> procedures = procedureDAO.proceduresByPatient(id);
-//        ModelAndView modelAndView = new ModelAndView();
-//        modelAndView.setViewName("filteredProcedures");
-//        modelAndView.addObject("proceduresList", procedures);
-//        return modelAndView;
-//    }
 
     @RequestMapping(value = "/procedures/patient/{id}", method = RequestMethod.GET)
     public ModelAndView patientProcedures(@PathVariable("id") int id) {

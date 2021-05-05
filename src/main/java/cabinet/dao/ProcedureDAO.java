@@ -5,6 +5,7 @@ import cabinet.model.Procedure;
 import java.util.List;
 
 public interface ProcedureDAO {
+    List<Procedure> allProcedures();
     List<Procedure> allProcedures(int page);
     void add(Procedure procedure);
     void delete(Procedure procedure);

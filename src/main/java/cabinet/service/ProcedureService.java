@@ -1,6 +1,8 @@
 package cabinet.service;
 
+import cabinet.dao.PatientDAO;
 import cabinet.dao.ProcedureDAO;
+import cabinet.model.Patient;
 import cabinet.model.Procedure;
 import cabinet.model.dto.ProcedureDTO;
 import cabinet.utils.DtoUtils;
@@ -19,10 +21,25 @@ import java.util.stream.IntStream;
 @Service
 public class ProcedureService {
     private ProcedureDAO procedureDAO;
+    private PatientDAO patientDAO;
 
     @Autowired
     public void setProcedureDAO(ProcedureDAO procedureDAO) {
         this.procedureDAO = procedureDAO;
+    }
+
+    @Autowired
+    public void setPatientDAO(PatientDAO patientDAO) {
+        this.patientDAO = patientDAO;
+    }
+
+    @Transactional
+    public List<ProcedureDTO> allProcedures() {
+        List<ProcedureDTO> procedures = new ArrayList<>();
+        for (Procedure procedure : procedureDAO.allProcedures()) {
+            procedures.add((ProcedureDTO) new DtoUtils().convertToDto(procedure, new ProcedureDTO()));
+        }
+        return procedures;
     }
 
     @Transactional
@@ -41,13 +58,23 @@ public class ProcedureService {
         LocalDate endDate = LocalDate.parse(procedureDTO.getEndDate(), dtf);
         List<LocalDate> dateRange = getDatesBetween(startDate, endDate);
 
-        for(LocalDate date : dateRange) {
+        /**
+         * If "Replace" is checked in View (isUpdated = true) we set all procedures for patient to cancelled and add new ones.
+         * If "Replace" is false we simply add new procedures.
+         * */
+
+        if (procedureDTO.isUpdated()) {
+            Patient patient = patientDAO.getById(procedureDTO.getPatient().getId());
+            patientDAO.cancelProcedures(patient);
+
+        }
+        for (LocalDate date : dateRange) {
             Calendar c = Calendar.getInstance();
             c.setTime(Date.from(date.atStartOfDay(ZoneId.systemDefault()).toInstant()));
             String dayOfWeek = String.valueOf(c.get(Calendar.DAY_OF_WEEK));
             List<String> weeklyPattern = Arrays.asList(procedureDTO.getWeeklyPattern());
 
-            if(weeklyPattern.contains(dayOfWeek)) {
+            if (weeklyPattern.contains(dayOfWeek)) {
                 Procedure procedure = (Procedure) new DtoUtils().convertToEntity(new Procedure(), procedureDTO);
                 procedure.setDate(date.toString());
 

@@ -9,7 +9,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <title>All procedures</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
@@ -40,13 +41,13 @@
                 <c:if test="${proceduresCount > 0}">
                     <thead>
                         <tr>
-                            <th class="text-left">#</th>
-                            <th>Procedure</th>
-                            <th>Date</th>
-                            <th>Time</th>
-                            <th>Patient</th>
-                            <th>Status</th>
-                            <th class="right-side"></th>
+                            <th scope="col" class="text-left">#</th>
+                            <th scope="col">Procedure</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Time</th>
+                            <th scope="col">Patient</th>
+                            <th scope="col">Status</th>
+                            <th scope="col" class="right-side"></th>
                         </tr>
                     </thead>
 

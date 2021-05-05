@@ -14,6 +14,16 @@ public class ProcedureDTO implements DTOEntity {
     private String dailyPattern;
     private String[] weeklyPattern;
     private String status;
+    private boolean updated;
+
+
+    public boolean isUpdated() {
+        return updated;
+    }
+
+    public void setUpdated(boolean updated) {
+        this.updated = updated;
+    }
 
     public String getStartDate() {
         return startDate;

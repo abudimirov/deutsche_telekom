@@ -49,7 +49,7 @@ public class PatientController {
     public ModelAndView editPage(@PathVariable("id") int id) {
         PatientDTO patient = patientService.getById(id);
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("editPage");
+        modelAndView.setViewName("editPatient");
         modelAndView.addObject("patient", patient);
         return modelAndView;
     }
@@ -57,7 +57,7 @@ public class PatientController {
     @GetMapping(path = "/add")
     public ModelAndView addPage() {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("editPage");
+        modelAndView.setViewName("editPatient");
         return modelAndView;
     }
 

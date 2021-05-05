@@ -50,6 +50,18 @@ public class PatientDAOImpl implements PatientDAO {
     }
 
     @Override
+    public void cancelProcedures(Patient patient) {
+        Session session = sessionFactory.getCurrentSession();
+        Set<Procedure> procedures = patient.getProcedures();
+        for (Procedure procedure : procedures) {
+            if(procedure.getStatus().equals("scheduled")) {
+                procedure.setStatus("cancelled");
+            }
+        }
+        session.update(patient);
+    }
+
+    @Override
     public void edit(Patient patient) {
         Session session = sessionFactory.getCurrentSession();
         session.update(patient);

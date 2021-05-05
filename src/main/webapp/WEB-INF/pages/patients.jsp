@@ -9,7 +9,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <title>All patients</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
@@ -36,13 +37,13 @@
                 <c:if test="${patientCount > 0}">
                     <thead>
                         <tr>
-                            <th class="text-left">#</th>
-                            <th>Name</th>
-                            <th>Surname</th>
-                            <th>Insurance №</th>
-                            <th>Doctor</th>
-                            <th>Cured</th>
-                            <th class="right-side"></th>
+                            <th scope="col" class="text-left">#</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Surname</th>
+                            <th scope="col">Insurance №</th>
+                            <th scope="col">Doctor</th>
+                            <th scope="col">Cured</th>
+                            <th scope="col" class="right-side"></th>
                         </tr>
                     </thead>
 
