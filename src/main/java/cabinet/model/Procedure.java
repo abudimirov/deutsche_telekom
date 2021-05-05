@@ -34,16 +34,24 @@ public class Procedure {
     @Column(name = "status")
     private String status;
 
+    @Column(name = "type")
+    private String type;
+
+    @Column(name = "dose")
+    private int dose;
+
     public Procedure() {
     }
 
-    public Procedure(int id, Patient patient, String title, String date, String time, String status) {
+    public Procedure(int id, Patient patient, String title, String date, String time, String status, String type, int dose) {
         this.id = id;
         this.patient = patient;
         this.title = title;
         this.date = date;
         this.time = time;
         this.status = status;
+        this.type = type;
+        this.dose = dose;
     }
 
     public int getId() {
@@ -94,4 +102,19 @@ public class Procedure {
         this.status = status;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public int getDose() {
+        return dose;
+    }
+
+    public void setDose(int dose) {
+        this.dose = dose;
+    }
 }

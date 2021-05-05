@@ -14,6 +14,8 @@ public class ProcedureDTO implements DTOEntity {
     private String dailyPattern;
     private String[] weeklyPattern;
     private String status;
+    private String type;
+    private int dose;
     private boolean updated;
 
 
@@ -111,5 +113,21 @@ public class ProcedureDTO implements DTOEntity {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public int getDose() {
+        return dose;
+    }
+
+    public void setDose(int dose) {
+        this.dose = dose;
     }
 }

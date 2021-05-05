@@ -5,6 +5,7 @@
 <head>
     <title>Edit procedure</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
     <script src="https://use.fontawesome.com/e324a589d0.js"></script>
 </head>
@@ -33,6 +34,17 @@
                 <input type="time" class="form-control" name="time" id="time" value="${procedure.time}">
             </div>
             <div class="form-group">
+                <label for="type">Type</label>
+                <select id="type" name="type" class="form-control">
+                    <option value="procedure">procedure</option>
+                    <option value="medicine" selected>medicine</option>
+                </select>
+            </div>
+            <div class="form-group" id="dosage">
+                <label for="type">Dosage</label>
+                <input type="number" id="dose" name="dose" class="form-control" value="${procedure.dose}">
+            </div>
+            <div class="form-group">
                 <label for="status">Current status is <strong>${procedure.status}</strong>. Set status</label>
                 <select id="status" name="status" class="form-control">
                     <option selected>scheduled</option>
@@ -45,4 +57,17 @@
     </div>
 </div>
 </body>
+<script>
+    $(function () {
+        $("#type").change(function() {
+            var val = $(this).val();
+            if(val === "medicine") {
+                $("#dosage").show();
+            }
+            else if(val === "procedure") {
+                $("#dosage").hide();
+            }
+        });
+    });
+</script>
 </html>
