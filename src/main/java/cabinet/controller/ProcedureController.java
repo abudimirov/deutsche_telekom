@@ -18,6 +18,9 @@ public class ProcedureController {
     private ProcedureService procedureService;
     private PatientService patientService;
 
+    private static final String PROCEDURES_REDIRECT = "redirect:/procedures";
+    private static final String PROCEDURES_LIST = "proceduresList";
+    private static final String PROCEDURES_FILTERED = "filteredProcedures";
 
     @Autowired
     public void setProcedureService(ProcedureService procedureService) {
@@ -29,8 +32,7 @@ public class ProcedureController {
         this.patientService = patientService;
     }
 
-
-    @RequestMapping(value = "/procedures", method = RequestMethod.GET)
+    @GetMapping(path = "/procedures")
     public ModelAndView allProcedures(@RequestParam(defaultValue = "1") int page) {
         List<ProcedureDTO> procedures = procedureService.allProcedures(page);
         int proceduresCount = procedureService.proceduresCount();
@@ -38,21 +40,21 @@ public class ProcedureController {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("procedures");
         modelAndView.addObject("page", page);
-        modelAndView.addObject("proceduresList", procedures);
+        modelAndView.addObject(PROCEDURES_LIST, procedures);
         modelAndView.addObject("proceduresCount", proceduresCount);
         modelAndView.addObject("pagesCount", pagesCount);
         return modelAndView;
     }
 
-   @RequestMapping(value = "/procedures/edit", method = RequestMethod.POST)
+    @PostMapping(path = "/procedures/edit")
     public ModelAndView editProcedure(@ModelAttribute("procedure") ProcedureDTO procedure) {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("redirect:/procedures");
+        modelAndView.setViewName(PROCEDURES_REDIRECT);
         procedureService.edit(procedure);
         return modelAndView;
     }
 
-    @RequestMapping(value = "/procedures/edit/{id}", method = RequestMethod.GET)
+    @GetMapping(path = "/procedures/edit/{id}")
     public ModelAndView editPage(@PathVariable("id") int id) {
         ProcedureDTO procedure = procedureService.getById(id);
         ModelAndView modelAndView = new ModelAndView();
@@ -61,56 +63,56 @@ public class ProcedureController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/procedures/add", method = RequestMethod.GET)
+    @GetMapping(path = "/procedures/add")
     public ModelAndView addPage() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("addProcedure");
         return modelAndView;
     }
 
-    @RequestMapping(value = "/procedures/add", method = RequestMethod.POST)
+    @PostMapping(path = "/procedures/add")
     public ModelAndView addProcedure(@ModelAttribute("procedure") ProcedureDTO procedure) {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("redirect:/procedures");
+        modelAndView.setViewName(PROCEDURES_REDIRECT);
         procedureService.add(procedure);
         return modelAndView;
     }
 
-    @RequestMapping(value="/procedures/delete/{id}", method = RequestMethod.GET)
+    @GetMapping(path = "/procedures/delete/{id}")
     public ModelAndView deleteProcedure(@PathVariable("id") int id) {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("redirect:/procedures");
+        modelAndView.setViewName(PROCEDURES_REDIRECT);
         ProcedureDTO procedure = procedureService.getById(id);
         procedureService.delete(procedure);
         return modelAndView;
     }
 
 
-    @RequestMapping(value = "/procedures/patient/{id}", method = RequestMethod.GET)
+    @GetMapping(path = "/procedures/patient/{id}")
     public ModelAndView patientProcedures(@PathVariable("id") int id) {
         PatientDTO patient = patientService.getById(id);
         Set<Procedure> procedures = patient.getProcedures();
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("filteredProcedures");
-        modelAndView.addObject("proceduresList", procedures);
+        modelAndView.setViewName(PROCEDURES_FILTERED);
+        modelAndView.addObject(PROCEDURES_LIST, procedures);
         return modelAndView;
     }
 
-    @RequestMapping(value = "/procedures/date/{date}", method = RequestMethod.GET)
+    @GetMapping(path = "/procedures/date/{date}")
     public ModelAndView proceduresByDate(@PathVariable("date") String date) {
         List<ProcedureDTO> procedures = procedureService.proceduresByDate(date);
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("filteredProcedures");
-        modelAndView.addObject("proceduresList", procedures);
+        modelAndView.setViewName(PROCEDURES_FILTERED);
+        modelAndView.addObject(PROCEDURES_LIST, procedures);
         return modelAndView;
     }
 
-    @RequestMapping(value = "/procedures/nexthour", method = RequestMethod.GET)
+    @GetMapping(path = "/procedures/nexthour")
     public ModelAndView proceduresForNextHour() {
         List<ProcedureDTO> procedures = procedureService.proceduresForNextHour();
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("filteredProcedures");
-        modelAndView.addObject("proceduresList", procedures);
+        modelAndView.setViewName(PROCEDURES_FILTERED);
+        modelAndView.addObject(PROCEDURES_LIST, procedures);
         return modelAndView;
     }
 }
