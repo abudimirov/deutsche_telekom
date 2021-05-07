@@ -22,9 +22,25 @@
 <body style="background: #F2F2F2;">
 <%@ include file="components/nav.jsp" %>
 <div class="container-wide">
-    <div class="row my-5 mx-auto">
-        <a href="<c:url value="/patients" />">For doctors</a>
-        <a href="<c:url value="/procedures" />">For medical personal</a>
+    <div class="container my-5">
+        <div class="d-flex flex-wrap justify-content-around mx-auto">
+            <a href="<c:url value="/patients" />">
+                <div class="card px-5 py-3" style="width: 18rem;">
+                    <img src="<c:url value="/res/doctor-svgrepo-com.svg" />" alt="For doctors">
+                    <div class="card-body">
+                        <p class="card-text">For doctors</p>
+                    </div>
+                </div>
+            </a>
+            <a href="<c:url value="/procedures" />">
+                <div class="card px-5 py-3" style="width: 18rem;">
+                    <img src="<c:url value="/res/nurse-svgrepo-com.svg" />" alt="For medical personal">
+                    <div class="card-body">
+                        <p class="card-text">For medical personal</p>
+                    </div>
+                </div>
+            </a>
+        </div>
     </div>
 </div>
 </body>

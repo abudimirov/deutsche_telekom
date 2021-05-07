@@ -75,30 +75,33 @@ public class ProcedureService {
             List<String> weeklyPattern = Arrays.asList(procedureDTO.getWeeklyPattern());
 
             if (weeklyPattern.contains(dayOfWeek)) {
-                Procedure procedure = (Procedure) new DtoUtils().convertToEntity(new Procedure(), procedureDTO);
-                procedure.setDate(date.toString());
+
+                Procedure morningProcedure = (Procedure) new DtoUtils().convertToEntity(new Procedure(), procedureDTO);
+                morningProcedure.setDate(date.toString());
+                morningProcedure.setTime("10:00");
+
+                Procedure middayProcedure = (Procedure) new DtoUtils().convertToEntity(new Procedure(), procedureDTO);
+                middayProcedure.setDate(date.toString());
+                middayProcedure.setTime("15:00");
+
+                Procedure eveningProcedure = (Procedure) new DtoUtils().convertToEntity(new Procedure(), procedureDTO);
+                eveningProcedure.setDate(date.toString());
+                eveningProcedure.setTime("22:00");
 
                 switch (procedureDTO.getDailyPattern()) {
                     case "1":
-                        procedure.setTime("10:00");
-                        procedureDAO.add(procedure);
+                        procedureDAO.add(morningProcedure);
                         break;
                     case "2":
-                        procedure.setTime("10:00");
-                        procedureDAO.add(procedure);
-                        procedure.setTime("22:00");
-                        procedureDAO.add(procedure);
+                        procedureDAO.add(morningProcedure);
+                        procedureDAO.add(eveningProcedure);
                         break;
                     case "3":
-                        procedure.setTime("10:00");
-                        procedureDAO.add(procedure);
-                        procedure.setTime("15:00");
-                        procedureDAO.add(procedure);
-                        procedure.setTime("22:00");
-                        procedureDAO.add(procedure);
+                        procedureDAO.add(morningProcedure);
+                        procedureDAO.add(middayProcedure);
+                        procedureDAO.add(eveningProcedure);
                         break;
                     default:
-                        System.err.println("no case for that time pattern");
                         break;
                 }
             }

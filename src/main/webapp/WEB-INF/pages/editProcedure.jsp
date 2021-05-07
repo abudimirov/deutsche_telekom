@@ -19,34 +19,64 @@
             <input type="hidden" name="id" value="${procedure.id}">
             <div class="form-group">
                 <label for="title">Title</label>
-                <input type="text" class="form-control" name="title" id="title" value="${procedure.title}">
+                <sec:authorize access="hasRole('NURSE')">
+                    <input type="text" class="form-control-plaintext" name="title" id="title" value="${procedure.title}" readonly>
+                </sec:authorize>
+                <sec:authorize access="hasRole('DOCTOR')">
+                    <input type="text" class="form-control" name="title" id="title" value="${procedure.title}">
+                </sec:authorize>
             </div>
             <div class="form-group">
                 <label for="patient.id">Patient ID</label>
-                <input type="text" class="form-control" name="patient.id" id="patient.id" value="${procedure.patient.id}">
+                <sec:authorize access="hasRole('NURSE')">
+                    <input type="text" class="form-control-plaintext" name="patient.id" id="patient.id" value="${procedure.patient.id}" readonly>
+                </sec:authorize>
+                <sec:authorize access="hasRole('DOCTOR')">
+                    <input type="text" class="form-control" name="patient.id" id="patient.id" value="${procedure.patient.id}">
+                </sec:authorize>
             </div>
             <div class="form-group">
                 <label for="date">Date</label>
-                <input type="date" class="form-control" name="date" id="date" value="${procedure.date}">
+                <sec:authorize access="hasRole('NURSE')">
+                    <input type="date" readonly class="form-control-plaintext" name="date" id="date" value="${procedure.date}">
+                </sec:authorize>
+                <sec:authorize access="hasRole('DOCTOR')">
+                    <input type="date" class="form-control" name="date" id="date" value="${procedure.date}">
+                </sec:authorize>
             </div>
             <div class="form-group">
                 <label for="time">Time</label>
-                <input type="time" class="form-control" name="time" id="time" value="${procedure.time}">
+                <sec:authorize access="hasRole('NURSE')">
+                    <input type="time" readonly class="form-control-plaintext" name="time" id="time" value="${procedure.time}">
+                </sec:authorize>
+                <sec:authorize access="hasRole('DOCTOR')">
+                    <input type="time" class="form-control" name="time" id="time" value="${procedure.time}">
+                </sec:authorize>
             </div>
             <div class="form-group">
                 <label for="type">Type</label>
-                <select id="type" name="type" class="form-control">
-                    <option value="procedure">procedure</option>
-                    <option value="medicine" selected>medicine</option>
-                </select>
+                <sec:authorize access="hasRole('NURSE')">
+                    <input type="text" readonly class="form-control-plaintext" name="type" id="type" value="${procedure.type}">
+                </sec:authorize>
+                <sec:authorize access="hasRole('DOCTOR')">
+                    <select id="type" name="type" class="custom-select">
+                        <option value="procedure">procedure</option>
+                        <option value="medicine" selected>medicine</option>
+                    </select>
+                </sec:authorize>
             </div>
             <div class="form-group" id="dosage">
                 <label for="type">Dosage</label>
-                <input type="number" id="dose" name="dose" class="form-control" value="${procedure.dose}">
+                <sec:authorize access="hasRole('NURSE')">
+                    <input type="number" readonly id="dose" name="dose" class="form-control-plaintext" value="${procedure.dose}">
+                </sec:authorize>
+                <sec:authorize access="hasRole('DOCTOR')">
+                    <input type="number" id="dose" name="dose" class="form-control" value="${procedure.dose}">
+                </sec:authorize>
             </div>
             <div class="form-group">
                 <label for="status">Current status is <strong>${procedure.status}</strong>. Set status</label>
-                <select id="status" name="status" class="form-control">
+                <select id="status" name="status" class="custom-select">
                     <option selected>scheduled</option>
                     <option>canceled</option>
                     <option>done</option>

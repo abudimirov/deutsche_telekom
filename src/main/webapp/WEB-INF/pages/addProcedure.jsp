@@ -55,7 +55,7 @@
             </div>
             <div class="form-group">
                 <label for="status">Status</label>
-                <select id="status" name="status" class="form-control">
+                <select id="status" name="status" class="custom-select">
                     <option selected>scheduled</option>
                     <option>canceled</option>
                     <option>done</option>
