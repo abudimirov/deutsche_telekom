@@ -18,10 +18,10 @@
 <body style="background: #F2F2F2;">
 <%@ include file="components/nav.jsp" %>
 <c:if test="${empty patient.name}">
-    <c:url value="/add" var="var"/>
+    <c:url value="/patients/add" var="var"/>
 </c:if>
 <c:if test="${!empty patient.name}">
-    <c:url value="/edit" var="var"/>
+    <c:url value="/patients/edit" var="var"/>
 </c:if>
 <div class="container">
     <div class="my-5 p-3" style="background: #fff;">
@@ -153,7 +153,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <a href="/discharge/${patient.id}" class="btn btn-danger">Discharge patient</a>
+                                <a href="/patients/discharge/${patient.id}" class="btn btn-danger">Discharge patient</a>
                             </div>
                         </div>
                     </div>

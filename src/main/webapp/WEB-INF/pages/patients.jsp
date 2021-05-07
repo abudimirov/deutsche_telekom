@@ -31,7 +31,7 @@
                     <fmt:formatDate value="${now}" dateStyle="long"/>
                     <fmt:formatDate value="${now}" pattern="HH:mm" />
                 </div>
-                <a href="<c:url value="/add"/>" class="btn btn-success" role="button" aria-pressed="true"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add new patient</a>
+                <a href="<c:url value="/patients/add"/>" class="btn btn-success" role="button" aria-pressed="true"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add new patient</a>
             </div>
             <table class="table">
                 <c:if test="${patientCount > 0}">
@@ -63,7 +63,7 @@
                                 </c:if>
                             </td>
                             <td>
-                                <a href="/edit/${patient.id}">
+                                <a href="/patients/edit/${patient.id}">
                                     <i class="fa fa-pencil" aria-hidden="true"></i> edit
                                 </a>
                             </td>
@@ -87,7 +87,7 @@
                             <c:set value="" var="active"/>
                             <li class="${page == 1 ? disabled : active} page-item">
 
-                                <c:url value="/" var="url">
+                                <c:url value="/patients" var="url">
                                     <c:param name="page" value="1"/>
                                 </c:url>
                                 <a class=" page-link" href="${url}">
@@ -95,7 +95,7 @@
                                 </a>
                             </li>
                             <li class="${page == 1 ? disabled : active} page-item">
-                                <c:url value="/" var="url">
+                                <c:url value="/patients" var="url">
                                     <c:param name="page" value="${page - 1}"/>
                                 </c:url>
                                 <a class=" page-link" href="${url}">
@@ -125,7 +125,7 @@
 
                             <c:forEach begin="${begin}" end="${end}" step="1" varStatus="i">
                                 <li class="page-item">
-                                    <c:url value="/" var="url">
+                                    <c:url value="/patients" var="url">
                                         <c:param name="page" value="${i.index}"/>
                                     </c:url>
                                     <c:set value="current-page" var="current"/>
@@ -135,7 +135,7 @@
                             </c:forEach>
 
                             <li class="${page == pagesCount ? disabled : active} page-item">
-                                <c:url value="/" var="url">
+                                <c:url value="/patients" var="url">
                                     <c:param name="page" value="${page + 1}"/>
                                 </c:url>
                                 <a class="page-link" href="${url}">
@@ -143,7 +143,7 @@
                                 </a>
                             </li>
                             <li class="${page == pagesCount ? disabled : active} page-item">
-                                <c:url value="/" var="url">
+                                <c:url value="/patients" var="url">
                                     <c:param name="page" value="${pagesCount}"/>
                                 </c:url>
                                 <a class="page-link" href="${url}">

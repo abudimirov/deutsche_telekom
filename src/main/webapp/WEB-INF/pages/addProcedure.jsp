@@ -22,9 +22,17 @@
                 <label for="title">Title</label>
                 <input type="text" class="form-control" name="title" id="title">
             </div>
-            <div class="form-group">
+            <%--<div class="form-group">
                 <label for="patient.id">Patient ID</label>
                 <input type="text" class="form-control" name="patient.id" id="patient.id">
+            </div>--%>
+            <div class="form-group">
+                <label for="patient.id">Patient</label>
+                <select id="patient.id" name="patient.id" class="form-control">
+                <c:forEach var="patients" items="${patients}" varStatus="i">
+                    <option value="${patients.id}">${patients.name} ${patients.surname}</option>
+                </c:forEach>
+                </select>
             </div>
             <div class="form-group">
                 <label for="type">Type</label>

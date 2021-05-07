@@ -25,6 +25,12 @@ public class PatientDAOImpl implements PatientDAO {
     }
 
     @SuppressWarnings("unchecked")
+    public List<Patient> allPatients() {
+        Session session = sessionFactory.getCurrentSession();
+        return session.createQuery("from Patient p").list();
+    }
+
+    @SuppressWarnings("unchecked")
     public List<Patient> allPatients(int page) {
         Session session = sessionFactory.getCurrentSession();
         return session.createQuery("from Patient p").setFirstResult(10 * (page - 1)).setMaxResults(10).list();

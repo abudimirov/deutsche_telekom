@@ -14,7 +14,7 @@ import java.util.List;
 public class PatientController {
     private PatientService patientService;
 
-    private static final String HOMEPAGE_REDIRECT = "redirect:/";
+    private static final String HOMEPAGE_REDIRECT = "redirect:/patients/";
 
 
     @Autowired
@@ -22,7 +22,7 @@ public class PatientController {
         this.patientService = patientService;
     }
 
-    @GetMapping(path = "/")
+    @GetMapping(path = "/patients")
     public ModelAndView allPatients(@RequestParam(defaultValue = "1") int page) {
         List<PatientDTO> patients = patientService.allPatients(page);
         int patientsCount = patientService.patientsCount();
@@ -36,7 +36,7 @@ public class PatientController {
         return modelAndView;
     }
 
-    @PostMapping(path = "/edit")
+    @PostMapping(path = "/patients/edit")
     public ModelAndView editPatient(@ModelAttribute("patient") PatientDTO patient) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName(HOMEPAGE_REDIRECT);
@@ -45,7 +45,7 @@ public class PatientController {
     }
 
 
-    @GetMapping(path = "/edit/{id}")
+    @GetMapping(path = "/patients/edit/{id}")
     public ModelAndView editPage(@PathVariable("id") int id) {
         PatientDTO patient = patientService.getById(id);
         ModelAndView modelAndView = new ModelAndView();
@@ -54,14 +54,14 @@ public class PatientController {
         return modelAndView;
     }
 
-    @GetMapping(path = "/add")
+    @GetMapping(path = "/patients/add")
     public ModelAndView addPage() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("editPatient");
         return modelAndView;
     }
 
-    @PostMapping(path = "/add")
+    @PostMapping(path = "/patients/add")
     public ModelAndView addPatient(@ModelAttribute("patient") PatientDTO patient) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName(HOMEPAGE_REDIRECT);
@@ -69,7 +69,7 @@ public class PatientController {
         return modelAndView;
     }
 
-    @GetMapping(path = "/discharge/{id}")
+    @GetMapping(path = "/patients/discharge/{id}")
     public ModelAndView dischargePatient(@PathVariable("id") int id) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName(HOMEPAGE_REDIRECT);

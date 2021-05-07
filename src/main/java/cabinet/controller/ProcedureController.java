@@ -19,6 +19,7 @@ public class ProcedureController {
     private PatientService patientService;
 
     private static final String PROCEDURES_REDIRECT = "redirect:/procedures";
+    private static final String PATIENTS_REDIRECT = "redirect:/patients";
     private static final String PROCEDURES_LIST = "proceduresList";
     private static final String PROCEDURES_FILTERED = "filteredProcedures";
 
@@ -66,14 +67,16 @@ public class ProcedureController {
     @GetMapping(path = "/procedures/add")
     public ModelAndView addPage() {
         ModelAndView modelAndView = new ModelAndView();
+        List<PatientDTO> patients = patientService.allPatients();
         modelAndView.setViewName("addProcedure");
+        modelAndView.addObject("patients", patients);
         return modelAndView;
     }
 
     @PostMapping(path = "/procedures/add")
     public ModelAndView addProcedure(@ModelAttribute("procedure") ProcedureDTO procedure) {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName(PROCEDURES_REDIRECT);
+        modelAndView.setViewName(PATIENTS_REDIRECT);
         procedureService.add(procedure);
         return modelAndView;
     }

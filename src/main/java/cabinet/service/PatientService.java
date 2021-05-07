@@ -21,6 +21,15 @@ public class PatientService {
     }
 
     @Transactional(readOnly = true)
+    public List<PatientDTO> allPatients() {
+        List<PatientDTO> patients = new ArrayList<>();
+        for (Patient patient : patientDAO.allPatients()) {
+            patients.add((PatientDTO) new DtoUtils().convertToDto(patient, new PatientDTO()));
+        }
+        return patients;
+    }
+
+    @Transactional(readOnly = true)
     public List<PatientDTO> allPatients(int page) {
         List<PatientDTO> patients = new ArrayList<>();
         for (Patient patient : patientDAO.allPatients(page)) {
