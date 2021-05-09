@@ -136,7 +136,7 @@
             <c:forEach var="event" items="${eventsList}" varStatus="i">
                 <div class="card mb-3">
                     <div class="card-body">
-                        <h5 class="card-title">Card title - ${event.status}</h5>
+                        <h5 class="card-title">${event.title} - ${event.status}</h5>
                         <h6 class="card-subtitle mb-2 text-muted">From ${event.start_date} to ${event.end_date}</h6>
                         <p class="card-text">
                             <ul class="list-group list-group-flush">

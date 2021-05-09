@@ -96,7 +96,7 @@ public class ProcedureService {
 
         }
 
-        Event event = new Event(procedureDTO.getStartDate(), procedureDTO.getEndDate(), procedureDTO.getStatus(), procedureDTO.getPatient());
+        Event event = new Event(procedureDTO.getTitle(), procedureDTO.getStartDate(), procedureDTO.getEndDate(), procedureDTO.getStatus(), procedureDTO.getPatient());
         eventDAO.add(event);
 
         for (LocalDate date : dateRange) {

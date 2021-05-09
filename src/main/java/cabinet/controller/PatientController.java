@@ -1,6 +1,6 @@
 package cabinet.controller;
 
-import cabinet.model.Event;
+import cabinet.model.dto.EventDTO;
 import cabinet.model.dto.PatientDTO;
 import cabinet.service.EventService;
 import cabinet.service.PatientService;
@@ -71,7 +71,7 @@ public class PatientController {
     @GetMapping(path = "/patients/edit/{id}")
     public ModelAndView editPage(@PathVariable("id") int id) {
         PatientDTO patient = patientService.getById(id);
-        List<Event> events = eventService.getEventsByPatient(patient);
+        List<EventDTO> events = eventService.getEventsByPatient(patient);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("editPatient");
         modelAndView.addObject("patient", patient);

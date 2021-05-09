@@ -1,10 +1,7 @@
 package cabinet.controller;
 
-import cabinet.dao.EventDAO;
-import cabinet.model.Event;
-import cabinet.model.dto.ProcedureDTO;
+import cabinet.model.dto.EventDTO;
 import cabinet.service.EventService;
-import cabinet.service.ProcedureService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,9 +21,9 @@ public class EventController {
     @GetMapping(path = "/events/cancel/{id}")
     public ModelAndView cancelEvent(@PathVariable("id") int id) {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("editPatient");
-        Event event = eventService.getById(id);
-        eventService.cancel(event);
+        modelAndView.setViewName("patients");
+        EventDTO eventDTO = eventService.getById(id);
+        eventService.cancel(eventDTO);
         return modelAndView;
     }
 }

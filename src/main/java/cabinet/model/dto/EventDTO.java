@@ -1,43 +1,25 @@
-package cabinet.model;
+package cabinet.model.dto;
 
-import javax.persistence.*;
+import cabinet.model.Patient;
+import cabinet.model.Procedure;
+
 import java.util.Set;
 
-@Entity
-@Table(name = "events")
-public class Event {
-    @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class EventDTO implements DTOEntity {
     private int id;
-
-    @Column(name = "title")
     private String title;
-
-    @Column(name = "start_date")
     private String start_date;
-
-    @Column(name = "end_date")
     private String end_date;
-
-    @Column(name = "status")
     private String status;
-
-    @OneToMany(mappedBy = "event", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<Procedure> procedures;
+    private Patient patient;
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "patient_id", nullable = false)
-    private Patient patientEvent;
+    public int getId() {
+        return id;
+    }
 
-    public Event() {}
-
-    public Event(String title, String start_date, String end_date, String status, Patient patientEvent) {
-        this.title = title;
-        this.start_date = start_date;
-        this.end_date = end_date;
-        this.status = status;
-        this.patientEvent = patientEvent;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -46,14 +28,6 @@ public class Event {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getStart_date() {
@@ -89,10 +63,10 @@ public class Event {
     }
 
     public Patient getPatient() {
-        return patientEvent;
+        return patient;
     }
 
     public void setPatient(Patient patient) {
-        this.patientEvent = patient;
+        this.patient = patient;
     }
 }

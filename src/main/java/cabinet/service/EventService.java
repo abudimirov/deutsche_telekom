@@ -5,13 +5,14 @@ import cabinet.dao.ProcedureDAO;
 import cabinet.model.Event;
 import cabinet.model.Patient;
 import cabinet.model.Procedure;
+import cabinet.model.dto.EventDTO;
 import cabinet.model.dto.PatientDTO;
-import cabinet.model.dto.ProcedureDTO;
 import cabinet.utils.DtoUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -30,28 +31,32 @@ public class EventService {
         this.procedureDAO = procedureDAO;
     }
 
-    @Transactional
-    public Event getById(int id) {
+    @Transactional(readOnly = true)
+    public EventDTO getById(int id) {
         Event event = eventDAO.getById(id);
-        return event;
+        return (EventDTO) DtoUtils.convertToDto(event, new EventDTO());
     }
 
-    @Transactional
-    public List<Event> getEventsByPatient(PatientDTO patientDTO) {
+    @Transactional(readOnly = true)
+    public List<EventDTO> getEventsByPatient(PatientDTO patientDTO) {
         Patient patient = (Patient) DtoUtils.convertToEntity(new Patient(), patientDTO);
-        return eventDAO.getEventsByPatient(patient);
+        List<EventDTO> events = new ArrayList<>();
+        for (Event event : eventDAO.getEventsByPatient(patient)) {
+            events.add((EventDTO) DtoUtils.convertToDto(event, new EventDTO()));
+        }
+        return events;
     }
 
     @Transactional
-    public void cancel(Event event) {
-        event.setStatus("cancelled");
-        Set<Procedure> procedures = event.getProcedures();
+    public void cancel(EventDTO eventDTO) {
+        eventDTO.setStatus("cancelled");
+        Set<Procedure> procedures = eventDTO.getProcedures();
         for (Procedure procedure : procedures) {
             if (procedure.getStatus().equals("scheduled")) {
                 procedure.setStatus("cancelled");
                 procedureDAO.edit(procedure);
             }
         }
-        eventDAO.edit(event);
+        eventDAO.edit((Event) DtoUtils.convertToEntity(new Event(), eventDTO));
     }
 }
