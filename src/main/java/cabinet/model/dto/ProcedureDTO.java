@@ -3,6 +3,7 @@ package cabinet.model.dto;
 import cabinet.model.Patient;
 
 import java.util.List;
+import java.util.Objects;
 
 public class ProcedureDTO implements DTOEntity {
     private int id;
@@ -19,7 +20,6 @@ public class ProcedureDTO implements DTOEntity {
     private String type;
     private int dose;
     private boolean updated;
-
 
     public boolean isUpdated() {
         return updated;
@@ -53,7 +53,7 @@ public class ProcedureDTO implements DTOEntity {
         this.dailyPattern = dailyPattern;
     }
 
-    // TO-DO return list instead of []
+    //TO-DO return list instead of []
     public String[] getWeeklyPattern() {
         String[] weeklyPattern = new String[0];
         return this.weeklyPattern.toArray(weeklyPattern);
@@ -135,6 +135,29 @@ public class ProcedureDTO implements DTOEntity {
         this.dose = dose;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ProcedureDTO that = (ProcedureDTO) o;
+        return id == that.id &&
+                patient_id == that.patient_id &&
+                dose == that.dose &&
+                updated == that.updated &&
+                Objects.equals(patient, that.patient) &&
+                Objects.equals(title, that.title) &&
+                Objects.equals(date, that.date) &&
+                Objects.equals(time, that.time) &&
+                Objects.equals(startDate, that.startDate) &&
+                Objects.equals(endDate, that.endDate) &&
+                Objects.equals(dailyPattern, that.dailyPattern) &&
+                Objects.equals(weeklyPattern, that.weeklyPattern) &&
+                Objects.equals(status, that.status) &&
+                Objects.equals(type, that.type);
+    }
 
-
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, patient_id, patient, title, date, time, startDate, endDate, dailyPattern, weeklyPattern, status, type, dose, updated);
+    }
 }

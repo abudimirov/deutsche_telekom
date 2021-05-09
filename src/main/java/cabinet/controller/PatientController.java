@@ -1,6 +1,8 @@
 package cabinet.controller;
 
+import cabinet.model.Event;
 import cabinet.model.dto.PatientDTO;
+import cabinet.service.EventService;
 import cabinet.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +15,7 @@ import java.util.List;
 @Controller
 public class PatientController {
     private PatientService patientService;
+    private EventService eventService;
 
     private static final String HOMEPAGE_REDIRECT = "redirect:/patients/";
 
@@ -20,6 +23,11 @@ public class PatientController {
     @Autowired
     public void setPatientService(PatientService patientService) {
         this.patientService = patientService;
+    }
+
+    @Autowired
+    public void setEventService(EventService eventService) {
+        this.eventService = eventService;
     }
 
     /**
@@ -63,9 +71,11 @@ public class PatientController {
     @GetMapping(path = "/patients/edit/{id}")
     public ModelAndView editPage(@PathVariable("id") int id) {
         PatientDTO patient = patientService.getById(id);
+        List<Event> events = eventService.getEventsByPatient(patient);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("editPatient");
         modelAndView.addObject("patient", patient);
+        modelAndView.addObject("eventsList", events);
         return modelAndView;
     }
 

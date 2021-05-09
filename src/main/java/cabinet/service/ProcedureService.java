@@ -1,7 +1,9 @@
 package cabinet.service;
 
+import cabinet.dao.EventDAO;
 import cabinet.dao.PatientDAO;
 import cabinet.dao.ProcedureDAO;
+import cabinet.model.Event;
 import cabinet.model.Patient;
 import cabinet.model.Procedure;
 import cabinet.model.dto.ProcedureDTO;
@@ -22,6 +24,7 @@ import java.util.stream.IntStream;
 public class ProcedureService {
     private ProcedureDAO procedureDAO;
     private PatientDAO patientDAO;
+    private EventDAO eventDAO;
 
     @Autowired
     public void setProcedureDAO(ProcedureDAO procedureDAO) {
@@ -31,6 +34,11 @@ public class ProcedureService {
     @Autowired
     public void setPatientDAO(PatientDAO patientDAO) {
         this.patientDAO = patientDAO;
+    }
+
+    @Autowired
+    public void setEventDAO(EventDAO eventDAO) {
+        this.eventDAO = eventDAO;
     }
 
     /**
@@ -87,6 +95,10 @@ public class ProcedureService {
             patientDAO.cancelProcedures(patient);
 
         }
+
+        Event event = new Event(procedureDTO.getStartDate(), procedureDTO.getEndDate(), procedureDTO.getStatus(), procedureDTO.getPatient());
+        eventDAO.add(event);
+
         for (LocalDate date : dateRange) {
             Calendar c = Calendar.getInstance();
             c.setTime(Date.from(date.atStartOfDay(ZoneId.systemDefault()).toInstant()));
@@ -98,14 +110,17 @@ public class ProcedureService {
                 Procedure morningProcedure = (Procedure) DtoUtils.convertToEntity(new Procedure(), procedureDTO);
                 morningProcedure.setDate(date.toString());
                 morningProcedure.setTime("10:00");
+                morningProcedure.setEvent(event);
 
                 Procedure middayProcedure = (Procedure) DtoUtils.convertToEntity(new Procedure(), procedureDTO);
                 middayProcedure.setDate(date.toString());
                 middayProcedure.setTime("15:00");
+                middayProcedure.setEvent(event);
 
                 Procedure eveningProcedure = (Procedure) DtoUtils.convertToEntity(new Procedure(), procedureDTO);
                 eveningProcedure.setDate(date.toString());
                 eveningProcedure.setTime("22:00");
+                eveningProcedure.setEvent(event);
 
                 switch (procedureDTO.getDailyPattern()) {
                     case "1":

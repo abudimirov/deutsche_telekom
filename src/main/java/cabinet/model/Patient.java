@@ -40,6 +40,9 @@ public class Patient {
     @OneToMany(mappedBy = "patient", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<Procedure> procedures;
 
+    @OneToMany(mappedBy = "patientEvent", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Set<Event> events;
+
     public Patient() {
     }
 

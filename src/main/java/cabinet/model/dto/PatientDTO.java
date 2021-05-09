@@ -1,5 +1,6 @@
 package cabinet.model.dto;
 
+import cabinet.model.Event;
 import cabinet.model.Procedure;
 
 import java.util.Objects;
@@ -14,6 +15,7 @@ public class PatientDTO implements DTOEntity {
     private int insuranceNum;
     private String doctor;
     private Set<Procedure> procedures;
+    private Set<Event> events;
 
     public int getId() {
         return id;
@@ -79,6 +81,14 @@ public class PatientDTO implements DTOEntity {
         this.procedures = procedures;
     }
 
+    public Set<Event> getEvents() {
+        return events;
+    }
+
+    public void setEvents(Set<Event> events) {
+        this.events = events;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -91,11 +101,12 @@ public class PatientDTO implements DTOEntity {
                 Objects.equals(surname, that.surname) &&
                 Objects.equals(diagnosis, that.diagnosis) &&
                 Objects.equals(doctor, that.doctor) &&
-                Objects.equals(procedures, that.procedures);
+                Objects.equals(procedures, that.procedures) &&
+                Objects.equals(events, that.events);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, surname, cured, diagnosis, insuranceNum, doctor, procedures);
+        return Objects.hash(id, name, surname, cured, diagnosis, insuranceNum, doctor, procedures, events);
     }
 }

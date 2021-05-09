@@ -96,36 +96,7 @@
                 </div>
             </c:if>
 
-            <c:if test="${!empty patient.procedures}">
-                <div class="my-5">
-                    <h2 class="my-3">Patient procedures</h2>
-                    <c:forEach var="procedure" items="${patient.procedures}" varStatus="i">
-                        <div class="row g-3 my-3">
-                            <div class="col-sm-6">
-                                <span>${procedure.title}</span>
-                            </div>
-                            <div class="col-sm">
-                                <span>${procedure.date}</span>
-                            </div>
-                            <div class="col-sm">
-                                <span>${procedure.time}</span>
-                            </div>
-                            <div class="col-sm">
-                                <span>${procedure.status}</span>
-                            </div>
-                            <div class="col-sm">
-                                <a href="/procedures/edit/${procedure.id}" class="btn btn-link"><i class="fa fa-pencil" aria-hidden="true"></i> edit</a>
-                            </div>
-                        </div>
-                    </c:forEach>
-                </div>
-            </c:if>
 
-            <c:if test="${!empty patient.name}">
-                <div class="mb-5">
-                    <a href="<c:url value="/procedures/add"/>" class="btn btn-success btn-block" role="button" aria-pressed="true"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add new procedure</a>
-                </div>
-            </c:if>
 
             <c:if test="${empty patient.name}">
                 <button type="submit" class="btn btn-success">Save</button>
@@ -160,6 +131,34 @@
                 </div>
             </c:if>
         </form>
+        <c:if test="${!empty eventsList}">
+            <h2 class="my-3">Patient events</h2>
+            <c:forEach var="event" items="${eventsList}" varStatus="i">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title - ${event.status}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">From ${event.start_date} to ${event.end_date}</h6>
+                        <p class="card-text">
+                            <ul class="list-group list-group-flush">
+                                <c:forEach var="procedure" items="${event.procedures}" varStatus="i">
+                                    <li class="list-group-item">
+                                            ${procedure.date} at ${procedure.time} - ${procedure.status}
+                                        <a href="/procedures/edit/${procedure.id}" class="btn btn-link"><i class="fa fa-pencil" aria-hidden="true"></i> edit</a>
+                                    </li>
+                                </c:forEach>
+                            </ul>
+                        </p>
+                        <a href="/events/cancel/${event.id}" class="card-link"><i class="fa fa-times" aria-hidden="true"></i> cancel event</a>
+                    </div>
+                </div>
+            </c:forEach>
+        </c:if>
+
+        <c:if test="${!empty patient.name}">
+            <div class="mb-5">
+                <a href="<c:url value="/procedures/add"/>" class="btn btn-success btn-block" role="button" aria-pressed="true"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add new event</a>
+            </div>
+        </c:if>
     </div>
 </div>
 </body>
