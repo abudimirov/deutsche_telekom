@@ -155,7 +155,7 @@
         </c:if>
 
         <c:if test="${!empty patient.name}">
-            <div class="mb-5">
+            <div class="my-5">
                 <a href="<c:url value="/procedures/add"/>" class="btn btn-success btn-block" role="button" aria-pressed="true"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add new event</a>
             </div>
         </c:if>

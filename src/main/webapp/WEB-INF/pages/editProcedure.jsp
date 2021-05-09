@@ -36,6 +36,15 @@
                 </sec:authorize>
             </div>
             <div class="form-group">
+                <label for="patient.id">Event ID</label>
+                <sec:authorize access="hasRole('NURSE')">
+                    <input type="text" class="form-control-plaintext" name="event.id" id="event.id" value="${procedure.event.id}" readonly>
+                </sec:authorize>
+                <sec:authorize access="hasRole('DOCTOR')">
+                    <input type="text" class="form-control" name="event.id" id="event.id" value="${procedure.event.id}">
+                </sec:authorize>
+            </div>
+            <div class="form-group">
                 <label for="date">Date</label>
                 <sec:authorize access="hasRole('NURSE')">
                     <input type="date" readonly class="form-control-plaintext" name="date" id="date" value="${procedure.date}">
