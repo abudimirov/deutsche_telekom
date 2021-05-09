@@ -26,10 +26,14 @@ public class HibernateConfig {
         this.environment = environment;
     }
 
+    public static final String DIALECT = "hibernate.dialect";
+    public static final String SHOW_SQL = "hibernate.show_sql";
+
+
     private Properties hibernateProperties() {
         Properties properties = new Properties();
-        properties.put("hibernate.dialect", environment.getRequiredProperty("hibernate.dialect"));
-        properties.put("hibernate.show_sql", environment.getRequiredProperty("hibernate.show_sql"));
+        properties.put(DIALECT, environment.getRequiredProperty(DIALECT));
+        properties.put(SHOW_SQL, environment.getRequiredProperty(SHOW_SQL));
         return properties;
     }
 

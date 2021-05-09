@@ -2,6 +2,8 @@ package cabinet.model.dto;
 
 import cabinet.model.Patient;
 
+import java.util.List;
+
 public class ProcedureDTO implements DTOEntity {
     private int id;
     private int patient_id;
@@ -12,7 +14,7 @@ public class ProcedureDTO implements DTOEntity {
     private String startDate;
     private String endDate;
     private String dailyPattern;
-    private String[] weeklyPattern;
+    private List<String> weeklyPattern;
     private String status;
     private String type;
     private int dose;
@@ -51,11 +53,13 @@ public class ProcedureDTO implements DTOEntity {
         this.dailyPattern = dailyPattern;
     }
 
+    // TO-DO return list instead of []
     public String[] getWeeklyPattern() {
-        return weeklyPattern;
+        String[] weeklyPattern = new String[0];
+        return this.weeklyPattern.toArray(weeklyPattern);
     }
 
-    public void setWeeklyPattern(String[] weeklyPattern) {
+    public void setWeeklyPattern(List<String> weeklyPattern) {
         this.weeklyPattern = weeklyPattern;
     }
 
@@ -130,4 +134,7 @@ public class ProcedureDTO implements DTOEntity {
     public void setDose(int dose) {
         this.dose = dose;
     }
+
+
+
 }

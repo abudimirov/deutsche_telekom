@@ -4,8 +4,7 @@ import javax.persistence.*;
 import java.util.Set;
 
 /**
- * Класс - модель объекта "Пациент". Содержит поля уникального идентификатора,
- * имя пациента, фамилию, год рождения, пол и статус лечения.
+ * Model of object Patient
  *
  * @author Aleksandr Budimirov
  * @version 0.1

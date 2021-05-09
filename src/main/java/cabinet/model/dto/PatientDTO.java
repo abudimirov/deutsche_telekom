@@ -2,6 +2,7 @@ package cabinet.model.dto;
 
 import cabinet.model.Procedure;
 
+import java.util.Objects;
 import java.util.Set;
 
 public class PatientDTO implements DTOEntity {
@@ -76,5 +77,25 @@ public class PatientDTO implements DTOEntity {
 
     public void setProcedures(Set<Procedure> procedures) {
         this.procedures = procedures;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        PatientDTO that = (PatientDTO) o;
+        return id == that.id &&
+                cured == that.cured &&
+                insuranceNum == that.insuranceNum &&
+                Objects.equals(name, that.name) &&
+                Objects.equals(surname, that.surname) &&
+                Objects.equals(diagnosis, that.diagnosis) &&
+                Objects.equals(doctor, that.doctor) &&
+                Objects.equals(procedures, that.procedures);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, surname, cured, diagnosis, insuranceNum, doctor, procedures);
     }
 }

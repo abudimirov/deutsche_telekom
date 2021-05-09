@@ -20,11 +20,12 @@ public class PatientService {
         this.patientDAO = patientDAO;
     }
 
+
     @Transactional(readOnly = true)
     public List<PatientDTO> allPatients() {
         List<PatientDTO> patients = new ArrayList<>();
         for (Patient patient : patientDAO.allPatients()) {
-            patients.add((PatientDTO) new DtoUtils().convertToDto(patient, new PatientDTO()));
+            patients.add((PatientDTO) DtoUtils.convertToDto(patient, new PatientDTO()));
         }
         return patients;
     }
@@ -33,37 +34,37 @@ public class PatientService {
     public List<PatientDTO> allPatients(int page) {
         List<PatientDTO> patients = new ArrayList<>();
         for (Patient patient : patientDAO.allPatients(page)) {
-            patients.add((PatientDTO) new DtoUtils().convertToDto(patient, new PatientDTO()));
+            patients.add((PatientDTO) DtoUtils.convertToDto(patient, new PatientDTO()));
         }
         return patients;
     }
 
     @Transactional
     public void add(PatientDTO patientDTO) {
-        Patient patient = (Patient) new DtoUtils().convertToEntity(new Patient(), patientDTO);
+        Patient patient = (Patient) DtoUtils.convertToEntity(new Patient(), patientDTO);
         patientDAO.add(patient);
     }
 
 
     @Transactional
     public void edit(PatientDTO patientDTO) {
-        Patient patient = (Patient) new DtoUtils().convertToEntity(new Patient(), patientDTO);
+        Patient patient = (Patient) DtoUtils.convertToEntity(new Patient(), patientDTO);
         patientDAO.edit(patient);
     }
 
     @Transactional
     public PatientDTO getById(int id) {
         Patient patient = patientDAO.getById(id);
-        return (PatientDTO) new DtoUtils().convertToDto(patient, new PatientDTO());
+        return (PatientDTO) DtoUtils.convertToDto(patient, new PatientDTO());
     }
 
     @Transactional
     public void discharge(PatientDTO patientDTO) {
-        Patient patient = (Patient) new DtoUtils().convertToEntity(new Patient(), patientDTO);
+        Patient patient = (Patient) DtoUtils.convertToEntity(new Patient(), patientDTO);
         patientDAO.discharge(patient);
     }
 
-    @Transactional
+    @Transactional(readOnly = true)
     public int patientsCount() {
         return patientDAO.patientsCount();
     }

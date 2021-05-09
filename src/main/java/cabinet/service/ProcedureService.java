@@ -8,8 +8,8 @@ import cabinet.model.dto.ProcedureDTO;
 import cabinet.utils.DtoUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
@@ -33,24 +33,42 @@ public class ProcedureService {
         this.patientDAO = patientDAO;
     }
 
-    @Transactional
+    /**
+     * Service for getting all procedures. Gets a list of procedures entities from DAO and converts to list of DTOs
+     *
+     * @return list of DTO procedures
+     */
+    @Transactional(readOnly = true)
     public List<ProcedureDTO> allProcedures() {
         List<ProcedureDTO> procedures = new ArrayList<>();
         for (Procedure procedure : procedureDAO.allProcedures()) {
-            procedures.add((ProcedureDTO) new DtoUtils().convertToDto(procedure, new ProcedureDTO()));
+            procedures.add((ProcedureDTO) DtoUtils.convertToDto(procedure, new ProcedureDTO()));
         }
         return procedures;
     }
-
-    @Transactional
+    /**
+     * Service for getting all procedures with pagination.
+     * Gets a list of procedures entities from DAO and converts to list of DTOs
+     *
+     * @param page - num of page
+     * @return list of DTO procedures
+     */
+    @Transactional(readOnly = true)
     public List<ProcedureDTO> allProcedures(int page) {
         List<ProcedureDTO> procedures = new ArrayList<>();
         for (Procedure procedure : procedureDAO.allProcedures(page)) {
-            procedures.add((ProcedureDTO) new DtoUtils().convertToDto(procedure, new ProcedureDTO()));
+            procedures.add((ProcedureDTO) DtoUtils.convertToDto(procedure, new ProcedureDTO()));
         }
         return procedures;
     }
 
+    /**
+     * Service gets a procedure DTO which can have start date of prescripted procedures and
+     * end date, weekly pattern and daily pattern. It has to create every procedure one by one by its
+     * pattern and add to the DB.
+     *
+     * @param procedureDTO
+     */
     @Transactional
     public void add(ProcedureDTO procedureDTO) {
         final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -59,7 +77,8 @@ public class ProcedureService {
         List<LocalDate> dateRange = getDatesBetween(startDate, endDate);
 
         /**
-         * If "Replace" is checked in View (isUpdated = true) we set all procedures for patient to cancelled and add new ones.
+         * If "Replace" is checked in View (isUpdated = true) we set all procedures for
+         * patient to cancelled and add new ones.
          * If "Replace" is false we simply add new procedures.
          * */
 
@@ -76,15 +95,15 @@ public class ProcedureService {
 
             if (weeklyPattern.contains(dayOfWeek)) {
 
-                Procedure morningProcedure = (Procedure) new DtoUtils().convertToEntity(new Procedure(), procedureDTO);
+                Procedure morningProcedure = (Procedure) DtoUtils.convertToEntity(new Procedure(), procedureDTO);
                 morningProcedure.setDate(date.toString());
                 morningProcedure.setTime("10:00");
 
-                Procedure middayProcedure = (Procedure) new DtoUtils().convertToEntity(new Procedure(), procedureDTO);
+                Procedure middayProcedure = (Procedure) DtoUtils.convertToEntity(new Procedure(), procedureDTO);
                 middayProcedure.setDate(date.toString());
                 middayProcedure.setTime("15:00");
 
-                Procedure eveningProcedure = (Procedure) new DtoUtils().convertToEntity(new Procedure(), procedureDTO);
+                Procedure eveningProcedure = (Procedure) DtoUtils.convertToEntity(new Procedure(), procedureDTO);
                 eveningProcedure.setDate(date.toString());
                 eveningProcedure.setTime("22:00");
 
@@ -108,57 +127,91 @@ public class ProcedureService {
         }
     }
 
-    // НЕ УДАЛЯТЬ
+    /**
+     * Method for delete of the specified procedure.
+     * @param procedureDTO
+     */
     @Transactional
     public void delete(ProcedureDTO procedureDTO) {
-        Procedure procedure = (Procedure) new DtoUtils().convertToEntity(new Procedure(), procedureDTO);
+        Procedure procedure = (Procedure) DtoUtils.convertToEntity(new Procedure(), procedureDTO);
         procedureDAO.delete(procedure);
     }
 
+    /**
+     * Method converts DTO to an entity and updates it in the DB
+     * @param procedureDTO
+     */
     @Transactional
     public void edit(ProcedureDTO procedureDTO) {
-        Procedure procedure = (Procedure) new DtoUtils().convertToEntity(new Procedure(), procedureDTO);
+        Procedure procedure = (Procedure) DtoUtils.convertToEntity(new Procedure(), procedureDTO);
         procedureDAO.edit(procedure);
     }
 
+    /**
+     * Method gets entity of procedure by its ID in the DB, converts to DTO and return it
+     * @param id
+     * @return procedureDTO
+     */
     @Transactional
     public ProcedureDTO getById(int id) {
         Procedure procedure = procedureDAO.getById(id);
-        return (ProcedureDTO) new DtoUtils().convertToDto(procedure, new ProcedureDTO());
+        return (ProcedureDTO) DtoUtils.convertToDto(procedure, new ProcedureDTO());
     }
 
-    @Transactional
+    /**
+     * Method gets all procedure entities by patient ID, converts to list of DTO's and returns it
+     * @param id - patient ID
+     * @return list of procedureDTO
+     */
+    @Transactional(readOnly = true)
     public List<ProcedureDTO> proceduresByPatient(int id) {
         List<ProcedureDTO> procedures = new ArrayList<>();
         for (Procedure procedure : procedureDAO.proceduresByPatient(id)) {
-            procedures.add((ProcedureDTO) new DtoUtils().convertToDto(procedure, new ProcedureDTO()));
+            procedures.add((ProcedureDTO) DtoUtils.convertToDto(procedure, new ProcedureDTO()));
         }
         return procedures;
     }
 
-    @Transactional
+    /**
+     * Method returns list of proceduresDTO by specified date
+     *
+     * @param date
+     * @return list of procedureDTO
+     */
+    @Transactional(readOnly = true)
     public List<ProcedureDTO> proceduresByDate(String date) {
         List<ProcedureDTO> procedures = new ArrayList<>();
         for (Procedure procedure : procedureDAO.proceduresByDate(date)) {
-            procedures.add((ProcedureDTO) new DtoUtils().convertToDto(procedure, new ProcedureDTO()));
+            procedures.add((ProcedureDTO) DtoUtils.convertToDto(procedure, new ProcedureDTO()));
         }
         return procedures;
     }
 
-    @Transactional
+    /**
+     * Method returns a list of procedures DTO for the next hour
+     * @return
+     */
+    @Transactional(readOnly = true)
     public List<ProcedureDTO> proceduresForNextHour() {
         List<ProcedureDTO> procedures = new ArrayList<>();
         for (Procedure procedure : procedureDAO.proceduresForNextHour()) {
-            procedures.add((ProcedureDTO) new DtoUtils().convertToDto(procedure, new ProcedureDTO()));
+            procedures.add((ProcedureDTO) DtoUtils.convertToDto(procedure, new ProcedureDTO()));
         }
         return procedures;
     }
 
-    @Transactional
+    @Transactional(readOnly = true)
     public int proceduresCount() {
         return procedureDAO.proceduresCount();
     }
 
+    /**
+     * Additional method for getting a range of dates between specified dates
+     *
+     * @param startDate
+     * @param endDate
+     * @return list of dates
+     */
     public List<LocalDate> getDatesBetween(
             LocalDate startDate, LocalDate endDate) {
 

@@ -22,6 +22,11 @@ public class PatientController {
         this.patientService = patientService;
     }
 
+    /**
+     * Controller for patients list with pagination.
+     * @param page - page num
+     * @return modelAndView
+     */
     @GetMapping(path = "/patients")
     public ModelAndView allPatients(@RequestParam(defaultValue = "1") int page) {
         List<PatientDTO> patients = patientService.allPatients(page);
@@ -36,6 +41,11 @@ public class PatientController {
         return modelAndView;
     }
 
+    /**
+     * Controller for sending patient to the service
+     * @param patient
+     * @return
+     */
     @PostMapping(path = "/patients/edit")
     public ModelAndView editPatient(@ModelAttribute("patient") PatientDTO patient) {
         ModelAndView modelAndView = new ModelAndView();
@@ -44,7 +54,12 @@ public class PatientController {
         return modelAndView;
     }
 
-
+    /**
+     * Controller to view particular patient by its ID
+     *
+     * @param id
+     * @return modelAndView
+     */
     @GetMapping(path = "/patients/edit/{id}")
     public ModelAndView editPage(@PathVariable("id") int id) {
         PatientDTO patient = patientService.getById(id);
@@ -54,6 +69,11 @@ public class PatientController {
         return modelAndView;
     }
 
+    /**
+     * Controller for getting a view for adding new patient
+     *
+     * @return modelAndView
+     */
     @GetMapping(path = "/patients/add")
     public ModelAndView addPage() {
         ModelAndView modelAndView = new ModelAndView();
@@ -61,6 +81,12 @@ public class PatientController {
         return modelAndView;
     }
 
+    /**
+     * Controller for adding new patient to service
+     *
+     * @param patient
+     * @return
+     */
     @PostMapping(path = "/patients/add")
     public ModelAndView addPatient(@ModelAttribute("patient") PatientDTO patient) {
         ModelAndView modelAndView = new ModelAndView();
@@ -69,6 +95,12 @@ public class PatientController {
         return modelAndView;
     }
 
+    /**
+     * Controller for discharging patient by his ID
+     *
+     * @param id
+     * @return
+     */
     @GetMapping(path = "/patients/discharge/{id}")
     public ModelAndView dischargePatient(@PathVariable("id") int id) {
         ModelAndView modelAndView = new ModelAndView();

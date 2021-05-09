@@ -50,7 +50,7 @@ public class ProcedureController {
     @PostMapping(path = "/procedures/edit")
     public ModelAndView editProcedure(@ModelAttribute("procedure") ProcedureDTO procedure) {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName(PROCEDURES_REDIRECT);
+        modelAndView.setViewName("editProcedure");
         procedureService.edit(procedure);
         return modelAndView;
     }
