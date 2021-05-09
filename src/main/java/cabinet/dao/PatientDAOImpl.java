@@ -1,5 +1,6 @@
 package cabinet.dao;
 
+import cabinet.model.Event;
 import cabinet.model.Patient;
 import cabinet.model.Procedure;
 import org.hibernate.Session;
@@ -83,6 +84,12 @@ public class PatientDAOImpl implements PatientDAO {
             for (Procedure procedure : procedures) {
                 if (procedure.getStatus().equals("scheduled")) {
                     procedure.setStatus("cancelled");
+                }
+            }
+            Set<Event> events = patient.getEvents();
+            for (Event event : events) {
+                if (event.getStatus().equals("scheduled")) {
+                    event.setStatus("cancelled");
                 }
             }
             session.update(patient);

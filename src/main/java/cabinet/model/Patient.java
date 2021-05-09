@@ -120,4 +120,11 @@ public class Patient {
         this.procedures = procedures;
     }
 
+    public Set<Event> getEvents() {
+        return events;
+    }
+
+    public void setEvents(Set<Event> events) {
+        this.events = events;
+    }
 }

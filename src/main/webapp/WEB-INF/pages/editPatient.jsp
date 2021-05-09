@@ -24,7 +24,7 @@
     <c:url value="/patients/edit" var="var"/>
 </c:if>
 <div class="container">
-    <div class="my-5 p-3" style="background: #fff;">
+    <div class="my-5 p-5" style="background: #fff;">
         <c:if test="${!empty patient.name}">
             <h1>Edit patient - ${patient.name} ${patient.surname}</h1>
         </c:if>

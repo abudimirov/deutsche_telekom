@@ -57,7 +57,7 @@
                 <label for="status">Status</label>
                 <select id="status" name="status" class="custom-select">
                     <option selected>scheduled</option>
-                    <option>canceled</option>
+                    <option>cancelled</option>
                     <option>done</option>
                 </select>
             </div>
