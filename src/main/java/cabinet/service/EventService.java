@@ -36,22 +36,22 @@ public class EventService {
     @Transactional(readOnly = true)
     public EventDTO getById(int id) {
         Event event = eventDAO.getById(id);
-        return (EventDTO) DtoUtils.convertToDto(event, new EventDTO());
+        return DtoUtils.convertToDto(event, EventDTO.class);
     }
 
     @Transactional(readOnly = true)
     public List<EventDTO> getEventsByPatient(PatientDTO patientDTO) {
-        Patient patient = (Patient) DtoUtils.convertToEntity(new Patient(), patientDTO);
+        Patient patient = DtoUtils.convertToEntity(Patient.class, patientDTO);
         List<EventDTO> events = new ArrayList<>();
         for (Event event : eventDAO.getEventsByPatient(patient)) {
-            events.add((EventDTO) DtoUtils.convertToDto(event, new EventDTO()));
+            events.add(DtoUtils.convertToDto(event, EventDTO.class));
         }
         return events;
     }
 
     @Transactional
     public void edit(EventDTO eventDTO) {
-        Event event = (Event) DtoUtils.convertToEntity(new Event(), eventDTO);
+        Event event = DtoUtils.convertToEntity(Event.class, eventDTO);
         eventDAO.edit(event);
     }
 
@@ -65,6 +65,6 @@ public class EventService {
                 procedureDAO.edit(procedure);
             }
         }
-        eventDAO.edit((Event) DtoUtils.convertToEntity(new Event(), eventDTO));
+        eventDAO.edit(DtoUtils.convertToEntity(Event.class, eventDTO));
     }
 }

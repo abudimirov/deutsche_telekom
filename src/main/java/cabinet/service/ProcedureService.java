@@ -49,7 +49,7 @@ public class ProcedureService {
     @Transactional(readOnly = true)
     public List<ProcedureDTO> allProcedures() {
         return procedureDAO.allProcedures().stream()
-                .map(procedure -> (ProcedureDTO) DtoUtils.convertToDto(procedure, new ProcedureDTO()))
+                .map(procedure -> DtoUtils.convertToDto(procedure, ProcedureDTO.class))
                 .collect(Collectors.toList());
     }
     /**
@@ -64,7 +64,7 @@ public class ProcedureService {
     @Transactional(readOnly = true)
     public List<ProcedureDTO> allProcedures(int page) {
         return procedureDAO.allProcedures(page).stream()
-                .map(procedure -> (ProcedureDTO) DtoUtils.convertToDto(procedure, new ProcedureDTO()))
+                .map(procedure -> DtoUtils.convertToDto(procedure, ProcedureDTO.class))
                 .collect(Collectors.toList());
     }
 
@@ -105,17 +105,17 @@ public class ProcedureService {
 
             if (weeklyPattern.contains(dayOfWeek)) {
 
-                Procedure morningProcedure = (Procedure) DtoUtils.convertToEntity(new Procedure(), procedureDTO);
+                Procedure morningProcedure = DtoUtils.convertToEntity(Procedure.class, procedureDTO);
                 morningProcedure.setDate(date.toString());
                 morningProcedure.setTime("10:00");
                 morningProcedure.setEvent(event);
 
-                Procedure middayProcedure = (Procedure) DtoUtils.convertToEntity(new Procedure(), procedureDTO);
+                Procedure middayProcedure = DtoUtils.convertToEntity(Procedure.class, procedureDTO);
                 middayProcedure.setDate(date.toString());
                 middayProcedure.setTime("15:00");
                 middayProcedure.setEvent(event);
 
-                Procedure eveningProcedure = (Procedure) DtoUtils.convertToEntity(new Procedure(), procedureDTO);
+                Procedure eveningProcedure = DtoUtils.convertToEntity(Procedure.class, procedureDTO);
                 eveningProcedure.setDate(date.toString());
                 eveningProcedure.setTime("22:00");
                 eveningProcedure.setEvent(event);
@@ -146,7 +146,7 @@ public class ProcedureService {
      */
     @Transactional
     public void delete(ProcedureDTO procedureDTO) {
-        Procedure procedure = (Procedure) DtoUtils.convertToEntity(new Procedure(), procedureDTO);
+        Procedure procedure = DtoUtils.convertToEntity(Procedure.class, procedureDTO);
         procedureDAO.delete(procedure);
     }
 
@@ -156,7 +156,7 @@ public class ProcedureService {
      */
     @Transactional
     public void edit(ProcedureDTO procedureDTO) {
-        Procedure procedure = (Procedure) DtoUtils.convertToEntity(new Procedure(), procedureDTO);
+        Procedure procedure = DtoUtils.convertToEntity(Procedure.class, procedureDTO);
         procedureDAO.edit(procedure);
     }
 
@@ -168,7 +168,7 @@ public class ProcedureService {
     @Transactional
     public ProcedureDTO getById(int id) {
         Procedure procedure = procedureDAO.getById(id);
-        return (ProcedureDTO) DtoUtils.convertToDto(procedure, new ProcedureDTO());
+        return DtoUtils.convertToDto(procedure, ProcedureDTO.class);
     }
 
     /**
@@ -179,7 +179,7 @@ public class ProcedureService {
     @Transactional(readOnly = true)
     public List<ProcedureDTO> proceduresByPatient(int id) {
         return procedureDAO.proceduresByPatient(id).stream()
-                .map(procedure -> (ProcedureDTO) DtoUtils.convertToDto(procedure, new ProcedureDTO()))
+                .map(procedure -> DtoUtils.convertToDto(procedure, ProcedureDTO.class))
                 .collect(Collectors.toList());
     }
 
@@ -192,7 +192,7 @@ public class ProcedureService {
     @Transactional(readOnly = true)
     public List<ProcedureDTO> proceduresByDate(String date) {
         return procedureDAO.proceduresByDate(date).stream()
-                .map(procedure -> (ProcedureDTO) DtoUtils.convertToDto(procedure, new ProcedureDTO()))
+                .map(procedure -> DtoUtils.convertToDto(procedure, ProcedureDTO.class))
                 .collect(Collectors.toList());
     }
 
@@ -203,7 +203,7 @@ public class ProcedureService {
     @Transactional(readOnly = true)
     public List<ProcedureDTO> proceduresForNextHour() {
         return procedureDAO.proceduresForNextHour().stream()
-                .map(procedure -> (ProcedureDTO) DtoUtils.convertToDto(procedure, new ProcedureDTO()))
+                .map(procedure -> DtoUtils.convertToDto(procedure, ProcedureDTO.class))
                 .collect(Collectors.toList());
     }
 

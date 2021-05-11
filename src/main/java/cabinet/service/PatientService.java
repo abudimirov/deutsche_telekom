@@ -2,6 +2,8 @@ package cabinet.service;
 
 import cabinet.dao.PatientDAO;
 import cabinet.model.Patient;
+import cabinet.model.Procedure;
+import cabinet.model.dto.EventDTO;
 import cabinet.model.dto.PatientDTO;
 import cabinet.utils.DtoUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +27,7 @@ public class PatientService {
     public List<PatientDTO> allPatients() {
         List<PatientDTO> patients = new ArrayList<>();
         for (Patient patient : patientDAO.allPatients()) {
-            patients.add((PatientDTO) DtoUtils.convertToDto(patient, new PatientDTO()));
+            patients.add(DtoUtils.convertToDto(patient, PatientDTO.class));
         }
         return patients;
     }
@@ -34,33 +36,33 @@ public class PatientService {
     public List<PatientDTO> allPatients(int page) {
         List<PatientDTO> patients = new ArrayList<>();
         for (Patient patient : patientDAO.allPatients(page)) {
-            patients.add((PatientDTO) DtoUtils.convertToDto(patient, new PatientDTO()));
+            patients.add(DtoUtils.convertToDto(patient, PatientDTO.class));
         }
         return patients;
     }
 
     @Transactional
     public void add(PatientDTO patientDTO) {
-        Patient patient = (Patient) DtoUtils.convertToEntity(new Patient(), patientDTO);
+        Patient patient = DtoUtils.convertToEntity(Patient.class, patientDTO);
         patientDAO.add(patient);
     }
 
 
     @Transactional
     public void edit(PatientDTO patientDTO) {
-        Patient patient = (Patient) DtoUtils.convertToEntity(new Patient(), patientDTO);
+        Patient patient = DtoUtils.convertToEntity(Patient.class, patientDTO);
         patientDAO.edit(patient);
     }
 
     @Transactional
     public PatientDTO getById(int id) {
         Patient patient = patientDAO.getById(id);
-        return (PatientDTO) DtoUtils.convertToDto(patient, new PatientDTO());
+        return DtoUtils.convertToDto(patient, PatientDTO.class);
     }
 
     @Transactional
     public void discharge(PatientDTO patientDTO) {
-        Patient patient = (Patient) DtoUtils.convertToEntity(new Patient(), patientDTO);
+        Patient patient = DtoUtils.convertToEntity(Patient.class, patientDTO);
         patientDAO.discharge(patient);
     }
 
