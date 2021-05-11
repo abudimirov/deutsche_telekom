@@ -1,6 +1,7 @@
 package cabinet.dao;
 
 import cabinet.model.Procedure;
+import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -17,6 +18,8 @@ import java.util.List;
 @Repository
 public class ProcedureDAOImpl implements ProcedureDAO {
     private SessionFactory sessionFactory;
+
+    public static final Logger logger = Logger.getLogger(ProcedureDAOImpl.class);
 
     @Autowired
     public void setSessionFactory(SessionFactory sessionFactory) {
@@ -35,7 +38,7 @@ public class ProcedureDAOImpl implements ProcedureDAO {
             Session session = sessionFactory.getCurrentSession();
             return session.createQuery("from Procedure p ORDER BY p.date, p.time").list();
         } catch (Exception ex) {
-            ex.printStackTrace();
+            logger.error(ex.getMessage(),ex);
             return Collections.emptyList();
         }
     }
@@ -51,7 +54,7 @@ public class ProcedureDAOImpl implements ProcedureDAO {
             Session session = sessionFactory.getCurrentSession();
             return session.createQuery("from Procedure p ORDER BY p.date, p.time").setFirstResult(10 * (page - 1)).setMaxResults(10).list();
         } catch (Exception ex) {
-            ex.printStackTrace();
+            logger.error(ex.getMessage(),ex);
             return Collections.emptyList();
         }
     }
@@ -67,7 +70,7 @@ public class ProcedureDAOImpl implements ProcedureDAO {
             Session session = sessionFactory.getCurrentSession();
             session.persist(procedure);
         } catch (Exception ex) {
-            ex.printStackTrace();
+            logger.error(ex.getMessage(),ex);
         }
     }
 
@@ -82,7 +85,7 @@ public class ProcedureDAOImpl implements ProcedureDAO {
             Session session = sessionFactory.getCurrentSession();
             session.delete(procedure);
         } catch (Exception ex) {
-            ex.printStackTrace();
+            logger.error(ex.getMessage(),ex);
         }
     }
 
@@ -97,7 +100,7 @@ public class ProcedureDAOImpl implements ProcedureDAO {
             Session session = sessionFactory.getCurrentSession();
             session.update(procedure);
         } catch (Exception ex) {
-            ex.printStackTrace();
+            logger.error(ex.getMessage(),ex);
         }
     }
 
@@ -113,7 +116,7 @@ public class ProcedureDAOImpl implements ProcedureDAO {
             Session session = sessionFactory.getCurrentSession();
             return session.get(Procedure.class, id);
         } catch (Exception ex) {
-            ex.printStackTrace();
+            logger.error(ex.getMessage(),ex);
             return null;
         }
     }
@@ -132,7 +135,7 @@ public class ProcedureDAOImpl implements ProcedureDAO {
             query.setParameter("id", id);
             return query.list();
         } catch (Exception ex) {
-            ex.printStackTrace();
+            logger.error(ex.getMessage(),ex);
             return Collections.emptyList();
         }
     }
@@ -151,7 +154,7 @@ public class ProcedureDAOImpl implements ProcedureDAO {
             query.setParameter("date", date);
             return query.list();
         } catch (Exception ex) {
-            ex.printStackTrace();
+            logger.error(ex.getMessage(),ex);
             return Collections.emptyList();
         }
     }
@@ -178,7 +181,7 @@ public class ProcedureDAOImpl implements ProcedureDAO {
             query.setParameter("hourFromNow", timeFormat.format(hourFromNow));
             return query.list();
         } catch (Exception ex) {
-            ex.printStackTrace();
+            logger.error(ex.getMessage(),ex);
             return Collections.emptyList();
         }
     }
@@ -196,7 +199,7 @@ public class ProcedureDAOImpl implements ProcedureDAO {
                     .getSingleResult()
                     .intValue();
         } catch (Exception ex) {
-            ex.printStackTrace();
+            logger.error(ex.getMessage(),ex);
             return 0;
         }
 

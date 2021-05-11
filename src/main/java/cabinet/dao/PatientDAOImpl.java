@@ -3,6 +3,7 @@ package cabinet.dao;
 import cabinet.model.Event;
 import cabinet.model.Patient;
 import cabinet.model.Procedure;
+import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,8 @@ import java.util.Set;
 public class PatientDAOImpl implements PatientDAO {
 
     private SessionFactory sessionFactory;
+
+    public static final Logger logger = Logger.getLogger(PatientDAOImpl.class);
 
     @Autowired
     public void setSessionFactory(SessionFactory sessionFactory) {
@@ -34,7 +37,7 @@ public class PatientDAOImpl implements PatientDAO {
             Session session = sessionFactory.getCurrentSession();
             return session.createQuery("from Patient p ORDER BY p.name, p.surname").list();
         } catch (Exception ex) {
-            ex.printStackTrace();
+            logger.error(ex.getMessage(),ex);
             return Collections.emptyList();
         }
     }
@@ -50,7 +53,7 @@ public class PatientDAOImpl implements PatientDAO {
             Session session = sessionFactory.getCurrentSession();
             return session.createQuery("from Patient p").setFirstResult(10 * (page - 1)).setMaxResults(10).list();
         } catch (Exception ex) {
-            ex.printStackTrace();
+            logger.error(ex.getMessage(),ex);
             return Collections.emptyList();
         }
     }
@@ -66,7 +69,7 @@ public class PatientDAOImpl implements PatientDAO {
             Session session = sessionFactory.getCurrentSession();
             session.persist(patient);
         } catch (Exception ex) {
-            ex.printStackTrace();
+            logger.error(ex.getMessage(),ex);
         }
     }
 
@@ -94,7 +97,7 @@ public class PatientDAOImpl implements PatientDAO {
             }
             session.update(patient);
         } catch (Exception ex) {
-            ex.printStackTrace();
+            logger.error(ex.getMessage(),ex);
         }
     }
 
@@ -115,7 +118,7 @@ public class PatientDAOImpl implements PatientDAO {
             }
             session.update(patient);
         } catch (Exception ex) {
-            ex.printStackTrace();
+            logger.error(ex.getMessage(),ex);
         }
 
     }
@@ -131,7 +134,7 @@ public class PatientDAOImpl implements PatientDAO {
             Session session = sessionFactory.getCurrentSession();
             session.update(patient);
         } catch (Exception ex) {
-            ex.printStackTrace();
+            logger.error(ex.getMessage(),ex);
         }
     }
 
@@ -147,7 +150,7 @@ public class PatientDAOImpl implements PatientDAO {
             Session session = sessionFactory.getCurrentSession();
             return session.get(Patient.class, id);
         } catch (Exception ex) {
-            ex.printStackTrace();
+            logger.error(ex.getMessage(),ex);
             return null;
         }
     }
@@ -163,7 +166,7 @@ public class PatientDAOImpl implements PatientDAO {
             Session session = sessionFactory.getCurrentSession();
             return session.createQuery("select count(*) from Patient ", Number.class).getSingleResult().intValue();
         } catch (Exception ex) {
-            ex.printStackTrace();
+            logger.error(ex.getMessage(),ex);
             return 0;
         }
     }

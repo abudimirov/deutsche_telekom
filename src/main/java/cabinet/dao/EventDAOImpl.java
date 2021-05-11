@@ -2,7 +2,7 @@ package cabinet.dao;
 
 import cabinet.model.Event;
 import cabinet.model.Patient;
-import cabinet.model.Procedure;
+import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -14,7 +14,10 @@ import java.util.List;
 
 @Repository
 public class EventDAOImpl implements EventDAO{
+
     private SessionFactory sessionFactory;
+
+    public static final Logger logger = Logger.getLogger(EventDAOImpl.class);
 
     @Autowired
     public void setSessionFactory(SessionFactory sessionFactory) {
@@ -27,7 +30,7 @@ public class EventDAOImpl implements EventDAO{
             Session session = sessionFactory.getCurrentSession();
             return session.createQuery("from Event e ORDER BY e.start_date").list();
         } catch (Exception ex) {
-            ex.printStackTrace();
+            logger.error(ex.getMessage(),ex);
             return Collections.emptyList();
         }
     }
@@ -38,9 +41,10 @@ public class EventDAOImpl implements EventDAO{
             Session session = sessionFactory.getCurrentSession();
             Query<Event> query = session.createQuery("from Event e where e.patientEvent.id = :id", Event.class);
             query.setParameter("id", patient.getId());
+            logger.info("test");
             return query.list();
         } catch (Exception ex) {
-            ex.printStackTrace();
+            logger.error(ex.getMessage(),ex);
             return Collections.emptyList();
         }
     }
@@ -51,7 +55,7 @@ public class EventDAOImpl implements EventDAO{
             Session session = sessionFactory.getCurrentSession();
             session.persist(event);
         } catch (Exception ex) {
-            ex.printStackTrace();
+            logger.error(ex.getMessage(),ex);
         }
     }
 
@@ -61,7 +65,7 @@ public class EventDAOImpl implements EventDAO{
             Session session = sessionFactory.getCurrentSession();
             session.delete(event);
         } catch (Exception ex) {
-            ex.printStackTrace();
+            logger.error(ex.getMessage(),ex);
         }
     }
 
@@ -71,7 +75,7 @@ public class EventDAOImpl implements EventDAO{
             Session session = sessionFactory.getCurrentSession();
             session.update(event);
         } catch (Exception ex) {
-            ex.printStackTrace();
+            logger.error(ex.getMessage(),ex);
         }
     }
 
@@ -81,7 +85,7 @@ public class EventDAOImpl implements EventDAO{
             Session session = sessionFactory.getCurrentSession();
             return session.get(Event.class, id);
         } catch (Exception ex) {
-            ex.printStackTrace();
+            logger.error(ex.getMessage(),ex);
             return null;
         }
     }

@@ -48,11 +48,9 @@ public class ProcedureService {
      */
     @Transactional(readOnly = true)
     public List<ProcedureDTO> allProcedures() {
-        List<ProcedureDTO> procedures = new ArrayList<>();
-        for (Procedure procedure : procedureDAO.allProcedures()) {
-            procedures.add((ProcedureDTO) DtoUtils.convertToDto(procedure, new ProcedureDTO()));
-        }
-        return procedures;
+        return procedureDAO.allProcedures().stream()
+                .map(procedure -> (ProcedureDTO) DtoUtils.convertToDto(procedure, new ProcedureDTO()))
+                .collect(Collectors.toList());
     }
     /**
      * Service for getting all procedures with pagination.
@@ -61,13 +59,13 @@ public class ProcedureService {
      * @param page - num of page
      * @return list of DTO procedures
      */
+    // TODO convertToDTO(procedure)  <--- do like that
+    // TODO классификатор заболеваний - микросервис
     @Transactional(readOnly = true)
     public List<ProcedureDTO> allProcedures(int page) {
-        List<ProcedureDTO> procedures = new ArrayList<>();
-        for (Procedure procedure : procedureDAO.allProcedures(page)) {
-            procedures.add((ProcedureDTO) DtoUtils.convertToDto(procedure, new ProcedureDTO()));
-        }
-        return procedures;
+        return procedureDAO.allProcedures(page).stream()
+                .map(procedure -> (ProcedureDTO) DtoUtils.convertToDto(procedure, new ProcedureDTO()))
+                .collect(Collectors.toList());
     }
 
     /**
@@ -180,11 +178,9 @@ public class ProcedureService {
      */
     @Transactional(readOnly = true)
     public List<ProcedureDTO> proceduresByPatient(int id) {
-        List<ProcedureDTO> procedures = new ArrayList<>();
-        for (Procedure procedure : procedureDAO.proceduresByPatient(id)) {
-            procedures.add((ProcedureDTO) DtoUtils.convertToDto(procedure, new ProcedureDTO()));
-        }
-        return procedures;
+        return procedureDAO.proceduresByPatient(id).stream()
+                .map(procedure -> (ProcedureDTO) DtoUtils.convertToDto(procedure, new ProcedureDTO()))
+                .collect(Collectors.toList());
     }
 
     /**
@@ -195,11 +191,9 @@ public class ProcedureService {
      */
     @Transactional(readOnly = true)
     public List<ProcedureDTO> proceduresByDate(String date) {
-        List<ProcedureDTO> procedures = new ArrayList<>();
-        for (Procedure procedure : procedureDAO.proceduresByDate(date)) {
-            procedures.add((ProcedureDTO) DtoUtils.convertToDto(procedure, new ProcedureDTO()));
-        }
-        return procedures;
+        return procedureDAO.proceduresByDate(date).stream()
+                .map(procedure -> (ProcedureDTO) DtoUtils.convertToDto(procedure, new ProcedureDTO()))
+                .collect(Collectors.toList());
     }
 
     /**
@@ -208,11 +202,9 @@ public class ProcedureService {
      */
     @Transactional(readOnly = true)
     public List<ProcedureDTO> proceduresForNextHour() {
-        List<ProcedureDTO> procedures = new ArrayList<>();
-        for (Procedure procedure : procedureDAO.proceduresForNextHour()) {
-            procedures.add((ProcedureDTO) DtoUtils.convertToDto(procedure, new ProcedureDTO()));
-        }
-        return procedures;
+        return procedureDAO.proceduresForNextHour().stream()
+                .map(procedure -> (ProcedureDTO) DtoUtils.convertToDto(procedure, new ProcedureDTO()))
+                .collect(Collectors.toList());
     }
 
     @Transactional(readOnly = true)

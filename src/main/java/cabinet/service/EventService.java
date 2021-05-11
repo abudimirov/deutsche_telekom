@@ -7,6 +7,7 @@ import cabinet.model.Patient;
 import cabinet.model.Procedure;
 import cabinet.model.dto.EventDTO;
 import cabinet.model.dto.PatientDTO;
+import cabinet.model.dto.ProcedureDTO;
 import cabinet.utils.DtoUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Stream;
 
 @Service
 public class EventService {
@@ -45,6 +47,12 @@ public class EventService {
             events.add((EventDTO) DtoUtils.convertToDto(event, new EventDTO()));
         }
         return events;
+    }
+
+    @Transactional
+    public void edit(EventDTO eventDTO) {
+        Event event = (Event) DtoUtils.convertToEntity(new Event(), eventDTO);
+        eventDAO.edit(event);
     }
 
     @Transactional
