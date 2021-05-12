@@ -105,30 +105,31 @@
                 <button type="submit" class="btn btn-success">Save changes</button>
             </c:if>
             <c:if test="${!empty patient.name}">
-
-                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
-                    Discharge patient
-                </button>
-                <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Discharge ${patient.name} ${patient.surname}</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                Are you sure you want to discharge ${patient.name} ${patient.surname}? Patient status will be set to "Cured" and all scheduled events will be cancelled.
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <a href="/patients/discharge/${patient.id}" class="btn btn-danger">Discharge patient</a>
+                <c:if test="${patient.cured == false}">
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+                        Discharge patient
+                    </button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Discharge ${patient.name} ${patient.surname}</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    Are you sure you want to discharge ${patient.name} ${patient.surname}? Patient status will be set to "Cured" and all scheduled events will be cancelled.
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <a href="/patients/discharge/${patient.id}" class="btn btn-danger">Discharge patient</a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </c:if>
             </c:if>
         </form>
         <c:if test="${!empty eventsList}">
@@ -143,18 +144,22 @@
                                 <c:forEach var="procedure" items="${event.procedures}" varStatus="i">
                                     <li class="list-group-item">
                                             ${procedure.date} at ${procedure.time} - ${procedure.status}
-                                        <a href="/procedures/edit/${procedure.id}" class="btn btn-link"><i class="fa fa-pencil" aria-hidden="true"></i> edit</a>
+                                            <c:if test="${procedure.status != 'cancelled'}">
+                                                <a href="/procedures/edit/${procedure.id}" class="btn btn-link"><i class="fa fa-pencil" aria-hidden="true"></i> edit</a>
+                                            </c:if>
                                     </li>
                                 </c:forEach>
                             </ul>
                         </p>
-                        <a href="/events/cancel/${event.id}" class="card-link"><i class="fa fa-times" aria-hidden="true"></i> cancel event</a>
+                        <c:if test="${event.status != 'cancelled'}">
+                            <a href="/events/cancel/${event.id}" class="card-link"><i class="fa fa-times" aria-hidden="true"></i> cancel event</a>
+                        </c:if>
                     </div>
                 </div>
             </c:forEach>
         </c:if>
 
-        <c:if test="${!empty patient.name}">
+        <c:if test="${patient.cured == false}">
             <div class="my-5">
                 <a href="<c:url value="/procedures/add"/>" class="btn btn-success btn-block" role="button" aria-pressed="true"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add new event</a>
             </div>

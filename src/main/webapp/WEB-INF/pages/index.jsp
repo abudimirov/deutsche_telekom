@@ -19,13 +19,21 @@
     <script src="https://use.fontawesome.com/e324a589d0.js"></script>
 </head>
 
-<body style="background: #F2F2F2;">
+<body style="background: #cdedf8;">
 <%@ include file="components/nav.jsp" %>
 <div class="container-wide">
     <div class="container my-5">
-        <div class="d-flex flex-wrap justify-content-around mx-auto">
+        <div class="my-3 d-flex flex-row align-items-center">
+            <div class="flex-shrink-1 text-primary">
+                <h1>Welcome to St. Petersburg<br /> Medical Center</h1>
+                <p>St. Petersburg Medical Center is one of the "100 Great Hospitals in Russia," according to Becker's Hospital Review. Offering a full array of health services.</p>
+            </div>
+            <img src="<c:url value="/res/main.jpg" />" style="height: 300px;" alt="friendly doctor" class="img-fluid">
+        </div>
+        <h2 class="my-3 text-primary">Quick start</h2>
+        <div class="d-flex flex-wrap justify-content-start mx-auto">
             <a href="<c:url value="/patients" />">
-                <div class="card px-5 py-3" style="width: 18rem;">
+                <div class="card px-5 py-3 mr-5" style="width: 18rem;">
                     <img src="<c:url value="/res/doctor-svgrepo-com.svg" />" alt="For doctors">
                     <div class="card-body">
                         <p class="card-text">For doctors</p>
@@ -33,7 +41,7 @@
                 </div>
             </a>
             <a href="<c:url value="/procedures" />">
-                <div class="card px-5 py-3" style="width: 18rem;">
+                <div class="card px-5 py-3 mr-5" style="width: 18rem;">
                     <img src="<c:url value="/res/nurse-svgrepo-com.svg" />" alt="For medical personal">
                     <div class="card-body">
                         <p class="card-text">For medical personal</p>

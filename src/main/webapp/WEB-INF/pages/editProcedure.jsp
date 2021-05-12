@@ -75,7 +75,7 @@
                 </sec:authorize>
             </div>
             <div class="form-group" id="dosage">
-                <label for="type">Dosage</label>
+                <label for="type">Dosage (mg)</label>
                 <sec:authorize access="hasRole('NURSE')">
                     <input type="number" readonly id="dose" name="dose" class="form-control-plaintext" value="${procedure.dose}">
                 </sec:authorize>

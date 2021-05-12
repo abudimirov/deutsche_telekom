@@ -59,8 +59,6 @@ public class ProcedureService {
      * @param page - num of page
      * @return list of DTO procedures
      */
-    // TODO convertToDTO(procedure)  <--- do like that
-    // TODO классификатор заболеваний - микросервис
     @Transactional(readOnly = true)
     public List<ProcedureDTO> allProcedures(int page) {
         return procedureDAO.allProcedures(page).stream()
