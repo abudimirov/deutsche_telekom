@@ -140,7 +140,15 @@
                         <h6 class="card-subtitle mb-2 text-muted">From ${event.start_date} to ${event.end_date}</h6>
                         <p class="card-text">
                             <ul class="list-group list-group-flush">
+                                <c:set var="cancelled" value="0" />
+                                <c:set var="done" value="0" />
+                                <c:set var="scheduled" value="0" />
                                 <c:forEach var="procedure" items="${event.procedures}" varStatus="i">
+                                    <!-- Count procedures with status for progress bar -->
+                                    <c:if test="${procedure.status == 'cancelled'}"><c:set var="cancelled" value="${cancelled  + 1}" /></c:if>
+                                    <c:if test="${procedure.status == 'done'}"><c:set var="done" value="${done + 1}" /></c:if>
+                                    <c:if test="${procedure.status == 'scheduled'}"><c:set var="scheduled" value="${scheduled  + 1}" /></c:if>
+
                                     <li class="list-group-item">
                                             ${procedure.date} at ${procedure.time} - ${procedure.status}
                                             <c:if test="${procedure.status != 'cancelled'}">
@@ -149,6 +157,12 @@
                                     </li>
                                 </c:forEach>
                             </ul>
+                            <h4>Progress in event</h4>
+                            <div class="progress">
+                                <div class="progress-bar bg-info" role="progressbar" style="width: ${(scheduled * 100) / event.procedures.size()}%">scheduled ${(scheduled * 100) / event.procedures.size()}%</div>
+                                <div class="progress-bar bg-success" role="progressbar" style="width: ${(done * 100) / event.procedures.size()}%">done ${(done * 100) / event.procedures.size()}%</div>
+                                <div class="progress-bar bg-danger" role="progressbar" style="width: ${(cancelled * 100) / event.procedures.size()}%">cancelled ${(cancelled * 100) / event.procedures.size()}%</div>
+                            </div>
                         </p>
                         <c:if test="${event.status != 'cancelled'}">
                             <a href="/events/cancel/${event.id}" class="card-link"><i class="fa fa-times" aria-hidden="true"></i> cancel event</a>

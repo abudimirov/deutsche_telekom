@@ -64,7 +64,7 @@
                             </td>
                             <td>
                                 <a href="/patients/edit/${patient.id}">
-                                    <i class="fa fa-pencil" aria-hidden="true"></i> edit
+                                    <i class="fa fa-user" aria-hidden="true"></i> view
                                 </a>
                             </td>
                         </tr>
