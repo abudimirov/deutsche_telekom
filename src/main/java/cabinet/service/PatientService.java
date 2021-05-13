@@ -2,8 +2,6 @@ package cabinet.service;
 
 import cabinet.dao.PatientDAO;
 import cabinet.model.Patient;
-import cabinet.model.Procedure;
-import cabinet.model.dto.EventDTO;
 import cabinet.model.dto.PatientDTO;
 import cabinet.utils.DtoUtils;
 import org.springframework.beans.factory.annotation.Autowired;

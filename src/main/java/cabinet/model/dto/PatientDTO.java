@@ -3,16 +3,34 @@ package cabinet.model.dto;
 import cabinet.model.Event;
 import cabinet.model.Procedure;
 
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.util.Objects;
 import java.util.Set;
 
 public class PatientDTO implements DTOEntity {
     private int id;
+
+    @NotNull
+    @Size(min = 2, max = 100, message="Name should be 2 to 100 characters long")
+    @Pattern(regexp = "[^0-9]*", message = "Name must not contain numbers")
     private String name;
+
+    @NotNull
+    @Size(min = 2, max = 100, message="Surname should be 2 to 100 characters long")
+    @Pattern(regexp = "[^0-9]*", message = "Surname must not contain numbers")
     private String surname;
+
     private boolean cured;
+
     private String diagnosis;
+
+    @NotNull
+    @Digits(integer=4, fraction=0, message = "Invalid insurance number. Must be 4 digits")
     private int insuranceNum;
+
     private String doctor;
     private Set<Procedure> procedures;
     private Set<Event> events;

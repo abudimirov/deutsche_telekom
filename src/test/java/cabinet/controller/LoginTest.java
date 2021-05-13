@@ -64,6 +64,8 @@ public class LoginTest {
         String nurseName = profilePage.getUserName();
         //и сравниваем его с логином из файла настроек
         Assert.assertEquals(ConfProperties.getProperty("nurseName"), nurseName);
+
+        //TODO Сделать тест проверки неверных логина-пароля
     }
 
     /**

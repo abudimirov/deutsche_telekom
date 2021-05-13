@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,17 +29,15 @@
         <c:if test="${!empty patient.name}">
             <h1>Edit patient - ${patient.name} ${patient.surname}</h1>
         </c:if>
-        <c:if test="${empty patient.name}">
-            <h1>Add new patient</h1>
-        </c:if>
-        <form action="${var}" method="POST">
+        <form:form action="${var}" method="POST">
+            <div class="text-danger">${errors.fieldError.defaultMessage}</div>
             <c:if test="${!empty patient.name}">
                 <input type="hidden" name="id" value="${patient.id}">
             </c:if>
             <div class="form-group">
                 <label for="name">Name</label>
                 <c:if test="${!empty patient.name}">
-                    <input type="text" class="form-control" name="name" id="name" value="${patient.name}">
+                    <input type="text" class="form-control" name="name" id="name" value="${patient.name}"/>
                 </c:if>
                 <c:if test="${empty patient.name}">
                     <input type="text" class="form-control" name="name" id="name">
@@ -131,7 +130,7 @@
                     </div>
                 </c:if>
             </c:if>
-        </form>
+        </form:form>
         <c:if test="${!empty eventsList}">
             <h2 class="my-3">Patient events</h2>
             <c:forEach var="event" items="${eventsList}" varStatus="i">
