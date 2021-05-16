@@ -38,6 +38,7 @@ public class ProcedureDAOImpl implements ProcedureDAO {
             Session session = sessionFactory.getCurrentSession();
             return session.createQuery("from Procedure p ORDER BY p.date, p.time").list();
         } catch (Exception ex) {
+            logger.debug("get list of all procedures");
             logger.error(ex.getMessage(),ex);
             return Collections.emptyList();
         }
@@ -54,6 +55,7 @@ public class ProcedureDAOImpl implements ProcedureDAO {
             Session session = sessionFactory.getCurrentSession();
             return session.createQuery("from Procedure p ORDER BY p.date, p.time").setFirstResult(10 * (page - 1)).setMaxResults(10).list();
         } catch (Exception ex) {
+            logger.debug("get list of all procedures with pagination");
             logger.error(ex.getMessage(),ex);
             return Collections.emptyList();
         }
@@ -70,6 +72,7 @@ public class ProcedureDAOImpl implements ProcedureDAO {
             Session session = sessionFactory.getCurrentSession();
             session.persist(procedure);
         } catch (Exception ex) {
+            logger.debug("add procedure to the DB");
             logger.error(ex.getMessage(),ex);
         }
     }
@@ -85,6 +88,7 @@ public class ProcedureDAOImpl implements ProcedureDAO {
             Session session = sessionFactory.getCurrentSession();
             session.delete(procedure);
         } catch (Exception ex) {
+            logger.debug("delete procedure from the DB");
             logger.error(ex.getMessage(),ex);
         }
     }
@@ -100,6 +104,7 @@ public class ProcedureDAOImpl implements ProcedureDAO {
             Session session = sessionFactory.getCurrentSession();
             session.update(procedure);
         } catch (Exception ex) {
+            logger.debug("edit procedure in the DB");
             logger.error(ex.getMessage(),ex);
         }
     }
@@ -116,6 +121,7 @@ public class ProcedureDAOImpl implements ProcedureDAO {
             Session session = sessionFactory.getCurrentSession();
             return session.get(Procedure.class, id);
         } catch (Exception ex) {
+            logger.debug("get procedure from the DB by its ID");
             logger.error(ex.getMessage(),ex);
             return null;
         }
@@ -135,6 +141,7 @@ public class ProcedureDAOImpl implements ProcedureDAO {
             query.setParameter("id", id);
             return query.list();
         } catch (Exception ex) {
+            logger.debug("get procedures by patient ID");
             logger.error(ex.getMessage(),ex);
             return Collections.emptyList();
         }
@@ -154,6 +161,7 @@ public class ProcedureDAOImpl implements ProcedureDAO {
             query.setParameter("date", date);
             return query.list();
         } catch (Exception ex) {
+            logger.debug("get procedures by date");
             logger.error(ex.getMessage(),ex);
             return Collections.emptyList();
         }
@@ -181,6 +189,7 @@ public class ProcedureDAOImpl implements ProcedureDAO {
             query.setParameter("hourFromNow", timeFormat.format(hourFromNow));
             return query.list();
         } catch (Exception ex) {
+            logger.debug("get procedures for the next hour");
             logger.error(ex.getMessage(),ex);
             return Collections.emptyList();
         }
@@ -199,6 +208,7 @@ public class ProcedureDAOImpl implements ProcedureDAO {
                     .getSingleResult()
                     .intValue();
         } catch (Exception ex) {
+            logger.debug("count all procedures");
             logger.error(ex.getMessage(),ex);
             return 0;
         }

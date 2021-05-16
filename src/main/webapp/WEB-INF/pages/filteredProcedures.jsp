@@ -22,7 +22,7 @@
 <%@ include file="components/nav.jsp" %>
 <div class="container-wide">
     <div class="row my-5 mx-auto">
-        <div class="col-lg-10 p-3 mx-auto" style="background: #FFF;">
+        <div class="container p-3 mx-auto" style="background: #FFF;">
             <div class="d-flex justify-content-between align-items-center py-3">
                 <h1>Filtered procedures</h1>
                 <div class="date">

@@ -151,18 +151,22 @@
 
                                     <li class="list-group-item">
                                             ${procedure.date} at ${procedure.time} - ${procedure.status}
-                                            <c:if test="${procedure.status != 'cancelled'}">
-                                                <a href="/procedures/edit/${procedure.id}" class="btn btn-link"><i class="fa fa-pencil" aria-hidden="true"></i> edit</a>
-                                            </c:if>
+                                                <c:if test="${event.status != 'cancelled'}">
+                                                    <c:if test="${procedure.status != 'cancelled'}">
+                                                    <a href="/procedures/edit/${procedure.id}" class="btn btn-link"><i class="fa fa-pencil" aria-hidden="true"></i> edit</a>
+                                                    </c:if>
+                                                </c:if>
                                     </li>
                                 </c:forEach>
                             </ul>
-                            <h4>Progress in event</h4>
-                            <div class="progress">
-                                <div class="progress-bar bg-info" role="progressbar" style="width: ${(scheduled * 100) / event.procedures.size()}%">scheduled ${(scheduled * 100) / event.procedures.size()}%</div>
-                                <div class="progress-bar bg-success" role="progressbar" style="width: ${(done * 100) / event.procedures.size()}%">done ${(done * 100) / event.procedures.size()}%</div>
-                                <div class="progress-bar bg-danger" role="progressbar" style="width: ${(cancelled * 100) / event.procedures.size()}%">cancelled ${(cancelled * 100) / event.procedures.size()}%</div>
-                            </div>
+                            <c:if test="${patient.cured == false}">
+                                <h4>Progress in event</h4>
+                                <div class="progress">
+                                    <div class="progress-bar bg-info" role="progressbar" style="width: ${(scheduled * 100) / event.procedures.size()}%">scheduled ${(scheduled * 100) / event.procedures.size()}%</div>
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: ${(done * 100) / event.procedures.size()}%">done ${(done * 100) / event.procedures.size()}%</div>
+                                    <div class="progress-bar bg-danger" role="progressbar" style="width: ${(cancelled * 100) / event.procedures.size()}%">cancelled ${(cancelled * 100) / event.procedures.size()}%</div>
+                                </div>
+                            </c:if>
                         </p>
                         <c:if test="${event.status != 'cancelled'}">
                             <a href="/events/cancel/${event.id}" class="card-link"><i class="fa fa-times" aria-hidden="true"></i> cancel event</a>

@@ -7,6 +7,7 @@ import cabinet.service.PatientService;
 import cabinet.service.ProcedureService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Set;
 
@@ -78,10 +80,16 @@ public class ProcedureController {
     }
 
     @PostMapping(path = "/procedures/add")
-    public ModelAndView addProcedure(@ModelAttribute("procedure") ProcedureDTO procedure) {
+    public ModelAndView addProcedure(@Valid @ModelAttribute("procedure") ProcedureDTO procedure, BindingResult result) {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName(PATIENTS_REDIRECT);
-        procedureService.add(procedure);
+        if (result.hasErrors()){
+            modelAndView.setViewName("addProcedure");
+            modelAndView.addObject("errors", result);
+        } else {
+            modelAndView.setViewName(PATIENTS_REDIRECT);
+            procedureService.add(procedure);
+        }
+
         return modelAndView;
     }
 

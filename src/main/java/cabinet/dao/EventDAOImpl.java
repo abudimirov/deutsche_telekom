@@ -30,6 +30,7 @@ public class EventDAOImpl implements EventDAO{
             Session session = sessionFactory.getCurrentSession();
             return session.createQuery("from Event e ORDER BY e.start_date").list();
         } catch (Exception ex) {
+            logger.debug("get list of all events");
             logger.error(ex.getMessage(),ex);
             return Collections.emptyList();
         }
@@ -44,6 +45,7 @@ public class EventDAOImpl implements EventDAO{
             logger.info("test");
             return query.list();
         } catch (Exception ex) {
+            logger.debug("get event by patient");
             logger.error(ex.getMessage(),ex);
             return Collections.emptyList();
         }
@@ -55,6 +57,7 @@ public class EventDAOImpl implements EventDAO{
             Session session = sessionFactory.getCurrentSession();
             session.persist(event);
         } catch (Exception ex) {
+            logger.debug("add event to the DB");
             logger.error(ex.getMessage(),ex);
         }
     }
@@ -65,6 +68,7 @@ public class EventDAOImpl implements EventDAO{
             Session session = sessionFactory.getCurrentSession();
             session.delete(event);
         } catch (Exception ex) {
+            logger.debug("delete event from the DB");
             logger.error(ex.getMessage(),ex);
         }
     }
@@ -75,6 +79,7 @@ public class EventDAOImpl implements EventDAO{
             Session session = sessionFactory.getCurrentSession();
             session.update(event);
         } catch (Exception ex) {
+            logger.debug("edit event in the DB");
             logger.error(ex.getMessage(),ex);
         }
     }
@@ -85,6 +90,7 @@ public class EventDAOImpl implements EventDAO{
             Session session = sessionFactory.getCurrentSession();
             return session.get(Event.class, id);
         } catch (Exception ex) {
+            logger.debug("get event by its ID");
             logger.error(ex.getMessage(),ex);
             return null;
         }

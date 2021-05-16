@@ -16,6 +16,7 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
@@ -78,24 +79,14 @@ public class ProcedureService {
      */
     @Transactional
     public void add(ProcedureDTO procedureDTO) {
-        final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        LocalDate startDate = LocalDate.parse(procedureDTO.getStartDate(), dtf);
-        LocalDate endDate = LocalDate.parse(procedureDTO.getEndDate(), dtf);
+
+        final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+        String[] dates = procedureDTO.getDates().split("-");
+        LocalDate startDate = LocalDate.parse(dates[0].trim(), dtf);
+        LocalDate endDate = LocalDate.parse(dates[1].trim(), dtf);
         List<LocalDate> dateRange = getDatesBetween(startDate, endDate);
 
-        /**
-         * If "Replace" is checked in View (isUpdated = true) we set all procedures for
-         * patient to cancelled and add new ones.
-         * If "Replace" is false we simply add new procedures.
-         * */
-
-        if (procedureDTO.isUpdated()) {
-            Patient patient = patientDAO.getById(procedureDTO.getPatient().getId());
-            patientDAO.cancelProcedures(patient);
-
-        }
-
-        Event event = new Event(procedureDTO.getTitle(), procedureDTO.getStartDate(), procedureDTO.getEndDate(), procedureDTO.getStatus(), procedureDTO.getPatient());
+        Event event = new Event(procedureDTO.getTitle(), startDate.toString(), endDate.toString(), procedureDTO.getStatus(), procedureDTO.getPatient());
         eventDAO.add(event);
 
         for (LocalDate date : dateRange) {

@@ -14,14 +14,22 @@ public class ProcedureDTO implements DTOEntity {
     private String title;
     private String date;
     private String time;
-    private String startDate;
-    private String endDate;
+    private String dates;
     private String dailyPattern;
     private List<String> weeklyPattern;
     private String status;
     private String type;
     private int dose;
     private boolean updated;
+
+
+    public String getDates() {
+        return dates;
+    }
+
+    public void setDates(String dates) {
+        this.dates = dates;
+    }
 
     public boolean isUpdated() {
         return updated;
@@ -31,21 +39,6 @@ public class ProcedureDTO implements DTOEntity {
         this.updated = updated;
     }
 
-    public String getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(String startDate) {
-        this.startDate = startDate;
-    }
-
-    public String getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(String endDate) {
-        this.endDate = endDate;
-    }
 
     public String getDailyPattern() {
         return dailyPattern;
@@ -159,8 +152,6 @@ public class ProcedureDTO implements DTOEntity {
                 Objects.equals(title, that.title) &&
                 Objects.equals(date, that.date) &&
                 Objects.equals(time, that.time) &&
-                Objects.equals(startDate, that.startDate) &&
-                Objects.equals(endDate, that.endDate) &&
                 Objects.equals(dailyPattern, that.dailyPattern) &&
                 Objects.equals(weeklyPattern, that.weeklyPattern) &&
                 Objects.equals(status, that.status) &&
@@ -169,6 +160,6 @@ public class ProcedureDTO implements DTOEntity {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, patient_id, event, patient, title, date, time, startDate, endDate, dailyPattern, weeklyPattern, status, type, dose, updated);
+        return Objects.hash(id, patient_id, event, patient, title, date, time, dailyPattern, weeklyPattern, status, type, dose, updated);
     }
 }

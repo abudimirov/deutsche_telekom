@@ -37,6 +37,7 @@ public class PatientDAOImpl implements PatientDAO {
             Session session = sessionFactory.getCurrentSession();
             return session.createQuery("from Patient p ORDER BY p.name, p.surname").list();
         } catch (Exception ex) {
+            logger.debug("getting list of all patients");
             logger.error(ex.getMessage(),ex);
             return Collections.emptyList();
         }
@@ -53,6 +54,7 @@ public class PatientDAOImpl implements PatientDAO {
             Session session = sessionFactory.getCurrentSession();
             return session.createQuery("from Patient p").setFirstResult(10 * (page - 1)).setMaxResults(10).list();
         } catch (Exception ex) {
+            logger.debug("getting list of all patients with pagination");
             logger.error(ex.getMessage(),ex);
             return Collections.emptyList();
         }
@@ -69,6 +71,7 @@ public class PatientDAOImpl implements PatientDAO {
             Session session = sessionFactory.getCurrentSession();
             session.persist(patient);
         } catch (Exception ex) {
+            logger.debug("add patient to the DB");
             logger.error(ex.getMessage(),ex);
         }
     }
@@ -97,6 +100,7 @@ public class PatientDAOImpl implements PatientDAO {
             }
             session.update(patient);
         } catch (Exception ex) {
+            logger.debug("discharging patient");
             logger.error(ex.getMessage(),ex);
         }
     }
@@ -118,6 +122,7 @@ public class PatientDAOImpl implements PatientDAO {
             }
             session.update(patient);
         } catch (Exception ex) {
+            logger.debug("cancel procedures for patient");
             logger.error(ex.getMessage(),ex);
         }
 
@@ -134,6 +139,7 @@ public class PatientDAOImpl implements PatientDAO {
             Session session = sessionFactory.getCurrentSession();
             session.update(patient);
         } catch (Exception ex) {
+            logger.debug("edit patient in the DB");
             logger.error(ex.getMessage(),ex);
         }
     }
@@ -150,6 +156,7 @@ public class PatientDAOImpl implements PatientDAO {
             Session session = sessionFactory.getCurrentSession();
             return session.get(Patient.class, id);
         } catch (Exception ex) {
+            logger.debug("get patient by ID from DB");
             logger.error(ex.getMessage(),ex);
             return null;
         }
@@ -166,6 +173,7 @@ public class PatientDAOImpl implements PatientDAO {
             Session session = sessionFactory.getCurrentSession();
             return session.createQuery("select count(*) from Patient ", Number.class).getSingleResult().intValue();
         } catch (Exception ex) {
+            logger.debug("count all patients");
             logger.error(ex.getMessage(),ex);
             return 0;
         }

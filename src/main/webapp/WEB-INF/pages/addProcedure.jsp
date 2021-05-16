@@ -10,6 +10,9 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
     <script src="https://use.fontawesome.com/e324a589d0.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 </head>
 <body>
 <%@ include file="components/nav.jsp" %>
@@ -22,10 +25,6 @@
                 <label for="title">Title</label>
                 <input type="text" class="form-control" name="title" id="title">
             </div>
-            <%--<div class="form-group">
-                <label for="patient.id">Patient ID</label>
-                <input type="text" class="form-control" name="patient.id" id="patient.id">
-            </div>--%>
             <div class="form-group">
                 <label for="patient.id">Patient</label>
                 <select id="patient.id" name="patient.id" class="form-control">
@@ -46,12 +45,8 @@
                 <input type="number" id="dose" name="dose" class="form-control" value="0">
             </div>
             <div class="form-group">
-                <label for="startDate">Start date</label>
-                <input type="date" class="form-control" name="startDate" id="startDate">
-            </div>
-            <div class="form-group">
-                <label for="endDate">End date</label>
-                <input type="date" class="form-control" name="endDate" id="endDate">
+                <label for="dates">Range dates</label>
+                <input type="text" class="form-control" name="dates" id="dates">
             </div>
             <div class="form-group">
                 <label for="status">Status</label>
@@ -60,10 +55,6 @@
                     <option>cancelled</option>
                     <option>done</option>
                 </select>
-            </div>
-            <div class="form-group">
-                <label for="updated">Replace procedures</label>
-                <input type="checkbox" id="updated" name="updated" /> Replace
             </div>
             <div class="form-group">
                 <label for="status">Daily pattern</label>
@@ -99,5 +90,8 @@
             }
         });
     });
+</script>
+<script>
+    $('input[name="dates"]').daterangepicker();
 </script>
 </html>

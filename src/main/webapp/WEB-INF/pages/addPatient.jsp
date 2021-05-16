@@ -18,12 +18,13 @@
 <div class="container">
     <div class="my-5 p-5" style="background: #fff;">
         <h1>Add new patient</h1>
-        <form:form action="${var}" method="POST">
+        <form:form action="${var}" method="POST" modelAttribute="patient">
             <div class="text-danger">${errors.fieldError.defaultMessage}</div>
             <div class="form-group">
                 <label for="name">Name</label>
                 <c:if test="${!empty patient.name}">
                     <input type="text" class="form-control" name="name" id="name" value="${patient.name}"/>
+                    <form:errors path="name" />
                 </c:if>
                 <c:if test="${empty patient.name}">
                     <input type="text" class="form-control" name="name" id="name" required>
@@ -33,6 +34,7 @@
                 <label for="surname">Surname</label>
                 <c:if test="${!empty patient.surname}">
                     <input type="text" class="form-control" name="surname" id="surname" value="${patient.surname}">
+                    <form:errors path="surname" />
                 </c:if>
                 <c:if test="${empty patient.surname}">
                     <input type="text" class="form-control" name="surname" id="surname" required>
