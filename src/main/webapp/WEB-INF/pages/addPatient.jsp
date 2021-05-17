@@ -19,12 +19,11 @@
     <div class="my-5 p-5" style="background: #fff;">
         <h1>Add new patient</h1>
         <form:form action="${var}" method="POST" modelAttribute="patient">
-            <div class="text-danger">${errors.fieldError.defaultMessage}</div>
             <div class="form-group">
                 <label for="name">Name</label>
                 <c:if test="${!empty patient.name}">
-                    <input type="text" class="form-control" name="name" id="name" value="${patient.name}"/>
-                    <form:errors path="name" />
+                    <input type="text" class="form-control" name="name" id="name" value="${patient.name}" required />
+                    <form:errors path="name" cssClass="text-danger" />
                 </c:if>
                 <c:if test="${empty patient.name}">
                     <input type="text" class="form-control" name="name" id="name" required>
@@ -34,7 +33,7 @@
                 <label for="surname">Surname</label>
                 <c:if test="${!empty patient.surname}">
                     <input type="text" class="form-control" name="surname" id="surname" value="${patient.surname}">
-                    <form:errors path="surname" />
+                    <form:errors path="surname" cssClass="text-danger" />
                 </c:if>
                 <c:if test="${empty patient.surname}">
                     <input type="text" class="form-control" name="surname" id="surname" required>
@@ -43,10 +42,11 @@
             <div class="form-group">
                 <label for="insuranceNum">Insurance Number</label>
                 <c:if test="${!empty patient.insuranceNum}">
-                    <input type="number"  class="form-control" name="insuranceNum" id="insuranceNum" value="${patient.insuranceNum}">
+                    <input type="number" min="1000" max="9999" class="form-control" name="insuranceNum" id="insuranceNum" value="${patient.insuranceNum}">
+                    <form:errors path="insuranceNum" cssClass="text-danger" />
                 </c:if>
                 <c:if test="${empty patient.insuranceNum}">
-                    <input type="number"  class="form-control" name="insuranceNum" id="insuranceNum" required>
+                    <input type="number" min="1000" max="9999" class="form-control" name="insuranceNum" id="insuranceNum" required>
                 </c:if>
             </div>
             <div class="form-group">

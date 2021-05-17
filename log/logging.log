@@ -1,0 +1,35 @@
+2021-05-16 11:09:26 INFO  Version:46 - HHH000412: Hibernate Core {5.3.7.Final}
+2021-05-16 11:09:26 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2021-05-16 11:09:26 INFO  Version:49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2021-05-16 11:09:28 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-05-16 11:09:29 INFO  Version:21 - HV000001: Hibernate Validator 6.0.10.Final
+2021-05-16 11:09:35 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-05-16 11:10:05 INFO  AbstractServiceRegistryImpl:392 - HHH000369: Error stopping service [class org.hibernate.resource.beans.internal.ManagedBeanRegistryImpl] : java.lang.IllegalStateException: java.io.FileNotFoundException: C:\Users\Alex\IdeaProjects\rohs-admin\target\rohs-admin-1.0-SNAPSHOT\WEB-INF\lib\animal-sniffer-annotations-1.14.jar (Системе не удается найти указанный путь)
+2021-05-16 11:10:05 INFO  AbstractServiceRegistryImpl:392 - HHH000369: Error stopping service [class org.hibernate.resource.beans.internal.ManagedBeanRegistryImpl] : java.lang.IllegalStateException: java.io.FileNotFoundException: C:\Users\Alex\IdeaProjects\rohs-admin\target\rohs-admin-1.0-SNAPSHOT\WEB-INF\lib\animal-sniffer-annotations-1.14.jar (Системе не удается найти указанный путь)
+2021-05-16 11:12:03 INFO  Version:46 - HHH000412: Hibernate Core {5.3.7.Final}
+2021-05-16 11:12:03 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2021-05-16 11:12:04 INFO  Version:49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2021-05-16 11:12:05 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-05-16 11:12:07 INFO  Version:21 - HV000001: Hibernate Validator 6.0.10.Final
+2021-05-16 11:12:13 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-05-16 11:12:53 INFO  AbstractServiceRegistryImpl:392 - HHH000369: Error stopping service [class org.hibernate.resource.beans.internal.ManagedBeanRegistryImpl] : java.lang.IllegalStateException: java.io.FileNotFoundException: C:\Users\Alex\IdeaProjects\rohs-admin\target\rohs-admin-1.0-SNAPSHOT\WEB-INF\lib\animal-sniffer-annotations-1.14.jar (Системе не удается найти указанный путь)
+2021-05-16 11:12:53 INFO  AbstractServiceRegistryImpl:392 - HHH000369: Error stopping service [class org.hibernate.resource.beans.internal.ManagedBeanRegistryImpl] : java.lang.IllegalStateException: java.io.FileNotFoundException: C:\Users\Alex\IdeaProjects\rohs-admin\target\rohs-admin-1.0-SNAPSHOT\WEB-INF\lib\animal-sniffer-annotations-1.14.jar (Системе не удается найти указанный путь)
+2021-05-17 18:59:48 INFO  Version:46 - HHH000412: Hibernate Core {5.3.7.Final}
+2021-05-17 18:59:48 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2021-05-17 18:59:49 INFO  Version:49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2021-05-17 18:59:54 WARN  JdbcEnvironmentInitiator:132 - HHH000342: Could not obtain connection to query metadata : Cannot create PoolableConnectionFactory (Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.)
+2021-05-17 18:59:54 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-05-17 18:59:54 INFO  LobCreatorBuilderImpl:63 - HHH000422: Disabling contextual LOB creation as connection was null
+2021-05-17 18:59:56 INFO  Version:21 - HV000001: Hibernate Validator 6.0.10.Final
+2021-05-17 19:00:06 WARN  JdbcEnvironmentInitiator:132 - HHH000342: Could not obtain connection to query metadata : Cannot create PoolableConnectionFactory (Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.)
+2021-05-17 19:00:06 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-05-17 19:00:06 INFO  LobCreatorBuilderImpl:63 - HHH000422: Disabling contextual LOB creation as connection was null
+2021-05-17 19:01:12 WARN  SqlExceptionHelper:137 - SQL Error: 0, SQLState: null
+2021-05-17 19:01:12 ERROR SqlExceptionHelper:142 - Cannot create PoolableConnectionFactory (Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.)
+2021-05-17 19:01:28 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
