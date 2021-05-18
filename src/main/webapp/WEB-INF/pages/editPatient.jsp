@@ -155,8 +155,11 @@
                                             ${procedure.date} at ${procedure.time} - ${procedure.status}
                                                 <c:if test="${event.status != 'cancelled'}">
                                                     <c:if test="${procedure.status != 'cancelled'}">
-                                                    <a href="/procedures/edit/${procedure.id}" class="btn btn-link"><i class="fa fa-pencil" aria-hidden="true"></i> edit</a>
+                                                        <a href="/procedures/edit/${procedure.id}" class="btn btn-link"><i class="fa fa-pencil" aria-hidden="true"></i> edit</a>
                                                     </c:if>
+                                                </c:if>
+                                                <c:if test="${procedure.status == 'cancelled'}">
+                                                    <div class="text-secondary">Nurse comment - ${procedure.comment}</div>
                                                 </c:if>
                                     </li>
                                 </c:forEach>

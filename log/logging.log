@@ -106,3 +106,65 @@ The last packet sent successfully to the server was 0 milliseconds ago. The driv
 2021-05-18 20:05:36 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
 2021-05-18 20:05:38 INFO  Version:21 - HV000001: Hibernate Validator 6.0.10.Final
 2021-05-18 20:05:45 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-05-18 20:07:48 INFO  Version:46 - HHH000412: Hibernate Core {5.3.7.Final}
+2021-05-18 20:07:48 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2021-05-18 20:07:49 INFO  Version:49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2021-05-18 20:07:50 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-05-18 20:07:52 INFO  Version:21 - HV000001: Hibernate Validator 6.0.10.Final
+2021-05-18 20:07:58 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-05-18 20:08:18 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2021-05-18 20:08:25 INFO  EventDAOImpl:45 - test
+2021-05-18 20:08:48 INFO  EventDAOImpl:45 - test
+2021-05-18 20:14:37 INFO  Version:46 - HHH000412: Hibernate Core {5.3.7.Final}
+2021-05-18 20:14:37 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2021-05-18 20:14:38 INFO  Version:49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2021-05-18 20:14:39 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-05-18 20:14:41 INFO  Version:21 - HV000001: Hibernate Validator 6.0.10.Final
+2021-05-18 20:14:46 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-05-18 20:15:01 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2021-05-18 20:18:25 INFO  Version:46 - HHH000412: Hibernate Core {5.3.7.Final}
+2021-05-18 20:18:25 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2021-05-18 20:18:26 INFO  Version:49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2021-05-18 20:18:27 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-05-18 20:18:29 INFO  Version:21 - HV000001: Hibernate Validator 6.0.10.Final
+2021-05-18 20:18:34 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-05-18 20:18:49 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2021-05-18 20:38:13 INFO  Version:46 - HHH000412: Hibernate Core {5.3.7.Final}
+2021-05-18 20:38:13 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2021-05-18 20:38:13 INFO  Version:49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2021-05-18 20:38:15 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-05-18 20:38:16 INFO  Version:21 - HV000001: Hibernate Validator 6.0.10.Final
+2021-05-18 20:38:22 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-05-18 20:38:52 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2021-05-18 21:06:14 INFO  Version:46 - HHH000412: Hibernate Core {5.3.7.Final}
+2021-05-18 21:06:14 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2021-05-18 21:06:15 INFO  Version:49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2021-05-18 21:06:15 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-05-18 21:06:16 INFO  Version:21 - HV000001: Hibernate Validator 6.0.10.Final
+2021-05-18 21:06:19 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-05-18 21:06:30 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2021-05-18 21:14:42 INFO  Version:46 - HHH000412: Hibernate Core {5.3.7.Final}
+2021-05-18 21:14:42 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2021-05-18 21:14:42 INFO  Version:49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2021-05-18 21:14:43 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-05-18 21:14:43 INFO  Version:21 - HV000001: Hibernate Validator 6.0.10.Final
+2021-05-18 21:14:47 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-05-18 21:14:57 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2021-05-18 21:16:17 INFO  EventDAOImpl:45 - test
+2021-05-18 21:21:02 INFO  EventDAOImpl:45 - test
+2021-05-18 21:21:06 INFO  EventDAOImpl:45 - test
+2021-05-18 21:22:00 INFO  EventDAOImpl:45 - test
+2021-05-18 21:24:10 INFO  EventDAOImpl:45 - test
+2021-05-18 21:25:19 INFO  EventDAOImpl:45 - test
+2021-05-18 21:29:02 INFO  EventDAOImpl:45 - test
+2021-05-18 21:29:46 INFO  EventDAOImpl:45 - test
+2021-05-18 21:32:38 INFO  EventDAOImpl:45 - test
+2021-05-18 21:34:29 INFO  EventDAOImpl:45 - test
+2021-05-18 21:34:48 INFO  EventDAOImpl:45 - test
+2021-05-18 21:35:01 INFO  EventDAOImpl:45 - test
+2021-05-18 21:35:27 INFO  EventDAOImpl:45 - test
+2021-05-18 21:35:37 INFO  EventDAOImpl:45 - test
+2021-05-18 21:35:48 INFO  EventDAOImpl:45 - test
+2021-05-18 21:39:46 INFO  EventDAOImpl:45 - test
+2021-05-18 21:39:53 INFO  EventDAOImpl:45 - test
+2021-05-18 21:40:44 INFO  EventDAOImpl:45 - test

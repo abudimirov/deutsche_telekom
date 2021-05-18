@@ -137,7 +137,7 @@ public class ProcedureDAOImpl implements ProcedureDAO {
     public List<Procedure> proceduresByPatient(int id) {
         try {
             Session session = sessionFactory.getCurrentSession();
-            Query<Procedure> query = session.createQuery("from Procedure p where p.patient.id = :id", Procedure.class);
+            Query<Procedure> query = session.createQuery("from Procedure p where p.patient.id = :id ORDER BY p.date, p.time", Procedure.class);
             query.setParameter("id", id);
             return query.list();
         } catch (Exception ex) {

@@ -25,7 +25,7 @@
     <div class="row my-5 mx-auto">
         <div class="container p-3 mx-auto" style="background: #FFF;">
             <div class="d-flex justify-content-between align-items-center py-3">
-                <h1 class="main">Procedures</h1>
+                <h1 class="main">Events</h1>
                 <div class="date">
                     <jsp:useBean id="now" class="java.util.Date"/>
                     <fmt:formatDate value="${now}" dateStyle="long"/>
@@ -42,7 +42,8 @@
                     <thead>
                         <tr>
                             <th scope="col" class="text-left">#</th>
-                            <th scope="col">Procedure</th>
+                            <th scope="col">Event</th>
+                            <th scope="col">Type</th>
                             <th scope="col">Date</th>
                             <th scope="col">Time</th>
                             <th scope="col">Patient</th>
@@ -55,14 +56,17 @@
                         <tr>
                             <td class="left-side">${i.index + 1 + (page - 1) * 10}</td>
                             <td class="name">${procedure.title}</td>
+                            <td>${procedure.type}</td>
                             <td class="surname">${procedure.date}</td>
                             <td>${procedure.time}</td>
                             <td><a href="<c:url value="/procedures/patient/${procedure.patient.id}"/>">${procedure.patient.name} ${procedure.patient.surname}</a></td>
                             <td>${procedure.status}</td>
                             <td>
-                                <a href="/procedures/edit/${procedure.id}">
-                                    <i class="fa fa-pencil" aria-hidden="true"></i> edit
-                                </a>
+                                <c:if test="${procedure.status == 'scheduled'}">
+                                    <a href="/procedures/edit/${procedure.id}">
+                                        <i class="fa fa-pencil" aria-hidden="true"></i> edit
+                                    </a>
+                                </c:if>
                             </td>
                         </tr>
                     </c:forEach>

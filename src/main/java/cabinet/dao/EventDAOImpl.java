@@ -42,7 +42,6 @@ public class EventDAOImpl implements EventDAO{
             Session session = sessionFactory.getCurrentSession();
             Query<Event> query = session.createQuery("from Event e where e.patientEvent.id = :id", Event.class);
             query.setParameter("id", patient.getId());
-            logger.info("test");
             return query.list();
         } catch (Exception ex) {
             logger.debug("get event by patient");

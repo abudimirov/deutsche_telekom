@@ -48,6 +48,9 @@ public class Procedure {
     @Column(name = "dose")
     private int dose;
 
+    @Column(name = "comment")
+    private String comment;
+
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "event_id", nullable = false)
     private Event event;
@@ -55,7 +58,7 @@ public class Procedure {
     public Procedure() {
     }
 
-    public Procedure(int id, Patient patient, String title, String date, String time, String status, String type, int dose, Event event) {
+    public Procedure(int id, Patient patient, String title, String date, String time, String status, String type, int dose, Event event, String comment) {
         this.id = id;
         this.patient = patient;
         this.title = title;
@@ -65,6 +68,7 @@ public class Procedure {
         this.type = type;
         this.dose = dose;
         this.event = event;
+        this.comment = comment;
     }
 
     public int getId() {
@@ -139,4 +143,11 @@ public class Procedure {
         this.event = event;
     }
 
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
 }

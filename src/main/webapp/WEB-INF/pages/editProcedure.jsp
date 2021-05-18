@@ -86,10 +86,16 @@
             <div class="form-group">
                 <label for="status">Current status is <strong>${procedure.status}</strong>. Set status</label>
                 <select id="status" name="status" class="custom-select">
+                    <sec:authorize access="hasRole('DOCTOR')">
                     <option selected>scheduled</option>
+                    </sec:authorize>
                     <option>cancelled</option>
                     <option>done</option>
                 </select>
+            </div>
+            <div class="form-group" id="comment-block" style="display: none;">
+                <label for="comment">Please, provide explanation why it's cancelled</label>
+                <input type="text" name="comment" id="comment">
             </div>
             <button type="submit" class="btn btn-success">Save changes</button>
         </form>
@@ -109,4 +115,20 @@
         });
     });
 </script>
+<script>
+    $(function () {
+        $("#status").change(function() {
+            var val = $(this).val();
+            if(val === "cancelled") {
+                $("#comment-block").show();
+                $("#comment").prop('required', true);
+            }
+            else if(val !== "cancelled") {
+                $("#comment-block").hide();
+                $("#comment").prop('required', false)
+            }
+        });
+    });
+</script>
+
 </html>

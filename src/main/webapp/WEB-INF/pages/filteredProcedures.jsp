@@ -58,9 +58,11 @@
                             <td><a href="<c:url value="/procedures/patient/${procedure.patient.id}"/>">${procedure.patient.name} ${procedure.patient.surname}</a></td>
                             <td>${procedure.status}</td>
                             <td>
-                                <a href="/procedures/edit/${procedure.id}">
-                                    <i class="fa fa-pencil" aria-hidden="true"></i> edit
-                                </a>
+                                <c:if test="${procedure.status == 'scheduled'}">
+                                    <a href="/procedures/edit/${procedure.id}">
+                                        <i class="fa fa-pencil" aria-hidden="true"></i> edit
+                                    </a>
+                                </c:if>
                             </td>
                         </tr>
                     </c:forEach>

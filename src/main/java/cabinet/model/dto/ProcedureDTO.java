@@ -21,6 +21,7 @@ public class ProcedureDTO implements DTOEntity {
     private String type;
     private int dose;
     private boolean updated;
+    private String comment;
 
 
     public String getDates() {
@@ -136,6 +137,14 @@ public class ProcedureDTO implements DTOEntity {
 
     public void setEvent(Event event) {
         this.event = event;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 
     @Override
