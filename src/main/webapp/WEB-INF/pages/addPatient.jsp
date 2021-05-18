@@ -55,7 +55,7 @@
                     <input type="text" class="form-control" name="doctor" id="doctor" value="${patient.doctor}">
                 </c:if>
                 <c:if test="${empty patient.doctor}">
-                    <input type="text" class="form-control" name="doctor" id="doctor">
+                    <input type="text" class="form-control" name="doctor" id="doctor" required>
                 </c:if>
             </div>
             <div class="form-group">

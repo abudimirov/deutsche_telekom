@@ -21,7 +21,7 @@ public class EventController {
     @GetMapping(path = "/events/cancel/{id}")
     public ModelAndView cancelEvent(@PathVariable("id") int id) {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("patients");
+        modelAndView.setViewName("redirect:/patients/");
         EventDTO eventDTO = eventService.getById(id);
         eventService.cancel(eventDTO);
         return modelAndView;

@@ -26,16 +26,16 @@
                     <input type="text" class="form-control" name="title" id="title" value="${procedure.title}">
                 </sec:authorize>
             </div>
-            <div class="form-group">
+            <div class="form-group d-none">
                 <label for="patient.id">Patient ID</label>
                 <sec:authorize access="hasRole('NURSE')">
                     <input type="text" class="form-control-plaintext" name="patient.id" id="patient.id" value="${procedure.patient.id}" readonly>
                 </sec:authorize>
                 <sec:authorize access="hasRole('DOCTOR')">
-                    <input type="text" class="form-control" name="patient.id" id="patient.id" value="${procedure.patient.id}">
+                    <input type="text" class="form-control" name="patient.id" id="patient.id" value="${procedure.patient.id}" readonly>
                 </sec:authorize>
             </div>
-            <div class="form-group">
+            <div class="form-group d-none">
                 <label for="patient.id">Event ID</label>
                 <sec:authorize access="hasRole('NURSE')">
                     <input type="text" class="form-control-plaintext" name="event.id" id="event.id" value="${procedure.event.id}" readonly>

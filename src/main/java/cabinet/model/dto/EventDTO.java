@@ -2,7 +2,12 @@ package cabinet.model.dto;
 
 import cabinet.model.Patient;
 import cabinet.model.Procedure;
+import cabinet.utils.ProcedureSorter;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 import java.util.Set;
 
 public class EventDTO implements DTOEntity {
@@ -54,8 +59,10 @@ public class EventDTO implements DTOEntity {
         this.status = status;
     }
 
-    public Set<Procedure> getProcedures() {
-        return procedures;
+    public List<Procedure> getProcedures() {
+        ArrayList<Procedure> proceduresList = new ArrayList<>(procedures);
+        Collections.sort(proceduresList, new ProcedureSorter());
+        return proceduresList;
     }
 
     public void setProcedures(Set<Procedure> procedures) {

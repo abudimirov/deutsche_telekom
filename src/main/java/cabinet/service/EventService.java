@@ -56,7 +56,7 @@ public class EventService {
     @Transactional
     public void cancel(EventDTO eventDTO) {
         eventDTO.setStatus("cancelled");
-        Set<Procedure> procedures = eventDTO.getProcedures();
+        List<Procedure> procedures = eventDTO.getProcedures();
         for (Procedure procedure : procedures) {
             if (procedure.getStatus().equals("scheduled")) {
                 procedure.setStatus("cancelled");
