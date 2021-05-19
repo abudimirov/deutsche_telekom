@@ -89,8 +89,8 @@
                     <sec:authorize access="hasRole('DOCTOR')">
                     <option selected>scheduled</option>
                     </sec:authorize>
-                    <option>cancelled</option>
                     <option>done</option>
+                    <option>cancelled</option>
                 </select>
             </div>
             <div class="form-group" id="comment-block" style="display: none;">

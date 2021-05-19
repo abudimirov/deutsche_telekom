@@ -168,3 +168,28 @@ The last packet sent successfully to the server was 0 milliseconds ago. The driv
 2021-05-18 21:39:46 INFO  EventDAOImpl:45 - test
 2021-05-18 21:39:53 INFO  EventDAOImpl:45 - test
 2021-05-18 21:40:44 INFO  EventDAOImpl:45 - test
+2021-05-18 21:45:17 INFO  Version:46 - HHH000412: Hibernate Core {5.3.7.Final}
+2021-05-18 21:45:17 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2021-05-18 21:45:17 INFO  Version:49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2021-05-18 21:45:18 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-05-18 21:45:19 INFO  Version:21 - HV000001: Hibernate Validator 6.0.10.Final
+2021-05-18 21:45:22 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-05-18 21:45:32 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2021-05-18 22:06:53 INFO  AbstractServiceRegistryImpl:392 - HHH000369: Error stopping service [class org.hibernate.resource.beans.internal.ManagedBeanRegistryImpl] : java.lang.IllegalStateException: java.io.FileNotFoundException: C:\Users\Alex\IdeaProjects\rohs-admin\target\rohs-admin-1.0-SNAPSHOT\WEB-INF\lib\animal-sniffer-annotations-1.14.jar (Системе не удается найти указанный путь)
+2021-05-18 22:06:53 INFO  AbstractServiceRegistryImpl:392 - HHH000369: Error stopping service [class org.hibernate.resource.beans.internal.ManagedBeanRegistryImpl] : java.lang.IllegalStateException: java.io.FileNotFoundException: C:\Users\Alex\IdeaProjects\rohs-admin\target\rohs-admin-1.0-SNAPSHOT\WEB-INF\lib\animal-sniffer-annotations-1.14.jar (Системе не удается найти указанный путь)
+2021-05-19 09:47:59 INFO  Version:46 - HHH000412: Hibernate Core {5.3.7.Final}
+2021-05-19 09:47:59 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2021-05-19 09:48:00 INFO  Version:49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2021-05-19 09:48:02 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-05-19 09:48:04 INFO  Version:21 - HV000001: Hibernate Validator 6.0.10.Final
+2021-05-19 09:48:10 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-05-19 09:48:29 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2021-05-19 11:32:25 INFO  AbstractServiceRegistryImpl:392 - HHH000369: Error stopping service [class org.hibernate.resource.beans.internal.ManagedBeanRegistryImpl] : java.lang.IllegalStateException: java.io.FileNotFoundException: C:\Users\Alex\IdeaProjects\rohs-admin\target\rohs-admin-1.0-SNAPSHOT\WEB-INF\lib\animal-sniffer-annotations-1.14.jar (Системе не удается найти указанный путь)
+2021-05-19 11:32:25 INFO  AbstractServiceRegistryImpl:392 - HHH000369: Error stopping service [class org.hibernate.resource.beans.internal.ManagedBeanRegistryImpl] : java.lang.IllegalStateException: java.io.FileNotFoundException: C:\Users\Alex\IdeaProjects\rohs-admin\target\rohs-admin-1.0-SNAPSHOT\WEB-INF\lib\animal-sniffer-annotations-1.14.jar (Системе не удается найти указанный путь)
+2021-05-19 11:45:13 INFO  Version:46 - HHH000412: Hibernate Core {5.3.7.Final}
+2021-05-19 11:45:13 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2021-05-19 11:45:13 INFO  Version:49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2021-05-19 11:45:14 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-05-19 11:45:15 INFO  Version:21 - HV000001: Hibernate Validator 6.0.10.Final
+2021-05-19 11:45:19 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-05-19 11:47:58 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory

@@ -159,13 +159,15 @@
                                                     </c:if>
                                                 </c:if>
                                                 <c:if test="${procedure.status == 'cancelled'}">
-                                                    <div class="text-secondary">Nurse comment - ${procedure.comment}</div>
+                                                    <c:if test="${!empty procedure.comment}">
+                                                        <div class="text-secondary">Nurse comment - ${procedure.comment}</div>
+                                                    </c:if>
                                                 </c:if>
                                     </li>
                                 </c:forEach>
                             </ul>
                             <c:if test="${patient.cured == false}">
-                                <h4>Progress in event</h4>
+                                <h4>Progress in treatment</h4>
                                 <div class="progress">
                                     <div class="progress-bar bg-info" role="progressbar" style="width: ${(scheduled * 100) / event.procedures.size()}%">scheduled ${(scheduled * 100) / event.procedures.size()}%</div>
                                     <div class="progress-bar bg-success" role="progressbar" style="width: ${(done * 100) / event.procedures.size()}%">done ${(done * 100) / event.procedures.size()}%</div>
