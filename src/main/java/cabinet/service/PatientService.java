@@ -1,5 +1,6 @@
 package cabinet.service;
 
+import cabinet.controller.Sender;
 import cabinet.dao.PatientDAO;
 import cabinet.model.Patient;
 import cabinet.model.dto.PatientDTO;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.naming.NamingException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +22,8 @@ public class PatientService {
         this.patientDAO = patientDAO;
     }
 
+    @Autowired
+    private Sender sender;
 
     @Transactional(readOnly = true)
     public List<PatientDTO> allPatients() {
@@ -35,6 +39,11 @@ public class PatientService {
         List<PatientDTO> patients = new ArrayList<>();
         for (Patient patient : patientDAO.allPatients(page)) {
             patients.add(DtoUtils.convertToDto(patient, PatientDTO.class));
+        }
+        try {
+            sender.send("Hello Spring JMS ActiveMQ!");
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
         return patients;
     }

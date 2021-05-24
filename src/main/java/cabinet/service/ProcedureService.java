@@ -4,7 +4,6 @@ import cabinet.dao.EventDAO;
 import cabinet.dao.PatientDAO;
 import cabinet.dao.ProcedureDAO;
 import cabinet.model.Event;
-import cabinet.model.Patient;
 import cabinet.model.Procedure;
 import cabinet.model.dto.ProcedureDTO;
 import cabinet.utils.DtoUtils;
@@ -16,7 +15,6 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
@@ -45,6 +43,8 @@ public class ProcedureService {
         this.eventDAO = eventDAO;
     }
 
+
+
     /**
      * Service for getting all procedures. Gets a list of procedures entities from DAO and converts to list of DTOs
      *
@@ -65,6 +65,7 @@ public class ProcedureService {
      */
     @Transactional(readOnly = true)
     public List<ProcedureDTO> allProcedures(int page) {
+
         return procedureDAO.allProcedures(page).stream()
                 .map(procedure -> DtoUtils.convertToDto(procedure, ProcedureDTO.class))
                 .collect(Collectors.toList());
@@ -88,6 +89,8 @@ public class ProcedureService {
 
         Event event = new Event(procedureDTO.getTitle(), startDate.toString(), endDate.toString(), procedureDTO.getStatus(), procedureDTO.getPatient());
         eventDAO.add(event);
+
+
 
         for (LocalDate date : dateRange) {
             Calendar c = Calendar.getInstance();
