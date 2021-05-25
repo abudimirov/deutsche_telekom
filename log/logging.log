@@ -326,3 +326,191 @@ The last packet sent successfully to the server was 0 milliseconds ago. The driv
 2021-05-24 22:20:32 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
 2021-05-24 22:20:33 INFO  Version:21 - HV000001: Hibernate Validator 6.0.10.Final
 2021-05-24 22:20:39 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-05-24 22:28:44 INFO  Version:46 - HHH000412: Hibernate Core {5.3.7.Final}
+2021-05-24 22:28:44 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2021-05-24 22:28:44 INFO  Version:49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2021-05-24 22:28:45 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-05-24 22:28:46 INFO  Version:21 - HV000001: Hibernate Validator 6.0.10.Final
+2021-05-24 22:28:51 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-05-24 22:29:02 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2021-05-25 08:47:57 WARN  SqlExceptionHelper:137 - SQL Error: 0, SQLState: 08S01
+2021-05-25 08:47:57 ERROR SqlExceptionHelper:142 - Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+2021-05-25 08:49:10 INFO  Version:46 - HHH000412: Hibernate Core {5.3.7.Final}
+2021-05-25 08:49:10 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2021-05-25 08:49:11 INFO  Version:49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2021-05-25 08:49:12 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-05-25 08:49:12 INFO  Version:21 - HV000001: Hibernate Validator 6.0.10.Final
+2021-05-25 08:49:16 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-05-25 08:49:27 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2021-05-25 09:02:52 INFO  Version:46 - HHH000412: Hibernate Core {5.3.7.Final}
+2021-05-25 09:02:52 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2021-05-25 09:02:53 INFO  Version:49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2021-05-25 09:02:54 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-05-25 09:02:55 INFO  Version:21 - HV000001: Hibernate Validator 6.0.10.Final
+2021-05-25 09:02:59 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-05-25 09:06:54 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2021-05-25 16:11:05 INFO  Version:46 - HHH000412: Hibernate Core {5.3.7.Final}
+2021-05-25 16:11:05 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2021-05-25 16:11:06 INFO  Version:49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2021-05-25 16:11:10 WARN  JdbcEnvironmentInitiator:132 - HHH000342: Could not obtain connection to query metadata : Cannot create PoolableConnectionFactory (Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.)
+2021-05-25 16:11:10 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-05-25 16:11:10 INFO  LobCreatorBuilderImpl:63 - HHH000422: Disabling contextual LOB creation as connection was null
+2021-05-25 16:11:11 INFO  Version:21 - HV000001: Hibernate Validator 6.0.10.Final
+2021-05-25 16:11:13 INFO  xnio:93 - XNIO version 3.3.4.Final
+2021-05-25 16:11:13 INFO  nio:55 - XNIO NIO Implementation Version 3.3.4.Final
+2021-05-25 16:11:13 INFO  remoting:73 - JBoss Remoting version 4.0.18.Final
+2021-05-25 16:13:15 INFO  Version:46 - HHH000412: Hibernate Core {5.3.7.Final}
+2021-05-25 16:13:15 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2021-05-25 16:13:15 INFO  Version:49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2021-05-25 16:13:20 WARN  JdbcEnvironmentInitiator:132 - HHH000342: Could not obtain connection to query metadata : Cannot create PoolableConnectionFactory (Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.)
+2021-05-25 16:13:20 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-05-25 16:13:20 INFO  LobCreatorBuilderImpl:63 - HHH000422: Disabling contextual LOB creation as connection was null
+2021-05-25 16:13:21 INFO  Version:21 - HV000001: Hibernate Validator 6.0.10.Final
+2021-05-25 16:13:22 INFO  xnio:93 - XNIO version 3.3.4.Final
+2021-05-25 16:13:22 INFO  nio:55 - XNIO NIO Implementation Version 3.3.4.Final
+2021-05-25 16:13:22 INFO  remoting:73 - JBoss Remoting version 4.0.18.Final
+2021-05-25 16:15:56 INFO  Version:46 - HHH000412: Hibernate Core {5.3.7.Final}
+2021-05-25 16:15:56 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2021-05-25 16:15:57 INFO  Version:49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2021-05-25 16:15:58 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-05-25 16:15:59 INFO  Version:21 - HV000001: Hibernate Validator 6.0.10.Final
+2021-05-25 16:16:01 INFO  xnio:93 - XNIO version 3.3.4.Final
+2021-05-25 16:16:01 INFO  nio:55 - XNIO NIO Implementation Version 3.3.4.Final
+2021-05-25 16:16:01 INFO  remoting:73 - JBoss Remoting version 4.0.18.Final
+2021-05-25 16:18:12 INFO  Version:46 - HHH000412: Hibernate Core {5.3.7.Final}
+2021-05-25 16:18:12 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2021-05-25 16:18:12 INFO  Version:49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2021-05-25 16:18:13 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-05-25 16:18:14 INFO  Version:21 - HV000001: Hibernate Validator 6.0.10.Final
+2021-05-25 16:18:15 INFO  xnio:93 - XNIO version 3.3.4.Final
+2021-05-25 16:18:15 INFO  nio:55 - XNIO NIO Implementation Version 3.3.4.Final
+2021-05-25 16:18:15 INFO  remoting:73 - JBoss Remoting version 4.0.18.Final
+2021-05-25 16:20:26 INFO  Version:46 - HHH000412: Hibernate Core {5.3.7.Final}
+2021-05-25 16:20:26 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2021-05-25 16:20:26 INFO  Version:49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2021-05-25 16:20:27 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-05-25 16:20:28 INFO  Version:21 - HV000001: Hibernate Validator 6.0.10.Final
+2021-05-25 16:20:31 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-05-25 16:20:41 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2021-05-25 16:21:40 INFO  Version:46 - HHH000412: Hibernate Core {5.3.7.Final}
+2021-05-25 16:21:40 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2021-05-25 16:21:41 INFO  Version:49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2021-05-25 16:21:41 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-05-25 16:21:42 INFO  Version:21 - HV000001: Hibernate Validator 6.0.10.Final
+2021-05-25 16:21:44 INFO  xnio:93 - XNIO version 3.3.4.Final
+2021-05-25 16:21:44 INFO  nio:55 - XNIO NIO Implementation Version 3.3.4.Final
+2021-05-25 16:21:45 INFO  remoting:73 - JBoss Remoting version 4.0.18.Final
+2021-05-25 16:25:45 INFO  Version:46 - HHH000412: Hibernate Core {5.3.7.Final}
+2021-05-25 16:25:45 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2021-05-25 16:25:45 INFO  Version:49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2021-05-25 16:25:46 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-05-25 16:25:47 INFO  Version:21 - HV000001: Hibernate Validator 6.0.10.Final
+2021-05-25 16:25:49 INFO  xnio:93 - XNIO version 3.3.4.Final
+2021-05-25 16:25:49 INFO  nio:55 - XNIO NIO Implementation Version 3.3.4.Final
+2021-05-25 16:25:49 INFO  remoting:73 - JBoss Remoting version 4.0.18.Final
+2021-05-25 18:19:01 INFO  Version:46 - HHH000412: Hibernate Core {5.3.7.Final}
+2021-05-25 18:19:01 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2021-05-25 18:19:02 INFO  Version:49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2021-05-25 18:19:03 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-05-25 18:19:05 INFO  Version:21 - HV000001: Hibernate Validator 6.0.10.Final
+2021-05-25 18:19:09 INFO  xnio:93 - XNIO version 3.3.4.Final
+2021-05-25 18:19:09 INFO  nio:55 - XNIO NIO Implementation Version 3.3.4.Final
+2021-05-25 18:19:09 INFO  remoting:73 - JBoss Remoting version 4.0.18.Final
+2021-05-25 19:08:34 INFO  Version:46 - HHH000412: Hibernate Core {5.3.7.Final}
+2021-05-25 19:08:34 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2021-05-25 19:08:35 INFO  Version:49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2021-05-25 19:08:36 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-05-25 19:08:37 INFO  Version:21 - HV000001: Hibernate Validator 6.0.10.Final
+2021-05-25 19:08:41 INFO  xnio:93 - XNIO version 3.3.4.Final
+2021-05-25 19:08:41 INFO  nio:55 - XNIO NIO Implementation Version 3.3.4.Final
+2021-05-25 19:08:42 INFO  remoting:73 - JBoss Remoting version 4.0.18.Final
+2021-05-25 19:11:23 INFO  Version:46 - HHH000412: Hibernate Core {5.3.7.Final}
+2021-05-25 19:11:23 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2021-05-25 19:11:24 INFO  Version:49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2021-05-25 19:11:26 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-05-25 19:11:27 INFO  Version:21 - HV000001: Hibernate Validator 6.0.10.Final
+2021-05-25 19:11:31 INFO  xnio:93 - XNIO version 3.3.4.Final
+2021-05-25 19:11:32 INFO  nio:55 - XNIO NIO Implementation Version 3.3.4.Final
+2021-05-25 19:11:32 INFO  remoting:73 - JBoss Remoting version 4.0.18.Final
+2021-05-25 19:34:21 INFO  Version:46 - HHH000412: Hibernate Core {5.3.7.Final}
+2021-05-25 19:34:21 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2021-05-25 19:34:22 INFO  Version:49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2021-05-25 19:34:23 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-05-25 19:34:25 INFO  Version:21 - HV000001: Hibernate Validator 6.0.10.Final
+2021-05-25 19:34:29 INFO  xnio:93 - XNIO version 3.3.4.Final
+2021-05-25 19:34:29 INFO  nio:55 - XNIO NIO Implementation Version 3.3.4.Final
+2021-05-25 19:34:30 INFO  remoting:73 - JBoss Remoting version 4.0.18.Final
+2021-05-25 19:35:41 INFO  Version:46 - HHH000412: Hibernate Core {5.3.7.Final}
+2021-05-25 19:35:41 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2021-05-25 19:35:42 INFO  Version:49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2021-05-25 19:35:43 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-05-25 19:35:45 INFO  Version:21 - HV000001: Hibernate Validator 6.0.10.Final
+2021-05-25 19:35:49 INFO  xnio:93 - XNIO version 3.3.4.Final
+2021-05-25 19:35:49 INFO  nio:55 - XNIO NIO Implementation Version 3.3.4.Final
+2021-05-25 19:35:49 INFO  remoting:73 - JBoss Remoting version 4.0.18.Final
+2021-05-25 19:40:46 INFO  Version:46 - HHH000412: Hibernate Core {5.3.7.Final}
+2021-05-25 19:40:46 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2021-05-25 19:40:46 INFO  Version:49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2021-05-25 19:40:47 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-05-25 19:40:49 INFO  Version:21 - HV000001: Hibernate Validator 6.0.10.Final
+2021-05-25 19:40:53 INFO  xnio:93 - XNIO version 3.3.4.Final
+2021-05-25 19:40:53 INFO  nio:55 - XNIO NIO Implementation Version 3.3.4.Final
+2021-05-25 19:40:54 INFO  remoting:73 - JBoss Remoting version 4.0.18.Final
+2021-05-25 20:00:15 INFO  Version:46 - HHH000412: Hibernate Core {5.3.7.Final}
+2021-05-25 20:00:15 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2021-05-25 20:00:16 INFO  Version:49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2021-05-25 20:00:17 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-05-25 20:00:18 INFO  Version:21 - HV000001: Hibernate Validator 6.0.10.Final
+2021-05-25 20:00:22 INFO  xnio:93 - XNIO version 3.3.4.Final
+2021-05-25 20:00:22 INFO  nio:55 - XNIO NIO Implementation Version 3.3.4.Final
+2021-05-25 20:00:22 INFO  remoting:73 - JBoss Remoting version 4.0.18.Final
+2021-05-25 20:16:27 INFO  Version:46 - HHH000412: Hibernate Core {5.3.7.Final}
+2021-05-25 20:16:27 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2021-05-25 20:16:27 INFO  Version:49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2021-05-25 20:16:28 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-05-25 20:16:30 INFO  Version:21 - HV000001: Hibernate Validator 6.0.10.Final
+2021-05-25 20:16:34 INFO  xnio:93 - XNIO version 3.3.4.Final
+2021-05-25 20:16:34 INFO  nio:55 - XNIO NIO Implementation Version 3.3.4.Final
+2021-05-25 20:16:34 INFO  remoting:73 - JBoss Remoting version 4.0.18.Final
+2021-05-25 20:19:13 INFO  Version:46 - HHH000412: Hibernate Core {5.3.7.Final}
+2021-05-25 20:19:13 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2021-05-25 20:19:14 INFO  Version:49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2021-05-25 20:19:15 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-05-25 20:19:16 INFO  Version:21 - HV000001: Hibernate Validator 6.0.10.Final
+2021-05-25 20:19:20 INFO  xnio:93 - XNIO version 3.3.4.Final
+2021-05-25 20:19:20 INFO  nio:55 - XNIO NIO Implementation Version 3.3.4.Final
+2021-05-25 20:19:20 INFO  remoting:73 - JBoss Remoting version 4.0.18.Final
+2021-05-25 20:23:37 INFO  Version:46 - HHH000412: Hibernate Core {5.3.7.Final}
+2021-05-25 20:23:37 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2021-05-25 20:23:38 INFO  Version:49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2021-05-25 20:23:39 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-05-25 20:23:40 INFO  Version:21 - HV000001: Hibernate Validator 6.0.10.Final
+2021-05-25 20:23:44 INFO  xnio:93 - XNIO version 3.3.4.Final
+2021-05-25 20:23:44 INFO  nio:55 - XNIO NIO Implementation Version 3.3.4.Final
+2021-05-25 20:23:44 INFO  remoting:73 - JBoss Remoting version 4.0.18.Final
+2021-05-25 21:07:28 INFO  Version:46 - HHH000412: Hibernate Core {5.3.7.Final}
+2021-05-25 21:07:28 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2021-05-25 21:07:29 INFO  Version:49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2021-05-25 21:07:29 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-05-25 21:07:30 INFO  Version:21 - HV000001: Hibernate Validator 6.0.10.Final
+2021-05-25 21:07:32 INFO  xnio:93 - XNIO version 3.3.4.Final
+2021-05-25 21:07:32 INFO  nio:55 - XNIO NIO Implementation Version 3.3.4.Final
+2021-05-25 21:07:32 INFO  remoting:73 - JBoss Remoting version 4.0.18.Final
+2021-05-25 21:07:35 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-05-25 21:07:46 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2021-05-25 21:31:14 INFO  Version:46 - HHH000412: Hibernate Core {5.3.7.Final}
+2021-05-25 21:31:14 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2021-05-25 21:31:15 INFO  Version:49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2021-05-25 21:31:15 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-05-25 21:31:16 INFO  Version:21 - HV000001: Hibernate Validator 6.0.10.Final
+2021-05-25 21:31:17 INFO  xnio:93 - XNIO version 3.3.4.Final
+2021-05-25 21:31:17 INFO  nio:55 - XNIO NIO Implementation Version 3.3.4.Final
+2021-05-25 21:31:18 INFO  remoting:73 - JBoss Remoting version 4.0.18.Final
+2021-05-25 21:31:20 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-05-25 21:31:35 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
