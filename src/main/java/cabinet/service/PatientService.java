@@ -47,7 +47,7 @@ public class PatientService {
         }
 
         try {
-            jmsTemplate.convertAndSend("jms/queue/test","text");
+            jmsTemplate.convertAndSend("text");
         } catch (Exception ex) {
             ex.printStackTrace();
         }
