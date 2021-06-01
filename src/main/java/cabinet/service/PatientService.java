@@ -45,12 +45,6 @@ public class PatientService {
         for (Patient patient : patientDAO.allPatients(page)) {
             patients.add(DtoUtils.convertToDto(patient, PatientDTO.class));
         }
-
-        try {
-            jmsTemplate.convertAndSend("text");
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
         return patients;
     }
 
@@ -77,6 +71,7 @@ public class PatientService {
     public void discharge(PatientDTO patientDTO) {
         Patient patient = DtoUtils.convertToEntity(Patient.class, patientDTO);
         patientDAO.discharge(patient);
+
     }
 
     @Transactional(readOnly = true)

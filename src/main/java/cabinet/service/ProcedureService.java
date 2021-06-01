@@ -8,6 +8,7 @@ import cabinet.model.Procedure;
 import cabinet.model.dto.ProcedureDTO;
 import cabinet.utils.DtoUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -43,7 +44,8 @@ public class ProcedureService {
         this.eventDAO = eventDAO;
     }
 
-
+    @Autowired
+    JmsTemplate jmsTemplate;
 
     /**
      * Service for getting all procedures. Gets a list of procedures entities from DAO and converts to list of DTOs
@@ -133,6 +135,13 @@ public class ProcedureService {
                 }
             }
         }
+
+        try {
+            jmsTemplate.convertAndSend("New event with procedures was added");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
     }
 
     /**
