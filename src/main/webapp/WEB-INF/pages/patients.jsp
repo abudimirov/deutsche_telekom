@@ -15,14 +15,28 @@
     <title>All patients</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <link rel="stylesheet" href="<c:url value="/res/style.css" />">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
     <script src="https://use.fontawesome.com/e324a589d0.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
 </head>
 
 <body style="background: #F2F2F2;">
 <%@ include file="components/nav.jsp" %>
 <div class="container-wide">
-    <div class="row my-5 mx-auto">
+    <div class="container">
+        <div class="row my-2 mx-auto">
+            <div class="col-xs-4">
+                <div id="canvas-holder" style="width: 300px;">
+                    <canvas id="chart-area" width="150" height="150" />
+                </div>
+
+                <div id="chartjs-tooltip"></div>
+            </div>
+            <div class="col-xs-4"></div>
+        </div>
+    </div>
+    <div class="row my-3 mx-auto">
         <div class="container p-3" style="background: #FFF;">
             <div class="d-flex justify-content-between align-items-center py-3">
                 <h1 class="main">Patients</h1>
@@ -157,7 +171,90 @@
                 </tr>
             </table>
         </div>
+        </div>
     </div>
 </div>
+
+
+<script>
+    window.chartColors = {
+        red: 'rgb(255, 99, 132)',
+        green: 'rgb(75, 192, 192)',
+    };
+
+    Chart.defaults.global.tooltips.custom = function(tooltip) {
+        // Tooltip Element
+        var tooltipEl = document.getElementById('chartjs-tooltip');
+
+        // Hide if no tooltip
+        if (tooltip.opacity === 0) {
+            tooltipEl.style.opacity = 0;
+            return;
+        }
+
+        // Set Text
+        if (tooltip.body) {
+            var total = 0;
+
+            // get the value of the datapoint
+            var value = this._data.datasets[tooltip.dataPoints[0].datasetIndex].data[tooltip.dataPoints[0].index].toLocaleString();
+
+            // calculate value of all datapoints
+            this._data.datasets[tooltip.dataPoints[0].datasetIndex].data.forEach(function(e) {
+                total += e;
+            });
+
+            // calculate percentage and set tooltip value
+            tooltipEl.innerHTML = '<h1>' + (value / total * 100) + '%</h1>';
+        }
+
+        // calculate position of tooltip
+        var centerX = (this._chartInstance.chartArea.left + this._chartInstance.chartArea.right) / 2;
+        var centerY = ((this._chartInstance.chartArea.top + this._chartInstance.chartArea.bottom) / 2);
+
+        // Display, position, and set styles for font
+        tooltipEl.style.opacity = 1;
+        tooltipEl.style.left = centerX + 'px';
+        tooltipEl.style.top = centerY + 'px';
+        tooltipEl.style.fontFamily = tooltip._fontFamily;
+        tooltipEl.style.fontSize = tooltip.fontSize;
+        tooltipEl.style.fontStyle = tooltip._fontStyle;
+        tooltipEl.style.padding = tooltip.yPadding + 'px ' + tooltip.xPadding + 'px';
+    };
+
+    var config = {
+        type: 'doughnut',
+        data: {
+            datasets: [{
+                data: [${patientCount}, 100 - ${patientCount}],
+                backgroundColor: [
+                    window.chartColors.red,
+                    window.chartColors.green,
+                ],
+            }],
+            labels: [
+                "Occupied beds",
+                "Free beds",
+            ]
+        },
+        options: {
+            responsive: true,
+            legend: {
+                display: true,
+                labels: {
+                    padding: 20
+                },
+            },
+            tooltips: {
+                enabled: false,
+            }
+        }
+    };
+
+    window.onload = function() {
+        var ctx = document.getElementById("chart-area").getContext("2d");
+        window.myPie = new Chart(ctx, config);
+    };
+</script>
 </body>
 </html>

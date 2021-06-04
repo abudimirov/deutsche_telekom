@@ -20,6 +20,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @ComponentScan(basePackages = "cabinet")
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+    private static final String DOCTOR = "DOCTOR";
+    private static final String NURSE = "NURSE";
+
     /**
      * We have two account of a doctor and a nurse with different roles
      *
@@ -30,10 +33,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication().withUser("doctor")
-                .password(passwordEncoder().encode("password")).roles("DOCTOR")
+                .password(passwordEncoder().encode("password")).roles(DOCTOR)
         .and()
                 .withUser("nurse")
-                .password(passwordEncoder().encode("password")).roles("NURSE");
+                .password(passwordEncoder().encode("password")).roles(NURSE);
     }
 
     /**
@@ -48,9 +51,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/", "/res**").permitAll()
-                .antMatchers("/patients/**", "/events/**", "/procedures/add").hasRole("DOCTOR")
-                .antMatchers("/procedures**").hasRole("NURSE")
-                .antMatchers("/procedures/edit/*").hasAnyRole("DOCTOR", "NURSE")
+                .antMatchers("/patients/**", "/events/**", "/procedures/add").hasRole(DOCTOR)
+                .antMatchers("/procedures**").hasRole(NURSE)
+                .antMatchers("/procedures/edit/*").hasAnyRole(DOCTOR, NURSE)
                 .and()
                 .formLogin().permitAll()
                 .and()

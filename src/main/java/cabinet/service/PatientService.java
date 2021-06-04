@@ -6,15 +6,9 @@ import cabinet.model.dto.PatientDTO;
 import cabinet.utils.DtoUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsTemplate;
-import org.springframework.jms.core.MessageCreator;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.jms.JMSException;
-import javax.jms.Message;
-import javax.jms.ObjectMessage;
-import javax.jms.Session;
-import javax.naming.NamingException;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,7 +1,6 @@
 package cabinet.service;
 
 import cabinet.dao.EventDAO;
-import cabinet.dao.PatientDAO;
 import cabinet.dao.ProcedureDAO;
 import cabinet.model.Event;
 import cabinet.model.Procedure;
@@ -26,17 +25,11 @@ import java.util.stream.IntStream;
 @Service
 public class ProcedureService {
     private ProcedureDAO procedureDAO;
-    private PatientDAO patientDAO;
     private EventDAO eventDAO;
 
     @Autowired
     public void setProcedureDAO(ProcedureDAO procedureDAO) {
         this.procedureDAO = procedureDAO;
-    }
-
-    @Autowired
-    public void setPatientDAO(PatientDAO patientDAO) {
-        this.patientDAO = patientDAO;
     }
 
     @Autowired
@@ -162,6 +155,12 @@ public class ProcedureService {
     public void edit(ProcedureDTO procedureDTO) {
         Procedure procedure = DtoUtils.convertToEntity(Procedure.class, procedureDTO);
         procedureDAO.edit(procedure);
+
+        try {
+            jmsTemplate.convertAndSend("New event with procedures was added");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     /**

@@ -18,6 +18,9 @@ public class PatientDAOImpl implements PatientDAO {
 
     private SessionFactory sessionFactory;
 
+    private static final String SCHEDULED = "scheduled";
+    private static final String CANCELLED = "cancelled";
+
     public static final Logger logger = Logger.getLogger(PatientDAOImpl.class);
 
     @Autowired
@@ -88,14 +91,14 @@ public class PatientDAOImpl implements PatientDAO {
             patient.setCured(true);
             Set<Procedure> procedures = patient.getProcedures();
             for (Procedure procedure : procedures) {
-                if (procedure.getStatus().equals("scheduled")) {
-                    procedure.setStatus("cancelled");
+                if (procedure.getStatus().equals(SCHEDULED)) {
+                    procedure.setStatus(CANCELLED);
                 }
             }
             Set<Event> events = patient.getEvents();
             for (Event event : events) {
-                if (event.getStatus().equals("scheduled")) {
-                    event.setStatus("cancelled");
+                if (event.getStatus().equals(SCHEDULED)) {
+                    event.setStatus(CANCELLED);
                 }
             }
             session.update(patient);
@@ -116,8 +119,8 @@ public class PatientDAOImpl implements PatientDAO {
             Session session = sessionFactory.getCurrentSession();
             Set<Procedure> procedures = patient.getProcedures();
             for (Procedure procedure : procedures) {
-                if(procedure.getStatus().equals("scheduled")) {
-                    procedure.setStatus("cancelled");
+                if(procedure.getStatus().equals(SCHEDULED)) {
+                    procedure.setStatus(CANCELLED);
                 }
             }
             session.update(patient);

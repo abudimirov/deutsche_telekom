@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.time.LocalDate;
+
 
 @Controller
 @RequestMapping("api")
@@ -28,8 +28,6 @@ public class RestController {
     public @ResponseBody String getProcedures() {
         Gson gson = new GsonBuilder().registerTypeAdapter(ProcedureDTO.class, new ProcedureSerializer()).create();
 
-        //TODO Заменить сервис на фильтр по сегодня
-        String procedures = gson.toJson(procedureService.allProcedures());
-        return procedures;
+        return gson.toJson(procedureService.proceduresByDate(LocalDate.now().toString()));
     }
 }
