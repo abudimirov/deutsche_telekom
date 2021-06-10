@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -21,165 +22,167 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
 </head>
 
-<body style="background: #F2F2F2;">
-<%@ include file="components/nav.jsp" %>
-<div class="container-wide">
-    <div class="container">
-        <div class="row my-2 mx-auto">
-            <div class="col-xs-4">
-                <div id="canvas-holder" style="width: 300px;">
-                    <canvas id="chart-area" width="150" height="150" />
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <%@ include file="components/sidebar.jsp" %>
+            <main class="col-md-9 ml-sm-auto col-lg-10 px-md-4 bg-light">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <div class="card my-5">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center py-3">
+                                        <h5>Patients <small class="text-muted">${patientCount} total</small></h5>
+                                        <div>
+                                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                                            <jsp:useBean id="now" class="java.util.Date"/>
+                                            <fmt:formatDate value="${now}" dateStyle="long"/>
+                                            <fmt:formatDate value="${now}" pattern="HH:mm" />
+                                        </div>
+                                        <a href="<c:url value="/patients/add"/>" class="btn btn-success" role="button" aria-pressed="true"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add new patient</a>
+                                    </div>
+                                <c:if test="${patientsCount == 0}">
+                                    <h2>The list is empty but you can add a new patient</h2>
+                                </c:if>
+                                <c:if test="${patientCount > 0}">
+                                    <table class="table">
+                                        <thead style="background: transparent;">
+                                            <tr>
+                                                <th scope="col" class="text-left">#</th>
+                                                <th scope="col">Patient</th>
+                                                <th scope="col">Status</th>
+                                                <th scope="col">Insurance</th>
+                                                <th scope="col">Doctor</th>
+                                                <th scope="col" class="right-side"></th>
+                                            </tr>
+                                        </thead>
+
+                                        <c:forEach var="patient" items="${patientsList}" varStatus="i">
+                                            <tr>
+                                                <td class="left-side">${i.index + 1 + (page - 1) * 10}</td>
+                                                <td class="name">${patient.name} ${patient.surname}</td>
+                                                <td>
+                                                    <c:if test="${patient.cured == true}">
+                                                        <span class="badge badge-pill badge-success">Cured</span>
+                                                    </c:if>
+                                                    <c:if test="${patient.cured == false}">
+                                                        <span class="badge badge-pill badge-secondary">In treatment</span>
+                                                    </c:if>
+                                                </td>
+                                                <td># ${patient.insuranceNum}</td>
+                                                <td><i class="fa fa-user-md" aria-hidden="true"></i> ${patient.doctor}</td>
+                                                <td>
+                                                    <a href="/patients/edit/${patient.id}" class="text-dark" title="edit patient">
+                                                        <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </c:forEach>
+                                    </table>
+                                    <nav aria-label="Page navigation">
+                                        <ul class="pagination justify-content-center">
+                                            <c:if test="${pagesCount > 1}">
+                                                <c:set value="disabled" var="disabled"/>
+                                                <c:set value="" var="active"/>
+                                                <li class="${page == 1 ? disabled : active} page-item">
+
+                                                    <c:url value="/patients" var="url">
+                                                        <c:param name="page" value="1"/>
+                                                    </c:url>
+                                                    <a class=" page-link" href="${url}">
+                                                        &nbsp<i class="fa fa-fast-backward" aria-hidden="true"></i>&nbsp
+                                                    </a>
+                                                </li>
+                                                <li class="${page == 1 ? disabled : active} page-item">
+                                                    <c:url value="/patients" var="url">
+                                                        <c:param name="page" value="${page - 1}"/>
+                                                    </c:url>
+                                                    <a class=" page-link" href="${url}">
+                                                        &nbsp<i class="fa fa-step-backward" aria-hidden="true"></i>&nbsp
+                                                    </a>
+                                                </li>
+                                                <c:if test="${pagesCount <= 5}">
+                                                    <c:set var="begin" value="1"/>
+                                                    <c:set var="end" value="${pagesCount}"/>
+                                                </c:if>
+                                                <c:if test="${pagesCount > 5}">
+                                                    <c:choose>
+                                                        <c:when test="${page < 3}">
+                                                            <c:set var="begin" value="1"/>
+                                                            <c:set var="end" value="5"/>
+                                                        </c:when>
+                                                        <c:when test="${page > pagesCount - 2}">
+                                                            <c:set var="begin" value="${pagesCount - 4}"/>
+                                                            <c:set var="end" value="${pagesCount}"/>
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            <c:set var="begin" value="${page - 2}"/>
+                                                            <c:set var="end" value="${page + 2}"/>
+                                                        </c:otherwise>
+                                                    </c:choose>
+                                                </c:if>
+
+                                                <c:forEach begin="${begin}" end="${end}" step="1" varStatus="i">
+                                                    <li class="page-item">
+                                                        <c:url value="/patients" var="url">
+                                                            <c:param name="page" value="${i.index}"/>
+                                                        </c:url>
+                                                        <c:set value="current-page" var="current"/>
+                                                        <c:set value="" var="perspective"/>
+                                                        <a class="${page == i.index ? current : perspective} page-link" href="${url}">${i.index}</a>
+                                                    </li>
+                                                </c:forEach>
+
+                                                <li class="${page == pagesCount ? disabled : active} page-item">
+                                                    <c:url value="/patients" var="url">
+                                                        <c:param name="page" value="${page + 1}"/>
+                                                    </c:url>
+                                                    <a class="page-link" href="${url}">
+                                                        &nbsp<i class="fa fa-step-forward" aria-hidden="true"></i>&nbsp
+                                                    </a>
+                                                </li>
+                                                <li class="${page == pagesCount ? disabled : active} page-item">
+                                                    <c:url value="/patients" var="url">
+                                                        <c:param name="page" value="${pagesCount}"/>
+                                                    </c:url>
+                                                    <a class="page-link" href="${url}">
+                                                        &nbsp<i class="fa fa-fast-forward" aria-hidden="true"></i>&nbsp
+                                                    </a>
+                                                </li>
+                                            </c:if>
+                                        </ul>
+                                    </nav>
+                                </c:if>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="card mt-5">
+                                <div class="card-body">
+                                    <h5 class="card-title">Hospital capacity</h5>
+                                    <div id="canvas-holder" class="mx-auto" style="width: 300px;">
+                                        <canvas id="chart-area" width="150" height="150" />
+                                    </div>
+
+                                    <div id="chartjs-tooltip"></div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
 
-                <div id="chartjs-tooltip"></div>
-            </div>
-            <div class="col-xs-4"></div>
+
+            </main>
         </div>
     </div>
-    <div class="row my-3 mx-auto">
-        <div class="container p-3" style="background: #FFF;">
-            <div class="d-flex justify-content-between align-items-center py-3">
-                <h1 class="main">Patients</h1>
-                <div class="date">
-                    <jsp:useBean id="now" class="java.util.Date"/>
-                    <fmt:formatDate value="${now}" dateStyle="long"/>
-                    <fmt:formatDate value="${now}" pattern="HH:mm" />
-                </div>
-                <a href="<c:url value="/patients/add"/>" class="btn btn-success" role="button" aria-pressed="true"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add new patient</a>
-            </div>
-            <table class="table">
-                <c:if test="${patientCount > 0}">
-                    <thead>
-                        <tr>
-                            <th scope="col" class="text-left">#</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Surname</th>
-                            <th scope="col">Insurance №</th>
-                            <th scope="col">Doctor</th>
-                            <th scope="col">Cured</th>
-                            <th scope="col" class="right-side"></th>
-                        </tr>
-                    </thead>
-
-                    <c:forEach var="patient" items="${patientsList}" varStatus="i">
-                        <tr>
-                            <td class="left-side">${i.index + 1 + (page - 1) * 10}</td>
-                            <td class="name">${patient.name}</td>
-                            <td class="surname">${patient.surname}</td>
-                            <td>${patient.insuranceNum}</td>
-                            <td>${patient.doctor}</td>
-                            <td>
-                                <c:if test="${patient.cured == true}">
-                                    <span>yes</span>
-                                </c:if>
-                                <c:if test="${patient.cured == false}">
-                                    <span>no</span>
-                                </c:if>
-                            </td>
-                            <td>
-                                <a href="/patients/edit/${patient.id}">
-                                    <i class="fa fa-user" aria-hidden="true"></i> view
-                                </a>
-                            </td>
-                        </tr>
-                    </c:forEach>
-                </c:if>
-                <c:if test="${patientsCount == 0}">
-                    <tr>
-                        <td colspan="7" style="font-size: 150%" class="left-side right-side">
-                            The list is empty but you can add a new patient
-                        </td>
-                    </tr>
-                </c:if>
-                <tr>
-                    <td colspan="8" class="left-side link right-side">
-                        <span class="text-right">Total number of patients: ${patientCount}</span>
-                        <nav aria-label="Page navigation example">
-                            <ul class="pagination justify-content-center">
-                        <c:if test="${pagesCount > 1}">
-                            <c:set value="disabled" var="disabled"/>
-                            <c:set value="" var="active"/>
-                            <li class="${page == 1 ? disabled : active} page-item">
-
-                                <c:url value="/patients" var="url">
-                                    <c:param name="page" value="1"/>
-                                </c:url>
-                                <a class=" page-link" href="${url}">
-                                    &nbsp<i class="fa fa-fast-backward" aria-hidden="true"></i>&nbsp
-                                </a>
-                            </li>
-                            <li class="${page == 1 ? disabled : active} page-item">
-                                <c:url value="/patients" var="url">
-                                    <c:param name="page" value="${page - 1}"/>
-                                </c:url>
-                                <a class=" page-link" href="${url}">
-                                    &nbsp<i class="fa fa-step-backward" aria-hidden="true"></i>&nbsp
-                                </a>
-                            </li>
-                            <c:if test="${pagesCount <= 5}">
-                                <c:set var="begin" value="1"/>
-                                <c:set var="end" value="${pagesCount}"/>
-                            </c:if>
-                            <c:if test="${pagesCount > 5}">
-                                <c:choose>
-                                    <c:when test="${page < 3}">
-                                        <c:set var="begin" value="1"/>
-                                        <c:set var="end" value="5"/>
-                                    </c:when>
-                                    <c:when test="${page > pagesCount - 2}">
-                                        <c:set var="begin" value="${pagesCount - 4}"/>
-                                        <c:set var="end" value="${pagesCount}"/>
-                                    </c:when>
-                                    <c:otherwise>
-                                        <c:set var="begin" value="${page - 2}"/>
-                                        <c:set var="end" value="${page + 2}"/>
-                                    </c:otherwise>
-                                </c:choose>
-                            </c:if>
-
-                            <c:forEach begin="${begin}" end="${end}" step="1" varStatus="i">
-                                <li class="page-item">
-                                    <c:url value="/patients" var="url">
-                                        <c:param name="page" value="${i.index}"/>
-                                    </c:url>
-                                    <c:set value="current-page" var="current"/>
-                                    <c:set value="" var="perspective"/>
-                                    <a class="${page == i.index ? current : perspective} page-link" href="${url}">${i.index}</a>
-                                </li>
-                            </c:forEach>
-
-                            <li class="${page == pagesCount ? disabled : active} page-item">
-                                <c:url value="/patients" var="url">
-                                    <c:param name="page" value="${page + 1}"/>
-                                </c:url>
-                                <a class="page-link" href="${url}">
-                                    &nbsp<i class="fa fa-step-forward" aria-hidden="true"></i>&nbsp
-                                </a>
-                            </li>
-                            <li class="${page == pagesCount ? disabled : active} page-item">
-                                <c:url value="/patients" var="url">
-                                    <c:param name="page" value="${pagesCount}"/>
-                                </c:url>
-                                <a class="page-link" href="${url}">
-                                    &nbsp<i class="fa fa-fast-forward" aria-hidden="true"></i>&nbsp
-                                </a>
-                            </li>
-                        </c:if>
-                            </ul>
-                        </nav>
-                    </td>
-                </tr>
-            </table>
-        </div>
-        </div>
-    </div>
-</div>
 
 
 <script>
     window.chartColors = {
-        red: 'rgb(255, 99, 132)',
-        green: 'rgb(75, 192, 192)',
+        red: '#c31d25',
+        green: '#28a745',
     };
 
     Chart.defaults.global.tooltips.custom = function(tooltip) {
@@ -226,7 +229,7 @@
         type: 'doughnut',
         data: {
             datasets: [{
-                data: [${patientCount}, 100 - ${patientCount}],
+                data: [${patientsInTreatmentCount}, 100 - ${patientsInTreatmentCount}],
                 backgroundColor: [
                     window.chartColors.red,
                     window.chartColors.green,

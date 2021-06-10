@@ -72,4 +72,9 @@ public class PatientService {
     public int patientsCount() {
         return patientDAO.patientsCount();
     }
+
+    @Transactional(readOnly = true)
+    public int patientsInTreatmentCount() {
+        return patientDAO.patientsInTreatmentCount();
+    }
 }

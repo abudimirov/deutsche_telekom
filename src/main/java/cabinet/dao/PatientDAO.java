@@ -13,4 +13,5 @@ public interface PatientDAO {
     void edit(Patient patient);
     Patient getById(int id);
     int patientsCount();
+    int patientsInTreatmentCount();
 }

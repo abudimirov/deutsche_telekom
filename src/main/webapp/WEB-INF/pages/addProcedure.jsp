@@ -15,66 +15,70 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 </head>
 <body>
-<%@ include file="components/nav.jsp" %>
 <c:url value="/procedures/add" var="var"/>
-<div class="container">
-    <div class="my-5">
-        <h1>Add new procedure</h1>
-        <form action="${var}" method="POST">
-            <div class="form-group">
-                <label for="title">Title</label>
-                <input type="text" class="form-control" name="title" id="title">
+<div class="container-fluid">
+    <div class="row">
+        <%@ include file="components/sidebar.jsp" %>
+        <main class="col-md-9 ml-sm-auto col-lg-10 px-md-4 bg-light">
+            <div class="container-fluid py-5">
+                <h5>Add new procedure</h5>
+                <form action="${var}" method="POST">
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input type="text" class="form-control" name="title" id="title">
+                    </div>
+                    <div class="form-group">
+                        <label for="patient.id">Patient</label>
+                        <select id="patient.id" name="patient.id" class="form-control">
+                            <c:forEach var="patients" items="${patients}" varStatus="i">
+                                <option value="${patients.id}">${patients.name} ${patients.surname}</option>
+                            </c:forEach>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="type">Type</label>
+                        <select id="type" name="type" class="form-control">
+                            <option value="procedure">procedure</option>
+                            <option value="medicine" selected>medicine</option>
+                        </select>
+                    </div>
+                    <div class="form-group" id="dosage">
+                        <label for="type">Dosage</label>
+                        <input type="number" id="dose" name="dose" class="form-control" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="dates">Range dates</label>
+                        <input type="text" class="form-control" name="dates" id="dates">
+                    </div>
+                    <div class="form-group">
+                        <label for="status">Status</label>
+                        <select id="status" name="status" class="custom-select">
+                            <option selected>scheduled</option>
+                            <option>cancelled</option>
+                            <option>done</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="status">Daily pattern</label>
+                        <select id="dailyPattern" name="dailyPattern" class="form-control">
+                            <option value="1" selected>once a day</option>
+                            <option value="2">twice a day</option>
+                            <option value="3">three times a day</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="checkbox" name="weeklyPattern" value="2" /> Monday
+                        <input type="checkbox" name="weeklyPattern" value="3" /> Tuesday
+                        <input type="checkbox" name="weeklyPattern" value="4" /> Wednesday
+                        <input type="checkbox" name="weeklyPattern" value="5" /> Thursday
+                        <input type="checkbox" name="weeklyPattern" value="6" /> Friday
+                        <input type="checkbox" name="weeklyPattern" value="7" /> Saturday
+                        <input type="checkbox" name="weeklyPattern" value="1" /> Sunday
+                    </div>
+                    <button type="submit" class="btn btn-success">Save</button>
+                </form>
             </div>
-            <div class="form-group">
-                <label for="patient.id">Patient</label>
-                <select id="patient.id" name="patient.id" class="form-control">
-                <c:forEach var="patients" items="${patients}" varStatus="i">
-                    <option value="${patients.id}">${patients.name} ${patients.surname}</option>
-                </c:forEach>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="type">Type</label>
-                <select id="type" name="type" class="form-control">
-                    <option value="procedure">procedure</option>
-                    <option value="medicine" selected>medicine</option>
-                </select>
-            </div>
-            <div class="form-group" id="dosage">
-                <label for="type">Dosage</label>
-                <input type="number" id="dose" name="dose" class="form-control" value="0">
-            </div>
-            <div class="form-group">
-                <label for="dates">Range dates</label>
-                <input type="text" class="form-control" name="dates" id="dates">
-            </div>
-            <div class="form-group">
-                <label for="status">Status</label>
-                <select id="status" name="status" class="custom-select">
-                    <option selected>scheduled</option>
-                    <option>cancelled</option>
-                    <option>done</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="status">Daily pattern</label>
-                <select id="dailyPattern" name="dailyPattern" class="form-control">
-                    <option value="1" selected>once a day</option>
-                    <option value="2">twice a day</option>
-                    <option value="3">three times a day</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <input type="checkbox" name="weeklyPattern" value="2" /> Monday
-                <input type="checkbox" name="weeklyPattern" value="3" /> Tuesday
-                <input type="checkbox" name="weeklyPattern" value="4" /> Wednesday
-                <input type="checkbox" name="weeklyPattern" value="5" /> Thursday
-                <input type="checkbox" name="weeklyPattern" value="6" /> Friday
-                <input type="checkbox" name="weeklyPattern" value="7" /> Saturday
-                <input type="checkbox" name="weeklyPattern" value="1" /> Sunday
-            </div>
-            <button type="submit" class="btn btn-success">Save</button>
-        </form>
+        </main>
     </div>
 </div>
 </body>

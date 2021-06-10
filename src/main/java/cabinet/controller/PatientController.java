@@ -45,12 +45,14 @@ public class PatientController {
     public ModelAndView allPatients(@RequestParam(defaultValue = "1") int page) {
         List<PatientDTO> patients = patientService.allPatients(page);
         int patientsCount = patientService.patientsCount();
+        int patientsInTreatmentCount = patientService.patientsInTreatmentCount();
         int pagesCount = (patientsCount + 9)/10;
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("patients");
         modelAndView.addObject("page", page);
         modelAndView.addObject("patientsList", patients);
         modelAndView.addObject("patientCount", patientsCount);
+        modelAndView.addObject("patientsInTreatmentCount", patientsInTreatmentCount);
         modelAndView.addObject("pagesCount", pagesCount);
         return modelAndView;
     }

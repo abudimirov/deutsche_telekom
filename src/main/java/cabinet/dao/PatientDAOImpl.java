@@ -174,9 +174,26 @@ public class PatientDAOImpl implements PatientDAO {
     public int patientsCount() {
         try {
             Session session = sessionFactory.getCurrentSession();
-            return session.createQuery("select count(*) from Patient ", Number.class).getSingleResult().intValue();
+            return session.createQuery("select count(*) from Patient", Number.class).getSingleResult().intValue();
         } catch (Exception ex) {
             logger.debug("count all patients");
+            logger.error(ex.getMessage(),ex);
+            return 0;
+        }
+    }
+
+    /**
+     * Count all patients in the DB whose status is not cured
+     *
+     * @return int of patients who is not cured
+     */
+    @Override
+    public int patientsInTreatmentCount() {
+        try {
+            Session session = sessionFactory.getCurrentSession();
+            return session.createQuery("select count(*) from Patient where cured = false", Number.class).getSingleResult().intValue();
+        } catch (Exception ex) {
+            logger.debug("count not cured patients");
             logger.error(ex.getMessage(),ex);
             return 0;
         }
