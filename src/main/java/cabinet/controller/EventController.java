@@ -18,6 +18,11 @@ public class EventController {
         this.eventService = eventService;
     }
 
+    /**
+     * Controller for cancelling event
+     *
+     * @return modelAndView
+     */
     @GetMapping(path = "/events/cancel/{id}")
     public ModelAndView cancelEvent(@PathVariable("id") int id) {
         ModelAndView modelAndView = new ModelAndView();

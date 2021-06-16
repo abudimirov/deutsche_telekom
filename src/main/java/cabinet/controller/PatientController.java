@@ -1,7 +1,9 @@
 package cabinet.controller;
 
+import cabinet.model.dto.AlertDTO;
 import cabinet.model.dto.EventDTO;
 import cabinet.model.dto.PatientDTO;
+import cabinet.service.AlertService;
 import cabinet.service.EventService;
 import cabinet.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,7 @@ import java.util.List;
 public class PatientController {
     private PatientService patientService;
     private EventService eventService;
+    private AlertService alertService;
 
     private static final String HOMEPAGE_REDIRECT = "redirect:/patients/";
 
@@ -36,6 +39,8 @@ public class PatientController {
         this.eventService = eventService;
     }
 
+    @Autowired
+    public void setAlertService(AlertService alertService) {this.alertService = alertService; }
     /**
      * Controller for patients list with pagination.
      * @param page - page num
@@ -44,6 +49,7 @@ public class PatientController {
     @GetMapping(path = "/patients")
     public ModelAndView allPatients(@RequestParam(defaultValue = "1") int page) {
         List<PatientDTO> patients = patientService.allPatients(page);
+        List<AlertDTO> alerts = alertService.getAllAlerts();
         int patientsCount = patientService.patientsCount();
         int patientsInTreatmentCount = patientService.patientsInTreatmentCount();
         int pagesCount = (patientsCount + 9)/10;
@@ -53,6 +59,7 @@ public class PatientController {
         modelAndView.addObject("patientsList", patients);
         modelAndView.addObject("patientCount", patientsCount);
         modelAndView.addObject("patientsInTreatmentCount", patientsInTreatmentCount);
+        modelAndView.addObject("alerts", alerts);
         modelAndView.addObject("pagesCount", pagesCount);
         return modelAndView;
     }
@@ -65,13 +72,12 @@ public class PatientController {
     @PostMapping(path = "/patients/edit")
     public ModelAndView editPatient(@Valid @ModelAttribute("patient") PatientDTO patient, BindingResult result) {
         ModelAndView modelAndView = new ModelAndView();
-
+        modelAndView.setViewName("editPatient");
         if (result.hasErrors()){
-            modelAndView.setViewName("editPatient");
             modelAndView.addObject("errors", result);
         } else {
-            modelAndView.setViewName(HOMEPAGE_REDIRECT);
             patientService.edit(patient);
+            modelAndView.addObject("message", "patient was edited successfully");
         }
 
         return modelAndView;
@@ -115,12 +121,12 @@ public class PatientController {
     @PostMapping(path = "/patients/add")
     public ModelAndView addPatient(@Valid @ModelAttribute("patient") PatientDTO patient, BindingResult result) {
         ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("addPatient");
         if (result.hasErrors()){
-            modelAndView.setViewName("addPatient");
             modelAndView.addObject("errors", result);
         } else {
-            modelAndView.setViewName(HOMEPAGE_REDIRECT);
             patientService.add(patient);
+            modelAndView.addObject("message", "patient was successfully added");
         }
 
         return modelAndView;
@@ -135,7 +141,8 @@ public class PatientController {
     @GetMapping(path = "/patients/discharge/{id}")
     public ModelAndView dischargePatient(@PathVariable("id") int id) {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName(HOMEPAGE_REDIRECT);
+        String path = "redirect:/patients/edit/" + id;
+        modelAndView.setViewName(path);
         PatientDTO patient = patientService.getById(id);
         patientService.discharge(patient);
         return modelAndView;

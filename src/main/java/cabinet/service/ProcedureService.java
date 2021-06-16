@@ -1,7 +1,9 @@
 package cabinet.service;
 
+import cabinet.dao.AlertDAO;
 import cabinet.dao.EventDAO;
 import cabinet.dao.ProcedureDAO;
+import cabinet.model.Alert;
 import cabinet.model.Event;
 import cabinet.model.Procedure;
 import cabinet.model.dto.ProcedureDTO;
@@ -26,6 +28,7 @@ import java.util.stream.IntStream;
 public class ProcedureService {
     private ProcedureDAO procedureDAO;
     private EventDAO eventDAO;
+    private AlertDAO alertDAO;
 
     @Autowired
     public void setProcedureDAO(ProcedureDAO procedureDAO) {
@@ -36,6 +39,9 @@ public class ProcedureService {
     public void setEventDAO(EventDAO eventDAO) {
         this.eventDAO = eventDAO;
     }
+
+    @Autowired
+    public void setAlertDAO(AlertDAO alertDAO) {this.alertDAO = alertDAO; }
 
     @Autowired
     JmsTemplate jmsTemplate;
@@ -129,11 +135,16 @@ public class ProcedureService {
             }
         }
 
+        Alert alert = new Alert("Dr. John Dorian", " added new event " + procedureDTO.getTitle() + " with procedures");
+        alertDAO.add(alert);
+
         try {
             jmsTemplate.convertAndSend("New event with procedures was added");
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+
+
 
     }
 
@@ -145,6 +156,9 @@ public class ProcedureService {
     public void delete(ProcedureDTO procedureDTO) {
         Procedure procedure = DtoUtils.convertToEntity(Procedure.class, procedureDTO);
         procedureDAO.delete(procedure);
+
+        Alert alert = new Alert("Dr. John Dorian", " deleted procedure " + procedureDTO.getTitle());
+        alertDAO.add(alert);
     }
 
     /**
@@ -155,6 +169,9 @@ public class ProcedureService {
     public void edit(ProcedureDTO procedureDTO) {
         Procedure procedure = DtoUtils.convertToEntity(Procedure.class, procedureDTO);
         procedureDAO.edit(procedure);
+
+        Alert alert = new Alert("Dr. John Dorian", " edited procedure " + procedureDTO.getTitle());
+        alertDAO.add(alert);
 
         try {
             jmsTemplate.convertAndSend("New event with procedures was added");

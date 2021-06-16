@@ -39,6 +39,12 @@ public class ProcedureController {
         this.patientService = patientService;
     }
 
+    /**
+     * Controller for getting all procedures with pagination
+     *
+     * @param page
+     * @return modelAndView
+     */
     @GetMapping(path = "/procedures")
     public ModelAndView allProcedures(@RequestParam(defaultValue = "1") int page) {
         List<ProcedureDTO> procedures = procedureService.allProcedures(page);
@@ -53,14 +59,27 @@ public class ProcedureController {
         return modelAndView;
     }
 
+    /**
+     * Controller for editing existing procedure
+     *
+     * @param procedure
+     * @return modelAndView
+     */
     @PostMapping(path = "/procedures/edit")
     public ModelAndView editProcedure(@ModelAttribute("procedure") ProcedureDTO procedure) {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("redirect:/");
+        String path = "redirect:/procedures/edit/" + procedure.getId();
+        modelAndView.setViewName(path);
         procedureService.edit(procedure);
         return modelAndView;
     }
 
+    /**
+     * Controller for getting info about existing procedure
+     *
+     * @param id
+     * @return modelAndView
+     */
     @GetMapping(path = "/procedures/edit/{id}")
     public ModelAndView editPage(@PathVariable("id") int id) {
         ProcedureDTO procedure = procedureService.getById(id);
@@ -70,6 +89,11 @@ public class ProcedureController {
         return modelAndView;
     }
 
+    /**
+     * Controller for page with form to add a new procedure
+     *
+     * @return modelAndView
+     */
     @GetMapping(path = "/procedures/add")
     public ModelAndView addPage() {
         ModelAndView modelAndView = new ModelAndView();
@@ -79,6 +103,13 @@ public class ProcedureController {
         return modelAndView;
     }
 
+    /**
+     * Controller for adding new procedure to the DB
+     *
+     * @param procedure
+     * @param result
+     * @return modelAndView
+     */
     @PostMapping(path = "/procedures/add")
     public ModelAndView addProcedure(@Valid @ModelAttribute("procedure") ProcedureDTO procedure, BindingResult result) {
         ModelAndView modelAndView = new ModelAndView();
@@ -86,13 +117,19 @@ public class ProcedureController {
             modelAndView.setViewName("addProcedure");
             modelAndView.addObject("errors", result);
         } else {
-            modelAndView.setViewName(PATIENTS_REDIRECT);
+            modelAndView.setViewName("addProcedure");
             procedureService.add(procedure);
+            modelAndView.addObject("message", "procedures were added successfully");
         }
 
         return modelAndView;
     }
 
+    /**
+     * Controller for delete an existing procedure from the DB
+     * @param id
+     * @return
+     */
     @GetMapping(path = "/procedures/delete/{id}")
     public ModelAndView deleteProcedure(@PathVariable("id") int id) {
         ModelAndView modelAndView = new ModelAndView();
@@ -102,7 +139,11 @@ public class ProcedureController {
         return modelAndView;
     }
 
-
+    /**
+     * Controller for getting all procedures for patient by his ID
+     * @param id
+     * @return
+     */
     @GetMapping(path = "/procedures/patient/{id}")
     public ModelAndView patientProcedures(@PathVariable("id") int id) {
         PatientDTO patient = patientService.getById(id);
@@ -113,6 +154,12 @@ public class ProcedureController {
         return modelAndView;
     }
 
+    /**
+     * Controller for getting all procedures by date
+     *
+     * @param date
+     * @return
+     */
     @GetMapping(path = "/procedures/date/{date}")
     public ModelAndView proceduresByDate(@PathVariable("date") String date) {
         List<ProcedureDTO> procedures = procedureService.proceduresByDate(date);
@@ -122,6 +169,11 @@ public class ProcedureController {
         return modelAndView;
     }
 
+    /**
+     * Controller for getting procedures for the next hour
+     *
+     * @return
+     */
     @GetMapping(path = "/procedures/nexthour")
     public ModelAndView proceduresForNextHour() {
         List<ProcedureDTO> procedures = procedureService.proceduresForNextHour();

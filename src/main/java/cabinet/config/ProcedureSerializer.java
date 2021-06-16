@@ -10,6 +10,12 @@ import com.google.gson.JsonSerializer;
 
 import java.lang.reflect.Type;
 
+/**
+ * This class is used for converting Procedure DTO to JSON for REST API.
+ * We remove unnecessary fields leaving only fields that are for public use
+ *
+ */
+
 public class ProcedureSerializer implements JsonSerializer<ProcedureDTO> {
     @Override
     public JsonElement serialize(ProcedureDTO procedureDTO, Type type, JsonSerializationContext jsonSerializationContext) {

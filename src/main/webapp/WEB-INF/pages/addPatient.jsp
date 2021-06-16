@@ -19,6 +19,14 @@
     <div class="row">
         <%@ include file="components/sidebar.jsp" %>
         <main class="col-md-9 ml-sm-auto col-lg-10 px-md-4 bg-light">
+            <c:if test="${!empty message}">
+                <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+                        ${message}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </c:if>
             <div class="container-fluid py-5">
                 <h5>Add new patient</h5>
                 <form:form action="${var}" method="POST" modelAttribute="patient">

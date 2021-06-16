@@ -11,7 +11,10 @@ import javax.naming.NamingException;
 import java.util.Properties;
 import org.springframework.jms.core.JmsTemplate;
 
-
+/**
+ * This class is used for configuring connection to ActiveMQ
+ *
+ */
 @Configuration
 @ComponentScan(basePackages = "cabinet")
 public class SenderConfig {

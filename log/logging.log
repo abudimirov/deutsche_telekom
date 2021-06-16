@@ -1166,3 +1166,237 @@ The last packet sent successfully to the server was 0 milliseconds ago. The driv
 2021-06-10 16:27:04 INFO  remoting:99 - JBoss Remoting version 5.0.20.Final
 2021-06-10 16:27:08 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
 2021-06-10 16:27:47 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2021-06-10 16:31:59 INFO  Version:46 - HHH000412: Hibernate Core {5.3.7.Final}
+2021-06-10 16:31:59 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2021-06-10 16:31:59 INFO  Version:49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2021-06-10 16:32:00 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-06-10 16:32:01 INFO  Version:21 - HV000001: Hibernate Validator 6.0.10.Final
+2021-06-10 16:32:03 INFO  naming:49 - WFNAM00025: org.jboss.naming.remote.client.InitialContextFactory is deprecated; new applications should use org.wildfly.naming.client.WildFlyInitialContextFactory instead
+2021-06-10 16:32:03 INFO  naming:57 - WildFly Naming version 1.0.14.Final
+2021-06-10 16:32:03 INFO  security:55 - ELY00001: WildFly Elytron version 1.15.3.Final
+2021-06-10 16:32:03 INFO  xnio:95 - XNIO version 3.8.4.Final
+2021-06-10 16:32:03 INFO  nio:58 - XNIO NIO Implementation Version 3.8.4.Final
+2021-06-10 16:32:03 INFO  threads:52 - JBoss Threads version 2.4.0.Final
+2021-06-10 16:32:03 INFO  remoting:99 - JBoss Remoting version 5.0.20.Final
+2021-06-10 16:32:07 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-06-10 16:32:16 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2021-06-10 22:12:00 INFO  Version:46 - HHH000412: Hibernate Core {5.3.7.Final}
+2021-06-10 22:12:00 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2021-06-10 22:12:00 INFO  Version:49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2021-06-10 22:12:01 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-06-10 22:12:02 INFO  Version:21 - HV000001: Hibernate Validator 6.0.10.Final
+2021-06-10 22:12:04 INFO  naming:49 - WFNAM00025: org.jboss.naming.remote.client.InitialContextFactory is deprecated; new applications should use org.wildfly.naming.client.WildFlyInitialContextFactory instead
+2021-06-10 22:12:04 INFO  naming:57 - WildFly Naming version 1.0.14.Final
+2021-06-10 22:12:04 INFO  security:55 - ELY00001: WildFly Elytron version 1.15.3.Final
+2021-06-10 22:12:04 INFO  xnio:95 - XNIO version 3.8.4.Final
+2021-06-10 22:12:04 INFO  nio:58 - XNIO NIO Implementation Version 3.8.4.Final
+2021-06-10 22:12:04 INFO  threads:52 - JBoss Threads version 2.4.0.Final
+2021-06-10 22:12:04 INFO  remoting:99 - JBoss Remoting version 5.0.20.Final
+2021-06-10 22:12:08 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-06-10 22:12:20 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2021-06-15 19:32:04 INFO  Version:46 - HHH000412: Hibernate Core {5.3.7.Final}
+2021-06-15 19:32:04 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2021-06-15 19:32:05 INFO  Version:49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2021-06-15 19:32:10 WARN  JdbcEnvironmentInitiator:132 - HHH000342: Could not obtain connection to query metadata : Cannot create PoolableConnectionFactory (Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.)
+2021-06-15 19:32:12 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-06-15 19:32:13 INFO  LobCreatorBuilderImpl:63 - HHH000422: Disabling contextual LOB creation as connection was null
+2021-06-15 19:32:14 INFO  Version:21 - HV000001: Hibernate Validator 6.0.10.Final
+2021-06-15 19:32:15 INFO  naming:49 - WFNAM00025: org.jboss.naming.remote.client.InitialContextFactory is deprecated; new applications should use org.wildfly.naming.client.WildFlyInitialContextFactory instead
+2021-06-15 19:32:15 INFO  naming:57 - WildFly Naming version 1.0.14.Final
+2021-06-15 19:32:16 INFO  security:55 - ELY00001: WildFly Elytron version 1.15.3.Final
+2021-06-15 19:32:16 INFO  xnio:95 - XNIO version 3.8.4.Final
+2021-06-15 19:32:16 INFO  nio:58 - XNIO NIO Implementation Version 3.8.4.Final
+2021-06-15 19:32:16 INFO  threads:52 - JBoss Threads version 2.4.0.Final
+2021-06-15 19:32:16 INFO  remoting:99 - JBoss Remoting version 5.0.20.Final
+2021-06-15 19:32:23 WARN  JdbcEnvironmentInitiator:132 - HHH000342: Could not obtain connection to query metadata : Cannot create PoolableConnectionFactory (Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.)
+2021-06-15 19:32:23 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-06-15 19:32:23 INFO  LobCreatorBuilderImpl:63 - HHH000422: Disabling contextual LOB creation as connection was null
+2021-06-15 19:32:46 WARN  SqlExceptionHelper:137 - SQL Error: 0, SQLState: null
+2021-06-15 19:32:46 ERROR SqlExceptionHelper:142 - Cannot create PoolableConnectionFactory (Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.)
+2021-06-15 19:32:59 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2021-06-15 21:05:30 INFO  Version:46 - HHH000412: Hibernate Core {5.3.7.Final}
+2021-06-15 21:05:30 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2021-06-15 21:05:31 INFO  Version:49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2021-06-15 21:05:31 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-06-15 21:05:32 INFO  Version:21 - HV000001: Hibernate Validator 6.0.10.Final
+2021-06-15 21:05:34 INFO  naming:49 - WFNAM00025: org.jboss.naming.remote.client.InitialContextFactory is deprecated; new applications should use org.wildfly.naming.client.WildFlyInitialContextFactory instead
+2021-06-15 21:05:34 INFO  naming:57 - WildFly Naming version 1.0.14.Final
+2021-06-15 21:05:34 INFO  security:55 - ELY00001: WildFly Elytron version 1.15.3.Final
+2021-06-15 21:05:34 INFO  xnio:95 - XNIO version 3.8.4.Final
+2021-06-15 21:05:34 INFO  nio:58 - XNIO NIO Implementation Version 3.8.4.Final
+2021-06-15 21:05:34 INFO  threads:52 - JBoss Threads version 2.4.0.Final
+2021-06-15 21:05:34 INFO  remoting:99 - JBoss Remoting version 5.0.20.Final
+2021-06-15 21:05:38 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-06-15 21:05:48 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2021-06-15 22:21:54 INFO  Version:46 - HHH000412: Hibernate Core {5.3.7.Final}
+2021-06-15 22:21:54 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2021-06-15 22:21:54 INFO  Version:49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2021-06-15 22:21:55 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-06-15 22:21:56 INFO  Version:21 - HV000001: Hibernate Validator 6.0.10.Final
+2021-06-15 22:21:57 INFO  naming:49 - WFNAM00025: org.jboss.naming.remote.client.InitialContextFactory is deprecated; new applications should use org.wildfly.naming.client.WildFlyInitialContextFactory instead
+2021-06-15 22:21:57 INFO  naming:57 - WildFly Naming version 1.0.14.Final
+2021-06-15 22:21:58 INFO  security:55 - ELY00001: WildFly Elytron version 1.15.3.Final
+2021-06-15 22:21:58 INFO  xnio:95 - XNIO version 3.8.4.Final
+2021-06-15 22:21:58 INFO  nio:58 - XNIO NIO Implementation Version 3.8.4.Final
+2021-06-15 22:21:58 INFO  threads:52 - JBoss Threads version 2.4.0.Final
+2021-06-15 22:21:58 INFO  remoting:99 - JBoss Remoting version 5.0.20.Final
+2021-06-15 22:22:01 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-06-15 22:22:30 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2021-06-15 22:31:11 INFO  Version:46 - HHH000412: Hibernate Core {5.3.7.Final}
+2021-06-15 22:31:11 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2021-06-15 22:31:11 INFO  Version:49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2021-06-15 22:31:12 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-06-15 22:31:13 INFO  Version:21 - HV000001: Hibernate Validator 6.0.10.Final
+2021-06-15 22:31:14 INFO  naming:49 - WFNAM00025: org.jboss.naming.remote.client.InitialContextFactory is deprecated; new applications should use org.wildfly.naming.client.WildFlyInitialContextFactory instead
+2021-06-15 22:31:14 INFO  naming:57 - WildFly Naming version 1.0.14.Final
+2021-06-15 22:31:15 INFO  security:55 - ELY00001: WildFly Elytron version 1.15.3.Final
+2021-06-15 22:31:15 INFO  xnio:95 - XNIO version 3.8.4.Final
+2021-06-15 22:31:15 INFO  nio:58 - XNIO NIO Implementation Version 3.8.4.Final
+2021-06-15 22:31:15 INFO  threads:52 - JBoss Threads version 2.4.0.Final
+2021-06-15 22:31:15 INFO  remoting:99 - JBoss Remoting version 5.0.20.Final
+2021-06-15 22:31:18 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-06-15 22:31:43 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2021-06-15 22:33:56 INFO  Version:46 - HHH000412: Hibernate Core {5.3.7.Final}
+2021-06-15 22:33:56 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2021-06-15 22:33:57 INFO  Version:49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2021-06-15 22:33:57 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-06-15 22:33:58 INFO  Version:21 - HV000001: Hibernate Validator 6.0.10.Final
+2021-06-15 22:34:00 INFO  naming:49 - WFNAM00025: org.jboss.naming.remote.client.InitialContextFactory is deprecated; new applications should use org.wildfly.naming.client.WildFlyInitialContextFactory instead
+2021-06-15 22:34:00 INFO  naming:57 - WildFly Naming version 1.0.14.Final
+2021-06-15 22:34:00 INFO  security:55 - ELY00001: WildFly Elytron version 1.15.3.Final
+2021-06-15 22:34:00 INFO  xnio:95 - XNIO version 3.8.4.Final
+2021-06-15 22:34:00 INFO  nio:58 - XNIO NIO Implementation Version 3.8.4.Final
+2021-06-15 22:34:01 INFO  threads:52 - JBoss Threads version 2.4.0.Final
+2021-06-15 22:34:01 INFO  remoting:99 - JBoss Remoting version 5.0.20.Final
+2021-06-15 22:34:05 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-06-15 22:34:16 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2021-06-15 22:47:53 INFO  Version:46 - HHH000412: Hibernate Core {5.3.7.Final}
+2021-06-15 22:47:53 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2021-06-15 22:47:54 INFO  Version:49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2021-06-15 22:47:54 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-06-15 22:47:56 INFO  Version:21 - HV000001: Hibernate Validator 6.0.10.Final
+2021-06-15 22:47:57 INFO  naming:49 - WFNAM00025: org.jboss.naming.remote.client.InitialContextFactory is deprecated; new applications should use org.wildfly.naming.client.WildFlyInitialContextFactory instead
+2021-06-15 22:47:57 INFO  naming:57 - WildFly Naming version 1.0.14.Final
+2021-06-15 22:47:57 INFO  security:55 - ELY00001: WildFly Elytron version 1.15.3.Final
+2021-06-15 22:47:58 INFO  xnio:95 - XNIO version 3.8.4.Final
+2021-06-15 22:47:58 INFO  nio:58 - XNIO NIO Implementation Version 3.8.4.Final
+2021-06-15 22:47:58 INFO  threads:52 - JBoss Threads version 2.4.0.Final
+2021-06-15 22:47:58 INFO  remoting:99 - JBoss Remoting version 5.0.20.Final
+2021-06-15 22:48:02 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-06-15 22:48:25 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2021-06-15 23:00:18 INFO  Version:46 - HHH000412: Hibernate Core {5.3.7.Final}
+2021-06-15 23:00:18 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2021-06-15 23:00:18 INFO  Version:49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2021-06-15 23:00:19 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-06-15 23:00:21 INFO  Version:21 - HV000001: Hibernate Validator 6.0.10.Final
+2021-06-15 23:00:23 INFO  naming:49 - WFNAM00025: org.jboss.naming.remote.client.InitialContextFactory is deprecated; new applications should use org.wildfly.naming.client.WildFlyInitialContextFactory instead
+2021-06-15 23:00:23 INFO  naming:57 - WildFly Naming version 1.0.14.Final
+2021-06-15 23:00:23 INFO  security:55 - ELY00001: WildFly Elytron version 1.15.3.Final
+2021-06-15 23:00:23 INFO  xnio:95 - XNIO version 3.8.4.Final
+2021-06-15 23:00:23 INFO  nio:58 - XNIO NIO Implementation Version 3.8.4.Final
+2021-06-15 23:00:23 INFO  threads:52 - JBoss Threads version 2.4.0.Final
+2021-06-15 23:00:23 INFO  remoting:99 - JBoss Remoting version 5.0.20.Final
+2021-06-15 23:00:27 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-06-15 23:01:05 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2021-06-15 23:01:54 INFO  Version:46 - HHH000412: Hibernate Core {5.3.7.Final}
+2021-06-15 23:01:54 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2021-06-15 23:01:54 INFO  Version:49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2021-06-15 23:01:55 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-06-15 23:01:55 INFO  Version:21 - HV000001: Hibernate Validator 6.0.10.Final
+2021-06-15 23:01:57 INFO  naming:49 - WFNAM00025: org.jboss.naming.remote.client.InitialContextFactory is deprecated; new applications should use org.wildfly.naming.client.WildFlyInitialContextFactory instead
+2021-06-15 23:01:57 INFO  naming:57 - WildFly Naming version 1.0.14.Final
+2021-06-15 23:01:57 INFO  security:55 - ELY00001: WildFly Elytron version 1.15.3.Final
+2021-06-15 23:01:58 INFO  xnio:95 - XNIO version 3.8.4.Final
+2021-06-15 23:01:58 INFO  nio:58 - XNIO NIO Implementation Version 3.8.4.Final
+2021-06-15 23:01:58 INFO  threads:52 - JBoss Threads version 2.4.0.Final
+2021-06-15 23:01:58 INFO  remoting:99 - JBoss Remoting version 5.0.20.Final
+2021-06-15 23:02:01 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-06-15 23:02:18 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2021-06-16 11:30:34 INFO  Version:46 - HHH000412: Hibernate Core {5.3.7.Final}
+2021-06-16 11:30:34 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2021-06-16 11:30:34 INFO  Version:49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2021-06-16 11:30:35 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-06-16 11:30:40 INFO  Version:21 - HV000001: Hibernate Validator 6.0.10.Final
+2021-06-16 11:30:41 INFO  naming:49 - WFNAM00025: org.jboss.naming.remote.client.InitialContextFactory is deprecated; new applications should use org.wildfly.naming.client.WildFlyInitialContextFactory instead
+2021-06-16 11:30:41 INFO  naming:57 - WildFly Naming version 1.0.14.Final
+2021-06-16 11:30:41 INFO  security:55 - ELY00001: WildFly Elytron version 1.15.3.Final
+2021-06-16 11:30:42 INFO  xnio:95 - XNIO version 3.8.4.Final
+2021-06-16 11:30:42 INFO  nio:58 - XNIO NIO Implementation Version 3.8.4.Final
+2021-06-16 11:30:42 INFO  threads:52 - JBoss Threads version 2.4.0.Final
+2021-06-16 11:30:42 INFO  remoting:99 - JBoss Remoting version 5.0.20.Final
+2021-06-16 11:30:46 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-06-16 11:30:56 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2021-06-16 20:16:05 INFO  Version:46 - HHH000412: Hibernate Core {5.3.7.Final}
+2021-06-16 20:16:05 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2021-06-16 20:16:05 INFO  Version:49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2021-06-16 20:16:10 WARN  JdbcEnvironmentInitiator:132 - HHH000342: Could not obtain connection to query metadata : Cannot create PoolableConnectionFactory (Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.)
+2021-06-16 20:16:10 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-06-16 20:16:10 INFO  LobCreatorBuilderImpl:63 - HHH000422: Disabling contextual LOB creation as connection was null
+2021-06-16 20:16:11 INFO  Version:21 - HV000001: Hibernate Validator 6.0.10.Final
+2021-06-16 20:16:12 INFO  naming:49 - WFNAM00025: org.jboss.naming.remote.client.InitialContextFactory is deprecated; new applications should use org.wildfly.naming.client.WildFlyInitialContextFactory instead
+2021-06-16 20:16:12 INFO  naming:57 - WildFly Naming version 1.0.14.Final
+2021-06-16 20:16:13 INFO  security:55 - ELY00001: WildFly Elytron version 1.15.3.Final
+2021-06-16 20:16:13 INFO  xnio:95 - XNIO version 3.8.4.Final
+2021-06-16 20:16:13 INFO  nio:58 - XNIO NIO Implementation Version 3.8.4.Final
+2021-06-16 20:16:13 INFO  threads:52 - JBoss Threads version 2.4.0.Final
+2021-06-16 20:16:13 INFO  remoting:99 - JBoss Remoting version 5.0.20.Final
+2021-06-16 20:16:20 WARN  JdbcEnvironmentInitiator:132 - HHH000342: Could not obtain connection to query metadata : Cannot create PoolableConnectionFactory (Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.)
+2021-06-16 20:16:20 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-06-16 20:16:20 INFO  LobCreatorBuilderImpl:63 - HHH000422: Disabling contextual LOB creation as connection was null
+2021-06-16 20:16:41 WARN  SqlExceptionHelper:137 - SQL Error: 0, SQLState: null
+2021-06-16 20:16:41 ERROR SqlExceptionHelper:142 - Cannot create PoolableConnectionFactory (Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.)
+2021-06-16 20:16:53 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2021-06-16 20:29:33 INFO  Version:46 - HHH000412: Hibernate Core {5.3.7.Final}
+2021-06-16 20:29:33 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2021-06-16 20:29:33 INFO  Version:49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2021-06-16 20:29:34 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-06-16 20:29:35 INFO  Version:21 - HV000001: Hibernate Validator 6.0.10.Final
+2021-06-16 20:29:36 INFO  naming:49 - WFNAM00025: org.jboss.naming.remote.client.InitialContextFactory is deprecated; new applications should use org.wildfly.naming.client.WildFlyInitialContextFactory instead
+2021-06-16 20:29:36 INFO  naming:57 - WildFly Naming version 1.0.14.Final
+2021-06-16 20:29:36 INFO  security:55 - ELY00001: WildFly Elytron version 1.15.3.Final
+2021-06-16 20:29:36 INFO  xnio:95 - XNIO version 3.8.4.Final
+2021-06-16 20:29:36 INFO  nio:58 - XNIO NIO Implementation Version 3.8.4.Final
+2021-06-16 20:29:36 INFO  threads:52 - JBoss Threads version 2.4.0.Final
+2021-06-16 20:29:36 INFO  remoting:99 - JBoss Remoting version 5.0.20.Final
+2021-06-16 20:29:40 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-06-16 20:30:28 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2021-06-16 20:43:03 INFO  Version:46 - HHH000412: Hibernate Core {5.3.7.Final}
+2021-06-16 20:43:03 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2021-06-16 20:43:03 INFO  Version:49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2021-06-16 20:43:04 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-06-16 20:43:05 INFO  Version:21 - HV000001: Hibernate Validator 6.0.10.Final
+2021-06-16 20:43:06 INFO  naming:49 - WFNAM00025: org.jboss.naming.remote.client.InitialContextFactory is deprecated; new applications should use org.wildfly.naming.client.WildFlyInitialContextFactory instead
+2021-06-16 20:43:06 INFO  naming:57 - WildFly Naming version 1.0.14.Final
+2021-06-16 20:43:06 INFO  security:55 - ELY00001: WildFly Elytron version 1.15.3.Final
+2021-06-16 20:43:06 INFO  xnio:95 - XNIO version 3.8.4.Final
+2021-06-16 20:43:06 INFO  nio:58 - XNIO NIO Implementation Version 3.8.4.Final
+2021-06-16 20:43:06 INFO  threads:52 - JBoss Threads version 2.4.0.Final
+2021-06-16 20:43:06 INFO  remoting:99 - JBoss Remoting version 5.0.20.Final
+2021-06-16 20:43:09 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-06-16 20:44:03 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2021-06-16 20:50:21 INFO  Version:46 - HHH000412: Hibernate Core {5.3.7.Final}
+2021-06-16 20:50:21 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2021-06-16 20:50:21 INFO  Version:49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2021-06-16 20:50:21 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-06-16 20:50:22 INFO  Version:21 - HV000001: Hibernate Validator 6.0.10.Final
+2021-06-16 20:50:24 INFO  naming:49 - WFNAM00025: org.jboss.naming.remote.client.InitialContextFactory is deprecated; new applications should use org.wildfly.naming.client.WildFlyInitialContextFactory instead
+2021-06-16 20:50:24 INFO  naming:57 - WildFly Naming version 1.0.14.Final
+2021-06-16 20:50:24 INFO  security:55 - ELY00001: WildFly Elytron version 1.15.3.Final
+2021-06-16 20:50:24 INFO  xnio:95 - XNIO version 3.8.4.Final
+2021-06-16 20:50:24 INFO  nio:58 - XNIO NIO Implementation Version 3.8.4.Final
+2021-06-16 20:50:24 INFO  threads:52 - JBoss Threads version 2.4.0.Final
+2021-06-16 20:50:24 INFO  remoting:99 - JBoss Remoting version 5.0.20.Final
+2021-06-16 20:50:27 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-06-16 20:51:41 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory

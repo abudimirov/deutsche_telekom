@@ -160,15 +160,25 @@
                         <div class="col-lg-4">
                             <div class="card mt-5">
                                 <div class="card-body">
-                                    <h5 class="card-title">Hospital capacity</h5>
+                                    <h5 class="card-title">Hospital capacity, %</h5>
                                     <div id="canvas-holder" class="mx-auto" style="width: 300px;">
                                         <canvas id="chart-area" width="150" height="150" />
                                     </div>
-
-                                    <div id="chartjs-tooltip"></div>
                                 </div>
                             </div>
-
+                            <div class="card mt-5">
+                                <div class="card-body" style="max-height: 250px; overflow: scroll">
+                                    <h5 class="card-title">History</h5>
+                                    <c:forEach var="alert" items="${alerts}" varStatus="i">
+                                        <div>
+                                            <div>
+                                                <small>${alert.date} - ${alert.time}</small>
+                                            </div>
+                                            <strong>${alert.person}:</strong> ${alert.text}
+                                        </div>
+                                    </c:forEach>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -183,46 +193,6 @@
     window.chartColors = {
         red: '#c31d25',
         green: '#28a745',
-    };
-
-    Chart.defaults.global.tooltips.custom = function(tooltip) {
-        // Tooltip Element
-        var tooltipEl = document.getElementById('chartjs-tooltip');
-
-        // Hide if no tooltip
-        if (tooltip.opacity === 0) {
-            tooltipEl.style.opacity = 0;
-            return;
-        }
-
-        // Set Text
-        if (tooltip.body) {
-            var total = 0;
-
-            // get the value of the datapoint
-            var value = this._data.datasets[tooltip.dataPoints[0].datasetIndex].data[tooltip.dataPoints[0].index].toLocaleString();
-
-            // calculate value of all datapoints
-            this._data.datasets[tooltip.dataPoints[0].datasetIndex].data.forEach(function(e) {
-                total += e;
-            });
-
-            // calculate percentage and set tooltip value
-            tooltipEl.innerHTML = '<h1>' + (value / total * 100) + '%</h1>';
-        }
-
-        // calculate position of tooltip
-        var centerX = (this._chartInstance.chartArea.left + this._chartInstance.chartArea.right) / 2;
-        var centerY = ((this._chartInstance.chartArea.top + this._chartInstance.chartArea.bottom) / 2);
-
-        // Display, position, and set styles for font
-        tooltipEl.style.opacity = 1;
-        tooltipEl.style.left = centerX + 'px';
-        tooltipEl.style.top = centerY + 'px';
-        tooltipEl.style.fontFamily = tooltip._fontFamily;
-        tooltipEl.style.fontSize = tooltip.fontSize;
-        tooltipEl.style.fontStyle = tooltip._fontStyle;
-        tooltipEl.style.padding = tooltip.yPadding + 'px ' + tooltip.xPadding + 'px';
     };
 
     var config = {
@@ -249,7 +219,7 @@
                 },
             },
             tooltips: {
-                enabled: false,
+                enabled: true,
             }
         }
     };
