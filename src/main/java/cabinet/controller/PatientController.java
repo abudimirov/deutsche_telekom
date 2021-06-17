@@ -26,9 +26,6 @@ public class PatientController {
     private EventService eventService;
     private AlertService alertService;
 
-    private static final String HOMEPAGE_REDIRECT = "redirect:/patients/";
-
-
     @Autowired
     public void setPatientService(PatientService patientService) {
         this.patientService = patientService;

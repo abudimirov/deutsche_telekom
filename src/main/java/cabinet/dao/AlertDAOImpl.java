@@ -10,6 +10,11 @@ import org.springframework.stereotype.Repository;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Class for interacting with alerts table in the DB
+ *
+ */
+
 @Repository
 public class AlertDAOImpl implements AlertDAO {
     private SessionFactory sessionFactory;
@@ -21,6 +26,11 @@ public class AlertDAOImpl implements AlertDAO {
         this.sessionFactory = sessionFactory;
     }
 
+    /**
+     * Gets all existing alerts in the DB sorted by date and time in DESC order
+     *
+     * @return List<Alert>
+     */
     @Override
     public List<Alert> getAllAlerts() {
         try {
@@ -33,6 +43,11 @@ public class AlertDAOImpl implements AlertDAO {
         }
     }
 
+    /**
+     * Adds a new alert to the DB
+     *
+     * @param alert
+     */
     @Override
     public void add(Alert alert) {
         try {

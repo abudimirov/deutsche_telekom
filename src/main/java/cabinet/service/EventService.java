@@ -30,12 +30,24 @@ public class EventService {
         this.procedureDAO = procedureDAO;
     }
 
+    /**
+     * Method to get event from the DB by its ID
+     *
+     * @param id
+     * @return EventDTO
+     */
     @Transactional(readOnly = true)
     public EventDTO getById(int id) {
         Event event = eventDAO.getById(id);
         return DtoUtils.convertToDto(event, EventDTO.class);
     }
 
+    /**
+     * Method to get all events from the DB by patient
+     *
+     * @param patientDTO
+     * @return List<EventDTO>
+     */
     @Transactional(readOnly = true)
     public List<EventDTO> getEventsByPatient(PatientDTO patientDTO) {
         Patient patient = DtoUtils.convertToEntity(Patient.class, patientDTO);
@@ -46,12 +58,23 @@ public class EventService {
         return events;
     }
 
+    /**
+     * Method to edit an existing event in the DB
+     *
+     * @param eventDTO
+     */
     @Transactional
     public void edit(EventDTO eventDTO) {
         Event event = DtoUtils.convertToEntity(Event.class, eventDTO);
         eventDAO.edit(event);
     }
 
+    /**
+     * Method to cancel an existing event in the DB and set status to 'cancelled'
+     * for all procedures that are schedueld within this event
+     *
+     * @param eventDTO
+     */
     @Transactional
     public void cancel(EventDTO eventDTO) {
         eventDTO.setStatus("cancelled");

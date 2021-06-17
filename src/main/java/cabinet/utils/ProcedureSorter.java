@@ -6,6 +6,11 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Comparator;
 
+/**
+ * Class custom comparator for class Procedure. With this comparator procedures are
+ * sorted by date and by time
+ *
+ */
 public class ProcedureSorter implements Comparator<Procedure>
 {
     @Override

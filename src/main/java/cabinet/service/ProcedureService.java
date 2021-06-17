@@ -30,6 +30,8 @@ public class ProcedureService {
     private EventDAO eventDAO;
     private AlertDAO alertDAO;
 
+    private static final String DOCTOR = "Dr. John Dorian";
+
     @Autowired
     public void setProcedureDAO(ProcedureDAO procedureDAO) {
         this.procedureDAO = procedureDAO;
@@ -135,7 +137,7 @@ public class ProcedureService {
             }
         }
 
-        Alert alert = new Alert("Dr. John Dorian", " added new event " + procedureDTO.getTitle() + " with procedures");
+        Alert alert = new Alert(DOCTOR, " added new event " + procedureDTO.getTitle() + " with procedures");
         alertDAO.add(alert);
 
         try {
@@ -157,7 +159,7 @@ public class ProcedureService {
         Procedure procedure = DtoUtils.convertToEntity(Procedure.class, procedureDTO);
         procedureDAO.delete(procedure);
 
-        Alert alert = new Alert("Dr. John Dorian", " deleted procedure " + procedureDTO.getTitle());
+        Alert alert = new Alert(DOCTOR, " deleted procedure " + procedureDTO.getTitle());
         alertDAO.add(alert);
     }
 
@@ -170,7 +172,7 @@ public class ProcedureService {
         Procedure procedure = DtoUtils.convertToEntity(Procedure.class, procedureDTO);
         procedureDAO.edit(procedure);
 
-        Alert alert = new Alert("Dr. John Dorian", " edited procedure " + procedureDTO.getTitle());
+        Alert alert = new Alert(DOCTOR, " edited procedure " + procedureDTO.getTitle());
         alertDAO.add(alert);
 
         try {

@@ -13,6 +13,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.time.LocalDate;
 
+/**
+ * Class controller for REST API
+ *
+ */
 
 @Controller
 @RequestMapping("api")
@@ -24,6 +28,11 @@ public class RestController {
         this.procedureService = procedureService;
     }
 
+    /**
+     * API endpoint for getting all procedures scheduled for today
+     *
+     * @return json
+     */
     @GetMapping(value = "/procedures", produces = "application/json")
     public @ResponseBody String getProcedures() {
         Gson gson = new GsonBuilder().registerTypeAdapter(ProcedureDTO.class, new ProcedureSerializer()).create();

@@ -12,6 +12,10 @@ import org.springframework.stereotype.Repository;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Class for interacting with events table in the DB
+ *
+ */
 @Repository
 public class EventDAOImpl implements EventDAO{
 
@@ -24,6 +28,11 @@ public class EventDAOImpl implements EventDAO{
         this.sessionFactory = sessionFactory;
     }
 
+    /**
+     * Gets all events from the DB sorted by start date
+     *
+     * @return List<Event>
+     */
     @Override
     public List<Event> allEvents() {
         try {
@@ -36,6 +45,12 @@ public class EventDAOImpl implements EventDAO{
         }
     }
 
+    /**
+     * Gets all events for specified patient
+     *
+     * @param patient
+     * @return List<Event>
+     */
     @Override
     public List<Event> getEventsByPatient(Patient patient) {
         try {
@@ -50,6 +65,11 @@ public class EventDAOImpl implements EventDAO{
         }
     }
 
+    /**
+     * Adds an event to the DB
+     *
+     * @param event
+     */
     @Override
     public void add(Event event) {
         try {
@@ -61,6 +81,11 @@ public class EventDAOImpl implements EventDAO{
         }
     }
 
+    /**
+     * Deletes specified event from the DB
+     *
+     * @param event
+     */
     @Override
     public void delete(Event event) {
         try {
@@ -72,6 +97,11 @@ public class EventDAOImpl implements EventDAO{
         }
     }
 
+    /**
+     * Edits an existing specified event in the DB
+     *
+     * @param event
+     */
     @Override
     public void edit(Event event) {
         try {
@@ -83,6 +113,12 @@ public class EventDAOImpl implements EventDAO{
         }
     }
 
+    /**
+     * Gets an event from the DB specified by its ID
+     *
+     * @param id
+     * @return
+     */
     @Override
     public Event getById(int id) {
         try {
