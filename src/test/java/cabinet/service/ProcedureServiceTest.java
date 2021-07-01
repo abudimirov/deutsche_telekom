@@ -23,12 +23,13 @@ import java.util.List;
 @RunWith(MockitoJUnitRunner.class)
 public class ProcedureServiceTest {
 
-  // Мокаем гланый тестируемый класс, в него будут заинжекчены моки
-  // т.к. мы используем @RunWith(MockitoJUnitRunner.class), он сам все засунет туда
+  // Mock procedureService, other services will injected in it
+  // because we use @RunWith(MockitoJUnitRunner.class), it will inject everything in procedureService
+
   @InjectMocks
   private ProcedureService procedureService;
 
-  // Делаем моки всех сервисов которые используются в сервисе чтоб не поймать NPE при обращении
+  // Make mock of all services to not get an NPE just in case
   @Mock
   private ProcedureDAOImpl procedureDAO;
   @Mock

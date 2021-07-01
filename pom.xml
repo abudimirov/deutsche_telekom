@@ -13,6 +13,8 @@
         <spring.version>5.1.1.RELEASE</spring.version>
         <sonar.login>c7b14b0cb5923523ed11071cf6d2b1b8c9df3363</sonar.login>
         <sonar.java.libraries>target</sonar.java.libraries>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
 
     <dependencies>

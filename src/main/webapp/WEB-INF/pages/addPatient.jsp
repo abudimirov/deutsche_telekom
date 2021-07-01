@@ -33,7 +33,7 @@
                     <div class="form-group">
                         <label for="name">Name</label>
                         <c:if test="${!empty patient.name}">
-                            <input type="text" class="form-control" name="name" id="name" value="${patient.name}" required />
+                            <input type="text" class="form-control" name="name" id="name" value="${patient.name}" required title="This field is required" />
                             <form:errors path="name" cssClass="text-danger" />
                         </c:if>
                         <c:if test="${empty patient.name}">
